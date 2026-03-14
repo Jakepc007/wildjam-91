@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://bfikiari2s4xw"]
+
+[ext_resource type="Script" uid="uid://d28sxhlar56my" path="res://SecurityCamera/security_camera.gd" id="1_lsj14"]
+[ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="2_k6mq6"]
+[ext_resource type="Texture2D" uid="uid://b2g8g02nakxw" path="res://SecurityCamera/exclamation_point.png" id="3_6k7dd"]
+[ext_resource type="Script" uid="uid://byikjj4yiuvwq" path="res://SecurityCamera/line_of_sight_detector.gd" id="3_8xfrv"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qqjab"]
+points = PackedVector2Array(0, 0, -66.81171, 255.16754, 69.190735, 253.13574)
+
+[sub_resource type="Animation" id="Animation_u5kg4"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotation:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_diie0"]
+resource_name = "sweep"
+length = 3.0
+loop_mode = 2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rotation:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.721965, 0, 0, 0.63333327, 0.021157384, -0.75905216, -0.5, 0.021157384, 0, 0),
+"times": PackedFloat32Array(0.5, 2.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qqjab"]
+_data = {
+&"RESET": SubResource("Animation_u5kg4"),
+&"sweep": SubResource("Animation_diie0")
+}
+
+[node name="Camera" type="Node2D" unique_id=933279496 node_paths=PackedStringArray("line_of_sight_detector", "animation_player", "alerted_sprite", "_DEBUG_PLAYER")]
+script = ExtResource("1_lsj14")
+line_of_sight_detector = NodePath("Rotation/LineOfSightDetector")
+animation_player = NodePath("Rotation/AnimationPlayer")
+alerted_sprite = NodePath("Rotation/RayCast2D/alerted_sprite")
+_DEBUG_PLAYER = NodePath("Rotation/Area2D")
+
+[node name="Rotation" type="Node2D" parent="." unique_id=1983163777]
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotation" unique_id=375118075]
+position = Vector2(0, 35)
+scale = Vector2(2.5769234, 3.2142859)
+texture = ExtResource("2_k6mq6")
+region_enabled = true
+region_rect = Rect2(37, 39, 13, 21)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Rotation" unique_id=1521652010]
+remote_path = NodePath("../RayCast2D")
+update_rotation = false
+update_scale = false
+
+[node name="RayCast2D" type="RayCast2D" parent="Rotation" unique_id=1389640122]
+top_level = true
+collision_mask = 3
+
+[node name="alerted_sprite" type="Sprite2D" parent="Rotation/RayCast2D" unique_id=2096588824]
+position = Vector2(0, -51)
+texture = ExtResource("3_6k7dd")
+
+[node name="Area2D" type="Area2D" parent="Rotation" unique_id=365553016]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rotation/Area2D" unique_id=698830421]
+position = Vector2(0, 44)
+shape = SubResource("ConvexPolygonShape2D_qqjab")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Rotation" unique_id=486657373]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_qqjab")
+
+[node name="LineOfSightDetector" type="Node2D" parent="Rotation" unique_id=201265446 node_paths=PackedStringArray("ray_cast", "player_detection_cone")]
+script = ExtResource("3_8xfrv")
+ray_cast = NodePath("../RayCast2D")
+player_detection_cone = NodePath("../Area2D")

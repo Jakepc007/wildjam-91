@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://chvpqpus2gh15"]
+
+[ext_resource type="Script" uid="uid://c02856oxm7ve8" path="res://Guard/guard.gd" id="1_aoykg"]
+[ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="1_rpvx7"]
+[ext_resource type="Script" uid="uid://byikjj4yiuvwq" path="res://SecurityCamera/line_of_sight_detector.gd" id="2_dv7v6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o8hvd"]
+radius = 140.16063
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3orc7"]
+radius = 12.0
+height = 26.0
+
+[node name="Guard" type="CharacterBody2D" unique_id=1677974699 node_paths=PackedStringArray("line_of_sight_detector")]
+collision_layer = 4
+script = ExtResource("1_aoykg")
+line_of_sight_detector = NodePath("LineOfSightDetector")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122217298]
+position = Vector2(0, -29)
+texture = ExtResource("1_rpvx7")
+region_enabled = true
+region_rect = Rect2(29.011353, 48.138985, 26.12442, 57.380394)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=538829086]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=477054915]
+shape = SubResource("CircleShape2D_o8hvd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1237471458]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_3orc7")
+
+[node name="LineOfSightDetector" type="Node2D" parent="." unique_id=1361150991 node_paths=PackedStringArray("ray_cast", "player_detection_cone")]
+script = ExtResource("2_dv7v6")
+ray_cast = NodePath("../RayCast2D")
+player_detection_cone = NodePath("../Area2D")
+metadata/_custom_type_script = "uid://b8cbm7cdglq0x"
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1361321159]
+collision_mask = 3

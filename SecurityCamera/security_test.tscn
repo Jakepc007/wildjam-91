@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://br7fvw6wl0c7p"]
+
+[ext_resource type="PackedScene" uid="uid://chvpqpus2gh15" path="res://Guard/guard.tscn" id="1_grunf"]
+[ext_resource type="PackedScene" uid="uid://bfikiari2s4xw" path="res://SecurityCamera/security_camera.tscn" id="2_8o16q"]
+[ext_resource type="PackedScene" uid="uid://ctcqxb4owxedt" path="res://Guard/debug_character.tscn" id="3_8o16q"]
+[ext_resource type="Texture2D" uid="uid://b0ycs5y7s048v" path="res://assets/rooms.png" id="4_cx7pt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ahj2"]
+size = Vector2(190, 96)
+
+[node name="Node2D" type="Node2D" unique_id=945257368]
+
+[node name="Guard" parent="." unique_id=1677974699 node_paths=PackedStringArray("debug_player") instance=ExtResource("1_grunf")]
+position = Vector2(194, 272)
+debug_player = NodePath("../CharacterBody2D")
+
+[node name="Camera" parent="." unique_id=933279496 node_paths=PackedStringArray("_DEBUG_PLAYER") instance=ExtResource("2_8o16q")]
+position = Vector2(400, 79)
+_DEBUG_PLAYER = NodePath("../CharacterBody2D")
+
+[node name="CharacterBody2D" parent="." unique_id=417620483 instance=ExtResource("3_8o16q")]
+position = Vector2(315, 480)
+
+[node name="wall" type="StaticBody2D" parent="." unique_id=2022214006]
+position = Vector2(317, 392)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=269049626]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_5ahj2")
+
+[node name="Sprite2D" type="Sprite2D" parent="wall" unique_id=1912031097]
+texture = ExtResource("4_cx7pt")
+region_enabled = true
+region_rect = Rect2(-3, 430, 196, 98)

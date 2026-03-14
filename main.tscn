@@ -1497,6 +1497,7 @@ sources/1 = SubResource("TileSetAtlasSource_272bh")
 [node name="Main" type="Node2D" unique_id=869268886]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1028673277]
+collision_layer = 3
 script = ExtResource("1_1bvp3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1092792729]

@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://ctcqxb4owxedt"]
+
+[ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="1_glpr6"]
+
+[sub_resource type="GDScript" id="GDScript_0e48y"]
+script/source = "extends CharacterBody2D
+
+const SPEED = 800.0
+var acceleration : float = 5
+var decceleration : float = 10
+var move_input_dir : Vector2
+
+
+func _physics_process(delta: float) -> void:
+	move_input_dir = Input.get_vector(\"left\",\"right\",\"up\",\"down\")
+	
+	var target_velocity = move_input_dir * SPEED
+	var lerp_weight : float
+	if move_input_dir.length() > 0.1:
+		lerp_weight = acceleration
+	else:
+		lerp_weight = decceleration
+
+	velocity = velocity.lerp(target_velocity, lerp_weight * delta)
+
+	move_and_slide()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pjt0s"]
+radius = 17.029387
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=417620483]
+collision_layer = 2
+script = SubResource("GDScript_0e48y")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1934953607]
+texture = ExtResource("1_glpr6")
+region_enabled = true
+region_rect = Rect2(9, 8, 36, 34)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=315227336]
+shape = SubResource("CircleShape2D_pjt0s")
