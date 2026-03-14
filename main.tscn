@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://b0ycs5y7s048v" path="res://assets/rooms.png" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://du2qdkb5eapux" path="res://assets/Interiors_free_48x48.png" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cjd8r32q75p58" path="res://pickup.tscn" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://6g2houfyr2lr" path="res://inventory_ring.gd" id="7_272bh"]
+[ext_resource type="Script" uid="uid://yte2vbq8136b" path="res://inventory_pickup.gd" id="8_5vw27"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dm0k"]
 radius = 16.0
@@ -1490,6 +1492,8 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_1bvp3")
 sources/1 = SubResource("TileSetAtlasSource_272bh")
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_272bh"]
+
 [node name="Main" type="Node2D" unique_id=869268886]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1028673277]
@@ -1513,6 +1517,16 @@ offset_top = -64.0
 offset_right = 44.0
 offset_bottom = -41.0
 text = "pickup (e)"
+label_settings = SubResource("LabelSettings_1bvp3")
+
+[node name="InventoryFloater" type="Label" parent="Player" unique_id=848449429]
+offset_left = -32.0
+offset_top = 72.0
+offset_right = 44.0
+offset_bottom = 95.0
+text = "- 2w 4v
+- 2w 4v
+- 2w 4v"
 label_settings = SubResource("LabelSettings_1bvp3")
 
 [node name="PickupDetectionArea" type="Area2D" parent="Player" unique_id=706302030]
@@ -1544,9 +1558,65 @@ tile_set = SubResource("TileSet_lquwl")
 
 [node name="Pickup" parent="." unique_id=1711849754 instance=ExtResource("5_lquwl")]
 position = Vector2(-224, -120)
+weight = 2.0
 
 [node name="Pickup2" parent="." unique_id=44255078 instance=ExtResource("5_lquwl")]
 position = Vector2(-8, -160)
+weight = 9.0
 
 [node name="Pickup3" parent="." unique_id=1991380284 instance=ExtResource("5_lquwl")]
 position = Vector2(-56, -176)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=324265818]
+
+[node name="Inventory" type="Control" parent="CanvasLayer" unique_id=896243378]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InventoryRing" type="Node2D" parent="CanvasLayer/Inventory" unique_id=1878267587]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(320, 320)
+script = ExtResource("7_272bh")
+
+[node name="InventoryPickup" type="Area2D" parent="CanvasLayer/Inventory/InventoryRing" unique_id=2036112934]
+position = Vector2(-48, -32)
+script = ExtResource("8_5vw27")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Inventory/InventoryRing/InventoryPickup" unique_id=1295523001]
+shape = SubResource("CircleShape2D_272bh")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Inventory/InventoryRing/InventoryPickup" unique_id=198104442]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_ig7tw")
+
+[node name="InventoryPickup2" type="Area2D" parent="CanvasLayer/Inventory/InventoryRing" unique_id=681343912]
+position = Vector2(120, -48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Inventory/InventoryRing/InventoryPickup2" unique_id=43265653]
+shape = SubResource("CircleShape2D_272bh")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Inventory/InventoryRing/InventoryPickup2" unique_id=1075044326]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_ig7tw")
+
+[node name="InventoryPickup3" type="Area2D" parent="CanvasLayer/Inventory/InventoryRing" unique_id=303303842]
+position = Vector2(-80, 120)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Inventory/InventoryRing/InventoryPickup3" unique_id=1229659216]
+shape = SubResource("CircleShape2D_272bh")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Inventory/InventoryRing/InventoryPickup3" unique_id=2048949986]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_ig7tw")
+
+[node name="InventoryPickup4" type="Area2D" parent="CanvasLayer/Inventory/InventoryRing" unique_id=1287062470]
+position = Vector2(144, 80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Inventory/InventoryRing/InventoryPickup4" unique_id=552503708]
+shape = SubResource("CircleShape2D_272bh")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Inventory/InventoryRing/InventoryPickup4" unique_id=1705903688]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_ig7tw")

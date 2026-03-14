@@ -1,6 +1,8 @@
 class_name Pickup extends Area2D
 
 @onready var sprite: Sprite2D = $Sprite2D
+@export var value := 5.
+@export var weight := 1.
 
 const HIGHLIGHT_SPEED = 5.
 
