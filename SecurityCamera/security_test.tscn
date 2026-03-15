@@ -1,34 +1,55 @@
-[gd_scene format=3 uid="uid://br7fvw6wl0c7p"]
+[gd_scene format=4 uid="uid://br7fvw6wl0c7p"]
 
 [ext_resource type="PackedScene" uid="uid://chvpqpus2gh15" path="res://Guard/guard.tscn" id="1_grunf"]
 [ext_resource type="PackedScene" uid="uid://bfikiari2s4xw" path="res://SecurityCamera/security_camera.tscn" id="2_8o16q"]
 [ext_resource type="PackedScene" uid="uid://ctcqxb4owxedt" path="res://Guard/debug_character.tscn" id="3_8o16q"]
-[ext_resource type="Texture2D" uid="uid://b0ycs5y7s048v" path="res://assets/rooms.png" id="4_cx7pt"]
+[ext_resource type="TileSet" uid="uid://dah43rluvhpe2" path="res://assets/rooms_tilemap.tres" id="5_5ahj2"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ahj2"]
-size = Vector2(190, 96)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_5ahj2"]
+vertices = PackedVector2Array(-450, 270, 210, 270, 210, 306, -270, 306, -450, 606, -270, 642, -642, 642, -606, 606, -642, 270, -606, 270)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(7, 6, 8, 9)])
+agent_radius = 30.0
 
 [node name="Node2D" type="Node2D" unique_id=945257368]
 
-[node name="Guard" parent="." unique_id=1677974699 node_paths=PackedStringArray("debug_player") instance=ExtResource("1_grunf")]
+[node name="Guard" parent="." unique_id=1677974699 node_paths=PackedStringArray("debug_player", "patrol_points") instance=ExtResource("1_grunf")]
+z_index = 1
+y_sort_enabled = true
 position = Vector2(194, 272)
 debug_player = NodePath("../CharacterBody2D")
+patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3"), NodePath("Marker2D4")]
+walk_speed = 200.0
+
+[node name="Marker2D" type="Marker2D" parent="Guard" unique_id=1948002998]
+top_level = true
+position = Vector2(196, 284)
+
+[node name="Marker2D2" type="Marker2D" parent="Guard" unique_id=2071530386]
+top_level = true
+position = Vector2(-288, 290)
+
+[node name="Marker2D3" type="Marker2D" parent="Guard" unique_id=798930774]
+top_level = true
+position = Vector2(-293, 622)
+
+[node name="Marker2D4" type="Marker2D" parent="Guard" unique_id=1833921967]
+top_level = true
+position = Vector2(-632, 626)
 
 [node name="Camera" parent="." unique_id=933279496 node_paths=PackedStringArray("_DEBUG_PLAYER") instance=ExtResource("2_8o16q")]
 position = Vector2(400, 79)
 _DEBUG_PLAYER = NodePath("../CharacterBody2D")
 
 [node name="CharacterBody2D" parent="." unique_id=417620483 instance=ExtResource("3_8o16q")]
-position = Vector2(315, 480)
+z_index = 1
+position = Vector2(-439, 367)
 
-[node name="wall" type="StaticBody2D" parent="." unique_id=2022214006]
-position = Vector2(317, 392)
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=1635879218]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="wall" unique_id=269049626]
-position = Vector2(-1, -2)
-shape = SubResource("RectangleShape2D_5ahj2")
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1309041708]
+navigation_polygon = SubResource("NavigationPolygon_5ahj2")
 
-[node name="Sprite2D" type="Sprite2D" parent="wall" unique_id=1912031097]
-texture = ExtResource("4_cx7pt")
-region_enabled = true
-region_rect = Rect2(-3, 430, 196, 98)
+[node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D" unique_id=1803493169]
+tile_map_data = PackedByteArray("AAAEAAYAAAALAAUAAAADAAYAAAALAAUAAAACAAYAAAALAAUAAAABAAYAAAALAAUAAAAAAAYAAAALAAUAAAD//wYAAAALAAUAAAD+/wYAAAALAAUAAAD9/wYAAAALAAUAAAD8/wYAAAALAAUAAAD7/wYAAAALAAUAAAD6/wYAAAALAAUAAAD5/wYAAAALAAUAAAAEAAUAAAALAAUAAAADAAUAAAALAAUAAAACAAUAAAALAAUAAAABAAUAAAALAAUAAAAAAAUAAAALAAUAAAD//wUAAAALAAUAAAD+/wUAAAALAAUAAAD9/wUAAAALAAUAAAD8/wUAAAALAAUAAAD7/wUAAAALAAUAAAD6/wUAAAALAAUAAAD5/wUAAAALAAUAAAD5/wcAAAALAAUAAAD5/wgAAAALAAUAAAD5/wkAAAALAAUAAAD5/woAAAALAAUAAAD5/wsAAAALAAUAAAD5/wwAAAALAAUAAAD5/w0AAAALAAUAAAD6/wcAAAALAAUAAAD6/wgAAAALAAUAAAD6/wkAAAALAAUAAAD6/woAAAALAAUAAAD6/wsAAAALAAUAAAD6/wwAAAALAAUAAAD6/w0AAAALAAUAAAD4/w0AAAALAAUAAAD3/w0AAAALAAUAAAD2/w0AAAALAAUAAAD1/w0AAAALAAUAAAD0/w0AAAALAAUAAADz/w0AAAALAAUAAADy/w0AAAALAAUAAADy/wwAAAALAAUAAADz/wwAAAALAAUAAAD0/wwAAAALAAUAAAD1/wwAAAALAAUAAAD2/wwAAAALAAUAAAD3/wwAAAALAAUAAAD4/wwAAAALAAUAAAD4/wsAAAALAAUAAAD4/woAAAALAAUAAAD4/wkAAAALAAUAAAD4/wgAAAALAAUAAAD3/wcAAAALAAUAAAD3/wYAAAALAAUAAAD4/wYAAAALAAUAAAD4/wUAAAALAAUAAAD4/wcAAAALAAUAAAD3/wUAAAALAAUAAAD2/wUAAAALAAUAAAD1/wUAAAALAAIAAAD0/wUAAAANAAIAAADz/wUAAAALAAUAAADy/wUAAAALAAUAAADy/wYAAAALAAUAAADy/wcAAAALAAUAAADy/wgAAAALAAUAAADy/wkAAAALAAUAAADy/woAAAALAAUAAADy/wsAAAALAAUAAADz/wsAAAALAAUAAADz/woAAAALAAUAAAD0/woAAAANAAIAAAD1/woAAAALAAIAAAD2/woAAAALAAUAAAD2/wsAAAALAAUAAAD3/wsAAAALAAUAAAD3/woAAAALAAUAAAD1/wsAAAALAAIAAAD0/wsAAAANAAIAAAD3/wkAAAALAAUAAAD2/wkAAAALAAUAAAD1/wkAAAALAAIAAAD0/wkAAAANAAIAAADz/wkAAAALAAUAAAD0/wgAAAANAAIAAAD1/wgAAAALAAIAAAD2/wgAAAALAAUAAAD3/wgAAAALAAUAAADz/wgAAAALAAUAAADz/wcAAAALAAUAAADz/wYAAAALAAUAAAD0/wYAAAANAAIAAAD1/wYAAAALAAIAAAD2/wYAAAALAAUAAAD1/wcAAAALAAIAAAD0/wcAAAANAAIAAAD2/wcAAAALAAUAAADy/w4AAAAMAAMAAADz/w4AAAAMAAMAAAD0/w4AAAAMAAMAAAD1/w4AAAAMAAMAAAD2/w4AAAAMAAMAAAD3/w4AAAAMAAMAAAD4/w4AAAAMAAMAAAD5/w4AAAAMAAMAAAD6/w4AAAAMAAMAAADx/w0AAAALAAIAAADx/wwAAAALAAIAAADx/wsAAAALAAIAAADx/woAAAALAAIAAADx/wkAAAALAAIAAADx/wgAAAALAAIAAADx/wcAAAALAAIAAADx/wYAAAALAAIAAADx/wUAAAALAAIAAAD7/w0AAAANAAIAAAD7/wwAAAANAAIAAAD7/wsAAAANAAIAAAD7/woAAAANAAIAAAD7/wkAAAANAAIAAAD7/wgAAAANAAIAAAD8/wcAAAAMAAMAAAD9/wcAAAAMAAMAAAD+/wcAAAAMAAMAAAD//wcAAAAMAAMAAAAAAAcAAAAMAAMAAAABAAcAAAAMAAMAAAACAAcAAAAMAAMAAAADAAcAAAAMAAMAAAAEAAcAAAAMAAMAAAA=")
+tile_set = ExtResource("5_5ahj2")
+navigation_enabled = false

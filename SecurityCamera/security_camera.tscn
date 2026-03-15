@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://byikjj4yiuvwq" path="res://SecurityCamera/line_of_sight_detector.gd" id="3_8xfrv"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qqjab"]
-points = PackedVector2Array(0, 0, -66.81171, 255.16754, 69.190735, 253.13574)
+points = PackedVector2Array(0, 0, -60, 198, 58, 197)
 
 [sub_resource type="Animation" id="Animation_u5kg4"]
 length = 0.001
@@ -54,8 +54,7 @@ _DEBUG_PLAYER = NodePath("Rotation/Area2D")
 [node name="Rotation" type="Node2D" parent="." unique_id=1983163777]
 
 [node name="Sprite2D" type="Sprite2D" parent="Rotation" unique_id=375118075]
-position = Vector2(0, 35)
-scale = Vector2(2.5769234, 3.2142859)
+scale = Vector2(1.4423078, 1.5119048)
 texture = ExtResource("2_k6mq6")
 region_enabled = true
 region_rect = Rect2(37, 39, 13, 21)
@@ -67,6 +66,7 @@ update_scale = false
 
 [node name="RayCast2D" type="RayCast2D" parent="Rotation" unique_id=1389640122]
 top_level = true
+position = Vector2(0, 3)
 collision_mask = 3
 
 [node name="alerted_sprite" type="Sprite2D" parent="Rotation/RayCast2D" unique_id=2096588824]
@@ -74,6 +74,7 @@ position = Vector2(0, -51)
 texture = ExtResource("3_6k7dd")
 
 [node name="Area2D" type="Area2D" parent="Rotation" unique_id=365553016]
+position = Vector2(0, -25)
 collision_layer = 0
 collision_mask = 2
 

@@ -15,5 +15,7 @@ func player_in_line_of_sight(player_global_position) -> bool :
 	ray_cast.target_position = ray_cast.to_local(player_global_position)
 	var body := ray_cast.get_collider()
 	if body: # raycast hit something
+		if not body is CollisionObject2D:
+			return false
 		return body.collision_layer & 2
 	return false

@@ -8,13 +8,14 @@
 radius = 140.16063
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3orc7"]
-radius = 12.0
-height = 26.0
+radius = 14.0
+height = 28.0
 
-[node name="Guard" type="CharacterBody2D" unique_id=1677974699 node_paths=PackedStringArray("line_of_sight_detector")]
+[node name="Guard" type="CharacterBody2D" unique_id=1677974699 node_paths=PackedStringArray("line_of_sight_detector", "navigation_agent_2d")]
 collision_layer = 4
 script = ExtResource("1_aoykg")
 line_of_sight_detector = NodePath("LineOfSightDetector")
+navigation_agent_2d = NodePath("NavigationAgent2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122217298]
 position = Vector2(0, -29)
@@ -37,7 +38,10 @@ shape = SubResource("CapsuleShape2D_3orc7")
 script = ExtResource("2_dv7v6")
 ray_cast = NodePath("../RayCast2D")
 player_detection_cone = NodePath("../Area2D")
-metadata/_custom_type_script = "uid://b8cbm7cdglq0x"
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=1361321159]
 collision_mask = 3
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1799987389]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
