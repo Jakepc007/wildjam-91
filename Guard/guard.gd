@@ -7,6 +7,7 @@ class_name Guard
 @export var DEBUG_PRINT_TRANSITIONS : bool = false
 @export var patrol_points : Array[Node2D]
 var _current_patrol_point_idx : int
+var _default_navigation_target_radius : float 
 
 signal player_spotted()
 signal player_caught()
@@ -43,19 +44,29 @@ var _time_spent_investigating : float
 func _ready() -> void:
 	_current_patrol_point_idx = 0
 	_state = States.PATROL
+	_default_navigation_target_radius = navigation_agent_2d.target_desired_distance
 
 func exit_actions(old_state : States, new_state : States):
 	match old_state:
 		States.CHASE:
 			_investigate_target_location = _last_global_position_detected
+		States.INVESTIGATE_SPOT:
+			navigation_agent_2d.target_desired_distance = _default_navigation_target_radius
 
 func enter_actions(old_state : States, new_state : States):
 	match new_state:
 		States.PATROL:
-			assert(patrol_points.size() > 0, "Guard:" + name + " cannot patrol without patrol points")
+			if patrol_points.is_empty(): 
+				var temp_patrol_point := Node2D.new()
+				temp_patrol_point.global_position = self.global_position
+				temp_patrol_point.top_level = true
+				add_child(temp_patrol_point)
+				patrol_points.append(temp_patrol_point)
+				push_warning("guard " + str(self.get_path()) + "has no patrol route")
 			set_navigation_target(patrol_points[0].global_position)
 		States.INVESTIGATE_SPOT:
 			_time_spent_investigating = 0
+			navigation_agent_2d.target_desired_distance *= 2
 			set_navigation_target(_investigate_target_location)
 
 
@@ -72,6 +83,10 @@ func _physics_process(delta: float) -> void:
 			target_forward_direction = target_forward_direction.normalized()
 			velocity = velocity.lerp(target_forward_direction * chase_speed, delta * acceleration)
 		States.INVESTIGATE_SPOT:
+			if line_of_sight_detector.player_detected(debug_player.global_position):
+				_state = States.CHASE
+				move_and_slide()
+				return
 			if navigation_agent_2d.is_navigation_finished():
 				velocity = Vector2.ZERO
 				_time_spent_investigating += delta

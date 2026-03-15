@@ -13,6 +13,7 @@ height = 28.0
 
 [node name="Guard" type="CharacterBody2D" unique_id=1677974699 node_paths=PackedStringArray("line_of_sight_detector", "navigation_agent_2d")]
 collision_layer = 4
+collision_mask = 5
 script = ExtResource("1_aoykg")
 line_of_sight_detector = NodePath("LineOfSightDetector")
 navigation_agent_2d = NodePath("NavigationAgent2D")

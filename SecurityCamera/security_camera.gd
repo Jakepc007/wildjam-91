@@ -1,4 +1,5 @@
 extends Node2D
+class_name SecurityCamera
 
 @export var line_of_sight_detector : LineOfSightDetector
 @export var animation_player : AnimationPlayer
@@ -11,7 +12,7 @@ extends Node2D
 var _player_spotted : bool
 var _player_spotted_time : float # the time at which the player was spotted
 
-signal player_found()
+signal player_found(camera : SecurityCamera, location_found : Vector2)
 
 #@export_range(0, 360, 0.1, "radians_as_degrees") var max_rotation : float = 20
 
@@ -24,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		_player_spotted_time = Time.get_unix_time_from_system()
 	_player_spotted = player_spotted_this_frame
 	if _player_spotted and Time.get_unix_time_from_system() - _player_spotted_time > time_to_alert:
-		player_found.emit()
+		player_found.emit(self, line_of_sight_detector.last_player_location)
 		alerted_sprite.visible = true
 	else:
 		alerted_sprite.visible = false
