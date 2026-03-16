@@ -14,7 +14,6 @@ var _player_spotted_time : float # the time at which the player was spotted
 
 signal player_found(camera : SecurityCamera, location_found : Vector2)
 
-#@export_range(0, 360, 0.1, "radians_as_degrees") var max_rotation : float = 20
 
 func _ready() -> void:
 	animation_player.play("sweep")

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="2_k6mq6"]
 [ext_resource type="Texture2D" uid="uid://b2g8g02nakxw" path="res://SecurityCamera/exclamation_point.png" id="3_6k7dd"]
 [ext_resource type="Script" uid="uid://byikjj4yiuvwq" path="res://SecurityCamera/line_of_sight_detector.gd" id="3_8xfrv"]
+[ext_resource type="Texture2D" uid="uid://cpc3c8gefsgak" path="res://SecurityCamera/cone_mask.png" id="5_6k7dd"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qqjab"]
 points = PackedVector2Array(0, 0, -60, 198, 58, 197)
@@ -86,7 +87,14 @@ shape = SubResource("ConvexPolygonShape2D_qqjab")
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_qqjab")
 
-[node name="LineOfSightDetector" type="Node2D" parent="Rotation" unique_id=201265446 node_paths=PackedStringArray("ray_cast", "player_detection_cone")]
+[node name="LineOfSightDetector" type="Node2D" parent="Rotation" unique_id=201265446 node_paths=PackedStringArray("ray_casts", "player_detection_cone")]
 script = ExtResource("3_8xfrv")
-ray_cast = NodePath("../RayCast2D")
+ray_casts = [NodePath("../RayCast2D")]
 player_detection_cone = NodePath("../Area2D")
+
+[node name="PointLight2D" type="PointLight2D" parent="Rotation" unique_id=2037334814]
+position = Vector2(0.17523831, 135.37804)
+rotation = 1.5707964
+scale = Vector2(1.7119406, 1.384722)
+range_z_min = 0
+texture = ExtResource("5_6k7dd")

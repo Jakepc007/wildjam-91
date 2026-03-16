@@ -3,13 +3,33 @@
 [ext_resource type="Script" uid="uid://c02856oxm7ve8" path="res://Guard/guard.gd" id="1_aoykg"]
 [ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="1_rpvx7"]
 [ext_resource type="Script" uid="uid://byikjj4yiuvwq" path="res://SecurityCamera/line_of_sight_detector.gd" id="2_dv7v6"]
+[ext_resource type="Texture2D" uid="uid://cpc3c8gefsgak" path="res://SecurityCamera/cone_mask.png" id="4_kitn5"]
+[ext_resource type="Texture2D" uid="uid://b2g8g02nakxw" path="res://SecurityCamera/exclamation_point.png" id="5_l5q8q"]
+[ext_resource type="Texture2D" uid="uid://21m18yyxd7gp" path="res://Guard/question_mark.png" id="6_puoqm"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o8hvd"]
-radius = 140.16063
+[sub_resource type="GDScript" id="GDScript_xdy8g"]
+script/source = "extends Area2D
+@onready var guard: Guard = $\"..\"
+const  ROTATION_SPEED : float = 10
+
+func  _physics_process(delta: float) -> void:
+	if guard.velocity.length() < 0.01:
+		return
+	rotation = lerp_angle(rotation,atan2(guard.velocity.y,guard.velocity.x),delta*ROTATION_SPEED)
+"
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_kitn5"]
+points = PackedVector2Array(0, 0, 81, 77, 210, 77, 210, -77, 85, -77)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_puoqm"]
+points = PackedVector2Array(-157, -4, -97, 176, 574, 196, 573, -163, -88, -163)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3orc7"]
 radius = 14.0
 height = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xdy8g"]
+radius = 28.160255
 
 [node name="Guard" type="CharacterBody2D" unique_id=1677974699 node_paths=PackedStringArray("line_of_sight_detector", "navigation_agent_2d")]
 collision_layer = 4
@@ -24,25 +44,61 @@ texture = ExtResource("1_rpvx7")
 region_enabled = true
 region_rect = Rect2(29.011353, 48.138985, 26.12442, 57.380394)
 
-[node name="Area2D" type="Area2D" parent="." unique_id=538829086]
+[node name="DetectionArea" type="Area2D" parent="." unique_id=538829086]
 collision_layer = 0
 collision_mask = 2
+script = SubResource("GDScript_xdy8g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=477054915]
-shape = SubResource("CircleShape2D_o8hvd")
+[node name="PatrolShape" type="CollisionShape2D" parent="DetectionArea" unique_id=477054915]
+shape = SubResource("ConvexPolygonShape2D_kitn5")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1237471458]
+[node name="PointLight2D" type="PointLight2D" parent="DetectionArea" unique_id=84083961]
+position = Vector2(111.5, 14.999991)
+scale = Vector2(1.8710938, 2.1015623)
+color = Color(0.91368365, 0.9011933, 0.72899765, 1)
+energy = 0.85
+range_z_min = 0
+shadow_enabled = true
+texture = ExtResource("4_kitn5")
+
+[node name="ChaseShape" type="CollisionShape2D" parent="DetectionArea" unique_id=188751635]
+shape = SubResource("ConvexPolygonShape2D_puoqm")
+disabled = true
+
+[node name="RayCast2D" type="RayCast2D" parent="DetectionArea" unique_id=1361321159]
+position = Vector2(33, -35)
+collision_mask = 3
+
+[node name="RayCast2D2" type="RayCast2D" parent="DetectionArea" unique_id=1288929782]
+position = Vector2(33, 24)
+collision_mask = 3
+
+[node name="WorldCollision" type="CollisionShape2D" parent="." unique_id=1237471458]
 position = Vector2(0, -12)
 shape = SubResource("CapsuleShape2D_3orc7")
 
-[node name="LineOfSightDetector" type="Node2D" parent="." unique_id=1361150991 node_paths=PackedStringArray("ray_cast", "player_detection_cone")]
+[node name="LineOfSightDetector" type="Node2D" parent="." unique_id=1361150991 node_paths=PackedStringArray("ray_casts", "player_detection_cone")]
 script = ExtResource("2_dv7v6")
-ray_cast = NodePath("../RayCast2D")
-player_detection_cone = NodePath("../Area2D")
-
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1361321159]
-collision_mask = 3
+ray_casts = [NodePath("../DetectionArea/RayCast2D"), NodePath("../DetectionArea/RayCast2D2")]
+player_detection_cone = NodePath("../DetectionArea")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1799987389]
 path_desired_distance = 5.0
 target_desired_distance = 5.0
+
+[node name="CatchArea" type="Area2D" parent="." unique_id=957838066]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatchArea" unique_id=1589227343]
+shape = SubResource("CircleShape2D_xdy8g")
+
+[node name="AlertSprite" type="Sprite2D" parent="." unique_id=1995845885]
+visible = false
+position = Vector2(2, -103)
+texture = ExtResource("5_l5q8q")
+
+[node name="CuriousSprite" type="Sprite2D" parent="." unique_id=899231376]
+visible = false
+position = Vector2(1, -91)
+texture = ExtResource("6_puoqm")
