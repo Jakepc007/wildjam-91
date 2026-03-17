@@ -8,6 +8,8 @@ const MAX_INVENTORY_CAPACITY := 10.
 @onready var pickup_detection_area: Area2D = $PickupDetectionArea
 @onready var inventory_floater: Label = $InventoryFloater
 
+@export var inventory_ring: InventoryRing = null
+
 # TODO: move inventory into separate script
 var overlapping_pickups: Array = []
 var inventory: Array = []
@@ -56,6 +58,7 @@ func _input(event: InputEvent):
 				# TODO: handle pickup logic within pickup.gd
 				closest_pickup.queue_free()
 				current_inventory_weight += closest_pickup.weight
+				inventory_ring.add_pickup(closest_pickup)
 			else:
 				print("you're full")
 

@@ -6,5 +6,5 @@ const CAMERA_LERP_SPEED = 100.0
 
 func _process(delta: float):
     if target:
-        position = lerp(position, target.position, delta * CAMERA_LERP_SPEED)
-        # position = target.position
+        # position = lerp(position, target.position, delta * CAMERA_LERP_SPEED)
+        position = target.position
