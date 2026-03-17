@@ -1575,6 +1575,6 @@ offset_bottom = 40.0
 
 [node name="InventoryRing" type="Node2D" parent="CanvasLayer/Inventory" unique_id=1878267587 node_paths=PackedStringArray("player")]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(320, 320)
+position = Vector2(480, 320)
 script = ExtResource("7_272bh")
 player = NodePath("../../../Player")

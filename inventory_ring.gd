@@ -29,7 +29,7 @@ func add_pickup(item):
 func _process(delta: float):
 	apply_pickup_forces(delta)
 	queue_redraw()
-	var viewport_mouse_position = get_viewport().get_mouse_position() - Vector2.ONE * 320.
+	var viewport_mouse_position = get_viewport().get_mouse_position() - (Vector2(480, 320))
 	for pickup in pickups:
 		if pickup == grabbed_pickup:
 			pickup.position = viewport_mouse_position
@@ -93,7 +93,7 @@ func _input(event: InputEvent):
 		if event.is_pressed():
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				for pickup in pickups:
-					var dist = pickup.position.distance_to(get_viewport().get_mouse_position() - Vector2.ONE * 320.)
+					var dist = pickup.position.distance_to(get_viewport().get_mouse_position() - (Vector2(480, 320)))
 					if dist < MIN_PICKUP_HOVER_DISTANCE:
 						grabbed_pickup = pickup
 						break
