@@ -22,7 +22,7 @@ func  _physics_process(delta: float) -> void:
 points = PackedVector2Array(0, 0, 81, 77, 210, 77, 210, -77, 85, -77)
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_puoqm"]
-points = PackedVector2Array(-157, -4, -97, 176, 574, 196, 573, -163, -88, -163)
+points = PackedVector2Array(-64, -5, -2, 168, 498, 180, 496, -168, -2, -155)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3orc7"]
 radius = 14.0
