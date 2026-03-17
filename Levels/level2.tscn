@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://8yqcf3fcur1q" path="res://player.gd" id="1_ojro4"]
 [ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="2_xv7eh"]
 [ext_resource type="Script" uid="uid://bktiyub0esx40" path="res://camera.gd" id="3_ijnin"]
-[ext_resource type="TileSet" uid="uid://dah43rluvhpe2" path="res://assets/rooms_tilemap.tres" id="4_lr0ko"]
+[ext_resource type="TileSet" uid="uid://cab0vmmmaqsjj" path="res://assets/rooms_tilemap.tres" id="4_lr0ko"]
 [ext_resource type="PackedScene" uid="uid://cjd8r32q75p58" path="res://pickup.tscn" id="5_tdxkx"]
 [ext_resource type="Script" uid="uid://6g2houfyr2lr" path="res://inventory_ring.gd" id="6_1c22n"]
 [ext_resource type="Script" uid="uid://yte2vbq8136b" path="res://inventory_pickup.gd" id="7_ppd48"]
@@ -39,14 +39,16 @@ radius = 104.0
 [node name="Level2" type="Node2D" unique_id=869268886]
 
 [node name="Guard" parent="." unique_id=1677974699 node_paths=PackedStringArray("patrol_points") instance=ExtResource("8_xv7eh")]
-position = Vector2(576, -304)
+position = Vector2(576, -300)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
 [node name="Marker2D" type="Marker2D" parent="Guard" unique_id=859330214]
-position = Vector2(-816, 24)
+top_level = true
+position = Vector2(-112, -300)
 
 [node name="Marker2D2" type="Marker2D" parent="Guard" unique_id=1689266876]
-position = Vector2(840, 16)
+top_level = true
+position = Vector2(1368, -288)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1864077861]
 navigation_polygon = SubResource("NavigationPolygon_ijnin")
