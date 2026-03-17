@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=640
+window/size/viewport_width=960
 window/size/viewport_height=640
 window/stretch/mode="viewport"
 
@@ -74,3 +74,4 @@ textures/canvas_textures/default_texture_filter=3
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
