@@ -54,8 +54,15 @@ z_index = 1
 position = Vector2(1342, 833)
 
 [node name="Camera2D" type="Camera2D" parent="debug_player" unique_id=1635879218]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.0
 
 [node name="PointLight2D" type="PointLight2D" parent="debug_player" unique_id=1665748386]
+visible = false
 position = Vector2(1.0000229, 1.5000381)
 scale = Vector2(5.5625, 4.765625)
 energy = 0.61
@@ -122,4 +129,4 @@ position = Vector2(677, 342)
 _DEBUG_PLAYER = NodePath("../../debug_player")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=179515552]
-color = Color(0.39, 0.39, 0.39, 1)
+color = Color(0.66, 0.66, 0.66, 1)

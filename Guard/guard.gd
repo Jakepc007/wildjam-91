@@ -3,7 +3,7 @@ class_name Guard
 @export_category("SETUP")
 @export var patrol_points : Array[Node2D] ## the guard will visit these nodes in order while patrolling
 @export var chase_speed : float = 150
-@export var patrol_speed : float = 100
+@export var patrol_speed : float = 50
 @export var walk_speed : float = 150
 @export var acceleration : float = 5
 @export var investigation_time : float = 3.0 ## The duration which the guard will spend at an investigation spot before returning to patrol
@@ -147,6 +147,8 @@ func point_area_at_player():
 	pass
 
 func get_player_global_position() -> Vector2:
+	if not debug_player:
+		return global_position
 	return debug_player.global_position
 
 func patrol_update():
