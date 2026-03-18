@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://chvpqpus2gh15" path="res://Guard/guard.tscn" id="1_grunf"]
 [ext_resource type="PackedScene" uid="uid://bfikiari2s4xw" path="res://SecurityCamera/security_camera.tscn" id="2_8o16q"]
 [ext_resource type="PackedScene" uid="uid://ctcqxb4owxedt" path="res://Guard/debug_character.tscn" id="3_8o16q"]
-[ext_resource type="TileSet" uid="uid://dah43rluvhpe2" path="res://assets/rooms_tilemap.tres" id="5_5ahj2"]
+[ext_resource type="TileSet" uid="uid://cab0vmmmaqsjj" path="res://assets/rooms_tilemap.tres" id="5_5ahj2"]
 
 [sub_resource type="Gradient" id="Gradient_cx7pt"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)

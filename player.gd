@@ -1,8 +1,10 @@
 class_name Player extends CharacterBody2D
 
+# TODO: JKM this needs to be an actual representation of inventory items through some class or something
+signal InventoryUpdated(inventory: Array)
+
 const VELOCITY_ACC := 50.
 const MAX_INVENTORY_CAPACITY := 10.
-
 
 @onready var pickup_notice: Label = $PickupNotice
 @onready var pickup_detection_area: Area2D = $PickupDetectionArea
