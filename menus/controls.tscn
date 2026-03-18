@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://bwqlnwexuiu77"]
+
+[ext_resource type="Script" uid="uid://y4xfaejjilsc" path="res://input_changer.gd" id="1_1nrlj"]
+
+[node name="Controls" type="MarginContainer" unique_id=811513535]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 225
+theme_override_constants/margin_right = 225
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1563235589]
+layout_mode = 2
+alignment = 1
+
+[node name="Up" type="MarginContainer" parent="VBoxContainer" unique_id=1656309053]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Up" unique_id=1766103599]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Up/HBoxContainer" unique_id=1249853992]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Up"
+
+[node name="Button" type="Button" parent="VBoxContainer/Up/HBoxContainer" unique_id=612379381]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("1_1nrlj")
+action = "up"
+
+[node name="Left" type="MarginContainer" parent="VBoxContainer" unique_id=315753456]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Left" unique_id=443613427]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Left/HBoxContainer" unique_id=313895373]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Left"
+
+[node name="Button" type="Button" parent="VBoxContainer/Left/HBoxContainer" unique_id=1614734629]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("1_1nrlj")
+action = "left"
+
+[node name="Down" type="MarginContainer" parent="VBoxContainer" unique_id=254246278]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Down" unique_id=1885823706]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Down/HBoxContainer" unique_id=1499924948]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Down"
+
+[node name="Button" type="Button" parent="VBoxContainer/Down/HBoxContainer" unique_id=974568056]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("1_1nrlj")
+action = "down"
+
+[node name="Right" type="MarginContainer" parent="VBoxContainer" unique_id=342140604]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Right" unique_id=573448597]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Right/HBoxContainer" unique_id=945289545]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Right"
+
+[node name="Button" type="Button" parent="VBoxContainer/Right/HBoxContainer" unique_id=784718229]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("1_1nrlj")
+action = "right"
+
+[node name="Interact" type="MarginContainer" parent="VBoxContainer" unique_id=1816713664]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Interact" unique_id=362322290]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Interact/HBoxContainer" unique_id=948251349]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Interact"
+
+[node name="Button" type="Button" parent="VBoxContainer/Interact/HBoxContainer" unique_id=375067003]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("1_1nrlj")
+action = "interact"
+
+[node name="Inventory" type="MarginContainer" parent="VBoxContainer" unique_id=722708706]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Inventory" unique_id=1598941714]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Inventory/HBoxContainer" unique_id=119066467]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Inventory"
+
+[node name="Button" type="Button" parent="VBoxContainer/Inventory/HBoxContainer" unique_id=2047007074]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("1_1nrlj")
+action = "inventory"
