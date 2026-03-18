@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://cllyfud2d526j"]
+[gd_scene format=4 uid="uid://rfcbrxdnuc1l"]
 
 [ext_resource type="PackedScene" uid="uid://chvpqpus2gh15" path="res://Guard/guard.tscn" id="1_ms0lc"]
 [ext_resource type="Script" uid="uid://8yqcf3fcur1q" path="res://player.gd" id="2_jbig7"]
