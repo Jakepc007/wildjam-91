@@ -327,7 +327,7 @@ shader_parameter/progress_bias = Vector2(0, 0)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6y8vg"]
 atlas = ExtResource("3_y7ays")
-region = Rect2(86, 112, 21, 21)
+region = Rect2(0, 204, 48, 48)
 
 [sub_resource type="GDScript" id="GDScript_6y8vg"]
 script/source = "extends TextureRect

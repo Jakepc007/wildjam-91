@@ -4,6 +4,7 @@ var _level_1_path : String = "res://SecurityCamera/security_test.tscn"
 var _options_menu_path : String = "res://menus/options_menu.tscn"
 
 func _on_new_game_pressed() -> void:
+	mouse_filter = Control.MOUSE_FILTER_STOP
 	Global.scene_manager.switch_scene_with_fade(_level_1_path, SceneManager.InTransitionEffects.WIPE_IN,\
 	 SceneManager.OutTransitionEffects.WIPE_OUT)
 
