@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://chvpqpus2gh15" path="res://Guard/guard.tscn" id="1_grunf"]
 [ext_resource type="PackedScene" uid="uid://bfikiari2s4xw" path="res://SecurityCamera/security_camera.tscn" id="2_8o16q"]
 [ext_resource type="PackedScene" uid="uid://ctcqxb4owxedt" path="res://Guard/debug_character.tscn" id="3_8o16q"]
-[ext_resource type="TileSet" uid="uid://dah43rluvhpe2" path="res://assets/rooms_tilemap.tres" id="5_5ahj2"]
+[ext_resource type="TileSet" uid="uid://cab0vmmmaqsjj" path="res://assets/rooms_tilemap.tres" id="5_5ahj2"]
 
 [sub_resource type="Gradient" id="Gradient_cx7pt"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -54,8 +54,6 @@ z_index = 1
 position = Vector2(1342, 833)
 
 [node name="Camera2D" type="Camera2D" parent="debug_player" unique_id=1635879218]
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
 drag_left_margin = 0.1
 drag_top_margin = 0.1
 drag_right_margin = 0.1
@@ -82,6 +80,7 @@ navigation_enabled = false
 [node name="Guard2" parent="Guards" unique_id=1677974699 node_paths=PackedStringArray("patrol_points", "debug_player") instance=ExtResource("1_grunf")]
 position = Vector2(1148, 437)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3")]
+off_screen_indicator_enabled = false
 DEBUG_PRINT_TRANSITIONS = true
 debug_player = NodePath("../../debug_player")
 
