@@ -8,6 +8,7 @@ class_name Guard
 @export var acceleration : float = 5
 @export var investigation_time : float = 3.0 ## The duration which the guard will spend at an investigation spot before returning to patrol
 @export var player_collision_layer : int = 2 ## the player's collision layer. shouldn't need to mess with this
+@export var off_screen_indicator_enabled : bool = true
 @export_category("INTERNAL") ## don't mess with these
 @export var line_of_sight_detector : LineOfSightDetector ## don't mess with these
 @export var navigation_agent_2d : NavigationAgent2D ## don't mess with these
@@ -15,6 +16,7 @@ class_name Guard
 @onready var alert_sprite: Sprite2D = $AlertSprite
 @onready var curious_sprite: Sprite2D = $CuriousSprite
 @onready var detection_area: Area2D = $DetectionArea
+@onready var off_screen_indicator: Node2D = $OffScreenIndicator
 @export_category("DEBUG")
 @export var DEBUG_PRINT_TRANSITIONS : bool = false ## prints the guard's state transitions to the console
 @export var debug_player : Node2D ## temporary, the target which the guard follows/chases
@@ -48,6 +50,7 @@ var _time_spent_investigating : float ## time spent at the investigation target
 var _time_in_state : float ## a timer that keeps track of how long you've been in a state
 
 func _ready() -> void:
+	off_screen_indicator.process_mode = Node.PROCESS_MODE_INHERIT if off_screen_indicator_enabled else Node.PROCESS_MODE_DISABLED
 	_current_patrol_point_idx = 0
 	_state = States.PATROL
 	_default_navigation_target_radius = navigation_agent_2d.target_desired_distance
@@ -147,9 +150,11 @@ func point_area_at_player():
 	pass
 
 func get_player_global_position() -> Vector2:
-	if not debug_player:
-		return global_position
-	return debug_player.global_position
+	if not Global.player:
+		if not debug_player:
+			return global_position
+		return debug_player.global_position
+	return Global.player.global_position
 
 func patrol_update():
 	if navigation_agent_2d.is_navigation_finished():
