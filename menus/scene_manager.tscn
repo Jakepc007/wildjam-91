@@ -1,6 +1,37 @@
 [gd_scene format=3 uid="uid://dn1mfyeboah1k"]
 
 [ext_resource type="Script" uid="uid://bfilelu761m6a" path="res://menus/scene_manager.gd" id="1_aqwcm"]
+[ext_resource type="Shader" uid="uid://dbol067yo3vs8" path="res://menus/universal_fade_in.gdshader" id="2_y7ays"]
+[ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="3_6y8vg"]
+[ext_resource type="Texture2D" uid="uid://cpc3c8gefsgak" path="res://SecurityCamera/cone_mask.png" id="3_y7ays"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5s76d"]
+shader = ExtResource("2_y7ays")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 1)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/global_x_mirror = false
+shader_parameter/global_y_mirror = false
+shader_parameter/local_x_mirror = false
+shader_parameter/local_y_mirror = false
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/cumulative_stagger_flip = false
+shader_parameter/cumulative_stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.1
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 0.0
+shader_parameter/progress_bias = Vector2(0, 0)
 
 [sub_resource type="Animation" id="Animation_aqwcm"]
 length = 0.001
@@ -47,6 +78,42 @@ tracks/3/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TextureRect:material:shader_parameter/progress")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("TextureRect:material:shader_parameter/grid_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasModulate:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_5s76d"]
@@ -95,6 +162,18 @@ tracks/3/keys = {
 "points": PackedFloat32Array(1, 0, 0, 0.16666667, 0, 1, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 1)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasModulate:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_y7ays"]
 resource_name = "fade_out"
@@ -142,19 +221,146 @@ tracks/3/keys = {
 "points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.16666667, 0, 0, 0),
 "times": PackedFloat32Array(0, 1)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasModulate:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6y8vg"]
+resource_name = "wipe_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.837]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:material:shader_parameter/grid_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4ya5e"]
+resource_name = "wipe_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:material:shader_parameter/grid_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:material:shader_parameter/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 1.164]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6y8vg"]
 _data = {
 &"RESET": SubResource("Animation_aqwcm"),
 &"fade_in": SubResource("Animation_5s76d"),
-&"fade_out": SubResource("Animation_y7ays")
+&"fade_out": SubResource("Animation_y7ays"),
+&"wipe_in": SubResource("Animation_6y8vg"),
+&"wipe_out": SubResource("Animation_4ya5e")
 }
 
-[node name="Node" type="Node" unique_id=82738315]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y7ays"]
+shader = ExtResource("2_y7ays")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0, 0)
+shader_parameter/invert = false
+shader_parameter/grid_size = Vector2(1, 0)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/global_x_mirror = false
+shader_parameter/global_y_mirror = false
+shader_parameter/local_x_mirror = false
+shader_parameter/local_y_mirror = false
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/cumulative_stagger_flip = false
+shader_parameter/cumulative_stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(1, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 6
+shader_parameter/shape_feather = 0.1
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 2.0
+shader_parameter/progress_bias = Vector2(0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6y8vg"]
+atlas = ExtResource("3_y7ays")
+region = Rect2(86, 112, 21, 21)
+
+[sub_resource type="GDScript" id="GDScript_6y8vg"]
+script/source = "extends TextureRect
+
+func _process(delta: float) -> void:
+	global_position = get_viewport().get_canvas_transform().affine_inverse().origin 
+"
+
+[node name="SceneManager" type="Node" unique_id=82738315]
 script = ExtResource("1_aqwcm")
 default_scene_path = "res://menus/main_menu.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1487080255]
+visible = false
+material = SubResource("ShaderMaterial_5s76d")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1182437028]
 libraries/ = SubResource("AnimationLibrary_6y8vg")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=997412902]
+z_index = 2
+material = SubResource("ShaderMaterial_y7ays")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_6y8vg")
+expand_mode = 1
+stretch_mode = 1
+script = SubResource("GDScript_6y8vg")
+
+[node name="DEBUG_SPRITE" type="Sprite2D" parent="." unique_id=1433018345]
+visible = false
+position = Vector2(531, 282)
+texture = ExtResource("3_6y8vg")

@@ -15,6 +15,7 @@ class_name Guard
 @onready var alert_sprite: Sprite2D = $AlertSprite
 @onready var curious_sprite: Sprite2D = $CuriousSprite
 @onready var detection_area: Area2D = $DetectionArea
+@onready var point_light_2d: PointLight2D = $DetectionArea/PointLight2D
 @export_category("DEBUG")
 @export var DEBUG_PRINT_TRANSITIONS : bool = false ## prints the guard's state transitions to the console
 @export var debug_player : Node2D ## temporary, the target which the guard follows/chases
@@ -48,6 +49,11 @@ var _time_spent_investigating : float ## time spent at the investigation target
 var _time_in_state : float ## a timer that keeps track of how long you've been in a state
 
 func _ready() -> void:
+	if Global.scene_manager and Global.scene_manager.animation_player: ## if in full game, wait for any screen transition effects to end to turn on light
+		point_light_2d.visible = false
+		Global.scene_manager.animation_player.animation_finished.connect((func(_y,x):x.visible = true).bind(point_light_2d),Object.ConnectFlags.CONNECT_ONE_SHOT)
+	else: # just turn it on otherwise
+		point_light_2d.visible = true
 	_current_patrol_point_idx = 0
 	_state = States.PATROL
 	_default_navigation_target_radius = navigation_agent_2d.target_desired_distance
