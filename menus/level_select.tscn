@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c8pe73ciescie"]
+
+[ext_resource type="Script" uid="uid://blltvpr5yacqb" path="res://menus/level_select.gd" id="1_x5a0v"]
+
+[node name="LevelSelect" type="Control" unique_id=2141463146]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x5a0v")
+
+[node name="LevelGridContainer" type="GridContainer" parent="." unique_id=300710821]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 3
+
+[node name="Level1" type="Button" parent="LevelGridContainer" unique_id=523129406]
+layout_mode = 2
+text = "Level 1"
+
+[node name="Level2" type="Button" parent="LevelGridContainer" unique_id=193511925]
+layout_mode = 2
+text = "Level 2"
+
+[node name="Level3" type="Button" parent="LevelGridContainer" unique_id=649560319]
+layout_mode = 2
+text = "Level 3"
+
+[node name="Level4" type="Button" parent="LevelGridContainer" unique_id=770631018]
+layout_mode = 2
+text = "Level 4"
+
+[node name="Level5" type="Button" parent="LevelGridContainer" unique_id=1813544930]
+layout_mode = 2
+text = "Level 5"
+
+[node name="Level6" type="Button" parent="LevelGridContainer" unique_id=721398498]
+layout_mode = 2
+text = "Level 6"
+
+[connection signal="pressed" from="LevelGridContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="LevelGridContainer/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="LevelGridContainer/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="LevelGridContainer/Level4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="LevelGridContainer/Level5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="LevelGridContainer/Level6" to="." method="_on_level_6_pressed"]

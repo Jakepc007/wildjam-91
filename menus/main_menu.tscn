@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://e7kan634h3mn"]
 
 [ext_resource type="Script" uid="uid://ck6wbxa1e6bya" path="res://menus/main_menu.gd" id="1_8gy84"]
+[ext_resource type="Theme" uid="uid://dfpiiy4xjcjry" path="res://menus/default_theme.tres" id="1_yjgyn"]
 [ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="2_ij7vn"]
 
 [node name="Control" type="Control" unique_id=977942290]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_yjgyn")
 script = ExtResource("1_8gy84")
 
 [node name="Background" type="TextureRect" parent="." unique_id=769693926]
@@ -20,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_yjgyn")
 texture = ExtResource("2_ij7vn")
 
 [node name="MenuContainer" type="MarginContainer" parent="." unique_id=134028411]
@@ -29,18 +32,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_yjgyn")
 
 [node name="Title Container" type="MarginContainer" parent="MenuContainer" unique_id=1458103947]
 layout_mode = 2
+theme = ExtResource("1_yjgyn")
 
 [node name="Control" type="Control" parent="MenuContainer/Title Container" unique_id=171102653]
 layout_mode = 2
+theme = ExtResource("1_yjgyn")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="MenuContainer/Title Container/Control" unique_id=1615635798]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
+theme = ExtResource("1_yjgyn")
 text = "Title
 "
 horizontal_alignment = 1
@@ -48,9 +55,11 @@ vertical_alignment = 1
 
 [node name="MenuButtons" type="MarginContainer" parent="MenuContainer" unique_id=171960714]
 layout_mode = 2
+theme = ExtResource("1_yjgyn")
 
 [node name="Control" type="Control" parent="MenuContainer/MenuButtons" unique_id=1469761232]
 layout_mode = 2
+theme = ExtResource("1_yjgyn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/MenuButtons/Control" unique_id=324082368]
 layout_mode = 0
@@ -58,22 +67,27 @@ offset_left = 427.0
 offset_top = 223.0
 offset_right = 520.0
 offset_bottom = 405.0
+theme = ExtResource("1_yjgyn")
 alignment = 1
 
 [node name="NewGame" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=162601857]
 layout_mode = 2
+theme = ExtResource("1_yjgyn")
 text = "New Game"
 
 [node name="Continue" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=751465374]
 layout_mode = 2
+theme = ExtResource("1_yjgyn")
 text = "Continue"
 
 [node name="Options" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=490044059]
 layout_mode = 2
+theme = ExtResource("1_yjgyn")
 text = "Options"
 
 [node name="Exit" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=467810622]
 layout_mode = 2
+theme = ExtResource("1_yjgyn")
 text = "Exit"
 
 [connection signal="pressed" from="MenuContainer/MenuButtons/Control/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
