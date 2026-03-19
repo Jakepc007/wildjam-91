@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://6g2houfyr2lr" path="res://inventory_ring.gd" id="1_27fn8"]
 [ext_resource type="Script" uid="uid://yte2vbq8136b" path="res://inventory_pickup.gd" id="2_nltto"]
 [ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="3_ibotj"]
+[ext_resource type="Script" uid="uid://doqcxb440gqpk" path="res://Levels/level_timer.gd" id="4_nltto"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_272bh"]
 
@@ -59,3 +60,13 @@ shape = SubResource("CircleShape2D_272bh")
 [node name="Sprite2D" type="Sprite2D" parent="Inventory/InventoryRing/InventoryPickup4" unique_id=893742501]
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("3_ibotj")
+
+[node name="Label" type="Label" parent="." unique_id=443659898]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "0:00"
+horizontal_alignment = 1
+script = ExtResource("4_nltto")

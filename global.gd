@@ -7,3 +7,4 @@ var player : Player :
 		player_ready.emit()
 
 signal player_ready()
+signal level_time_left_changed(time_left : float)
