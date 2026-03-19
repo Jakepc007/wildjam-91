@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://e7kan634h3mn"]
 
 [ext_resource type="Script" uid="uid://ck6wbxa1e6bya" path="res://menus/main_menu.gd" id="1_8gy84"]
+[ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="2_ij7vn"]
 
 [node name="Control" type="Control" unique_id=977942290]
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_ij7vn")
 
 [node name="MenuContainer" type="MarginContainer" parent="." unique_id=134028411]
 layout_mode = 1

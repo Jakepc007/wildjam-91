@@ -4,6 +4,7 @@ class_name SecurityCamera
 @export var line_of_sight_detector : LineOfSightDetector
 @export var animation_player : AnimationPlayer
 @export var alerted_sprite : Sprite2D
+@onready var point_light_2d: PointLight2D = $Rotation/PointLight2D
 
 @export var time_to_alert : float = 0.3 # the time it takes for a player being seen to cause an alarm
 
@@ -16,6 +17,11 @@ signal player_found(camera : SecurityCamera, location_found : Vector2)
 
 
 func _ready() -> void:
+	if Global.scene_manager and Global.scene_manager.animation_player: ## if in full game, wait for any screen transition effects to end to turn on light
+		point_light_2d.visible = false
+		Global.scene_manager.animation_player.animation_finished.connect((func(_y,x):x.visible = true).bind(point_light_2d),Object.ConnectFlags.CONNECT_ONE_SHOT)
+	else: # just turn it on otherwise
+		point_light_2d.visible = true
 	animation_player.play("sweep")
 
 func _physics_process(delta: float) -> void:
