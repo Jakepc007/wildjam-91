@@ -96,5 +96,5 @@ player_detection_cone = NodePath("../Area2D")
 position = Vector2(0.17523831, 135.37804)
 rotation = 1.5707964
 scale = Vector2(1.7119406, 1.384722)
-range_z_min = 0
+range_z_min = -1
 texture = ExtResource("5_6k7dd")
