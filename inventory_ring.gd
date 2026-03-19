@@ -12,8 +12,16 @@ var closest_pickup_to_mouse = null
 var grabbed_pickup = null
 
 func _ready():
+	if Global.player:
+		connect_to_player()
+	else:
+		Global.player_ready.connect(connect_to_player)
 	for child in get_children():
 		pickups.append(child)
+
+func connect_to_player():
+	Global.player.add_pickup.connect(add_pickup)
+	player = Global.player
 
 # TODO: JKM - tie the item properties to the inventory pickup
 func add_pickup(item):
@@ -29,21 +37,22 @@ func add_pickup(item):
 func _process(delta: float):
 	apply_pickup_forces(delta)
 	queue_redraw()
-	var viewport_mouse_position = get_viewport().get_mouse_position() - (Vector2(480, 320))
+	#var viewport_mouse_position = get_viewport().get_mouse_position() - (Vector2(480, 320))
+	var local_mouse_position = get_local_mouse_position()
 	for pickup in pickups:
 		if pickup == grabbed_pickup:
-			pickup.position = viewport_mouse_position
+			pickup.position = local_mouse_position
 			if pickup.position.length() > 200:
 				pickup.modulate.a = 0.2
 			else:
 				pickup.modulate.a = 1.
 			continue
-		var dist = pickup.position.distance_to(viewport_mouse_position)
+		var dist = pickup.position.distance_to(local_mouse_position)
 
 		if closest_pickup_to_mouse == null:
 			closest_pickup_to_mouse = pickup
 		else:
-			var closest_dist = closest_pickup_to_mouse.position.distance_to(viewport_mouse_position)
+			var closest_dist = closest_pickup_to_mouse.position.distance_to(local_mouse_position)
 			if dist < closest_dist:
 				closest_pickup_to_mouse = pickup
 
@@ -93,7 +102,7 @@ func _input(event: InputEvent):
 		if event.is_pressed():
 			if event.button_index == MOUSE_BUTTON_LEFT:
 				for pickup in pickups:
-					var dist = pickup.position.distance_to(get_viewport().get_mouse_position() - (Vector2(480, 320)))
+					var dist = pickup.position.distance_to(get_local_mouse_position())
 					if dist < MIN_PICKUP_HOVER_DISTANCE:
 						grabbed_pickup = pickup
 						break

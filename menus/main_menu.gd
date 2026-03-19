@@ -1,6 +1,6 @@
 extends Control
 
-var _level_1_path : String = "res://SecurityCamera/security_test.tscn"
+var _level_1_path : String = "res://Levels/level1.tscn"
 var _options_menu_path : String = "res://menus/options_menu.tscn"
 
 func _on_new_game_pressed() -> void:
