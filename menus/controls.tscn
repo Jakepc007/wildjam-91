@@ -128,3 +128,22 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 script = ExtResource("1_1nrlj")
 action = "inventory"
+
+[node name="Back" type="MarginContainer" parent="VBoxContainer" unique_id=281732875]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Back" unique_id=1456284307]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Back/HBoxContainer" unique_id=1515120606]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="Button" type="Button" parent="VBoxContainer/Back/HBoxContainer" unique_id=1987663079]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+script = ExtResource("1_1nrlj")
+action = "ui_cancel"
