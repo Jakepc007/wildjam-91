@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://dbol067yo3vs8" path="res://menus/universal_fade_in.gdshader" id="2_y7ays"]
 [ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="3_6y8vg"]
 [ext_resource type="Texture2D" uid="uid://cpc3c8gefsgak" path="res://SecurityCamera/cone_mask.png" id="3_y7ays"]
+[ext_resource type="PackedScene" uid="uid://37w4acife8rv" path="res://menus/audio_manager.tscn" id="5_4ya5e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5s76d"]
 shader = ExtResource("2_y7ays")
@@ -364,3 +365,5 @@ script = SubResource("GDScript_6y8vg")
 visible = false
 position = Vector2(531, 282)
 texture = ExtResource("3_6y8vg")
+
+[node name="AudioManager" parent="." unique_id=758442812 instance=ExtResource("5_4ya5e")]

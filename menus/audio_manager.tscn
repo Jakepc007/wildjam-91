@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://37w4acife8rv"]
+
+[ext_resource type="Script" uid="uid://0nqtiqqtsu" path="res://menus/audio_manager.gd" id="1_edu86"]
+[ext_resource type="AudioStream" uid="uid://drrgsnxwfygcq" path="res://assets/Audio/menu_theme.ogg" id="2_sbtfb"]
+[ext_resource type="AudioStream" uid="uid://c3qa1yys3wf0a" path="res://assets/Audio/uh_oh_buddy_full_track.ogg" id="3_8xec1"]
+
+[node name="AudioManager" type="Node" unique_id=758442812]
+script = ExtResource("1_edu86")
+
+[node name="UhOhBuddyFullTrack" type="AudioStreamPlayer" parent="." unique_id=2112808618]
+unique_name_in_owner = true
+stream = ExtResource("3_8xec1")
+bus = &"Music"
+parameters/looping = true
+
+[node name="MenuTheme" type="AudioStreamPlayer" parent="." unique_id=848745845]
+unique_name_in_owner = true
+stream = ExtResource("2_sbtfb")
+parameters/looping = true
