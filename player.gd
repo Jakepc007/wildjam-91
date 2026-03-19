@@ -50,18 +50,20 @@ func _process(delta: float):
 	# TODO: DELETE when inventory is figured out
 	var output = ""
 	for pickup in inventory:
-		output += str(pickup.value) + "v " + str(pickup.weight) + "w\n"
+		var stats = ItemStats.get_item(pickup.item)
+		output += str(stats.value) + "v " + str(stats.weight) + "w\n"
 	inventory_floater.text = output
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("interact"):
 		if closest_pickup:
-			if current_inventory_weight + closest_pickup.weight <= MAX_INVENTORY_CAPACITY:
+			var closest_stats = ItemStats.get_item(closest_pickup.item)
+			if current_inventory_weight + closest_stats.weight <= MAX_INVENTORY_CAPACITY:
 				inventory.append(closest_pickup.duplicate())
 				overlapping_pickups.erase(closest_pickup)
 				# TODO: handle pickup logic within pickup.gd
 				closest_pickup.queue_free()
-				current_inventory_weight += closest_pickup.weight
+				current_inventory_weight += closest_stats.weight
 				#inventory_ring.add_pickup(closest_pickup)
 				add_pickup.emit(closest_pickup)
 			else:
