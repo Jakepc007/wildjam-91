@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://2rswiu2qkdou"]
+
+[sub_resource type="GDScript" id="GDScript_hrpeh"]
+script/source = "extends MarginContainer
+
+@onready var master_slider: HSlider = $VBoxContainer/MasterVolume/MasterSlider
+@onready var music_slider: HSlider = $VBoxContainer/MusicVolume/MusicSlider
+@onready var sfx_slider: HSlider = $VBoxContainer/SFXVolum/SFXSlider
+@onready var mute_button: CheckButton = $VBoxContainer/MuteControl/MuteButton
+
+@onready var master_bus := AudioServer.get_bus_index(\"Master\")
+@onready var music_bus := AudioServer.get_bus_index(\"Music\")
+@onready var sfx_bus := AudioServer.get_bus_index(\"Sfx\")
+
+func _ready() -> void:
+	master_slider.value = AudioServer.get_bus_volume_linear(master_bus)
+	music_slider.value = AudioServer.get_bus_volume_linear(music_bus)
+	sfx_slider.value = AudioServer.get_bus_volume_linear(sfx_bus)
+
+
+func _on_mute_button_toggled(toggled_on: bool) -> void:
+	AudioServer.set_bus_mute(master_bus,toggled_on)
+
+func _on_master_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(master_bus,value)
+
+func _on_music_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(music_bus,value)
+
+func _on_sfx_slider_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(sfx_bus,value)
+"
+
+[node name="AudioMenuTab" type="MarginContainer" unique_id=679169600]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 225
+theme_override_constants/margin_right = 225
+script = SubResource("GDScript_hrpeh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=477901704]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="MuteControl" type="HBoxContainer" parent="VBoxContainer" unique_id=1439890754]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MuteControl" unique_id=595882526]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mute"
+
+[node name="MuteButton" type="CheckButton" parent="VBoxContainer/MuteControl" unique_id=724876505]
+layout_mode = 2
+
+[node name="MasterVolume" type="HBoxContainer" parent="VBoxContainer" unique_id=1338063684]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MasterVolume" unique_id=435522420]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master"
+
+[node name="MasterSlider" type="HSlider" parent="VBoxContainer/MasterVolume" unique_id=765475156]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 2.0
+step = 0.02
+tick_count = 11
+
+[node name="MusicVolume" type="HBoxContainer" parent="VBoxContainer" unique_id=1181993482]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MusicVolume" unique_id=1595108560]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/MusicVolume" unique_id=2096454833]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 2.0
+step = 0.02
+tick_count = 11
+
+[node name="SFXVolum" type="HBoxContainer" parent="VBoxContainer" unique_id=1208956385]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/SFXVolum" unique_id=158085439]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="VBoxContainer/SFXVolum" unique_id=1799067642]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+max_value = 2.0
+step = 0.02
+tick_count = 11
+
+[connection signal="toggled" from="VBoxContainer/MuteControl/MuteButton" to="." method="_on_mute_button_toggled"]
+[connection signal="value_changed" from="VBoxContainer/MasterVolume/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/MusicVolume/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/SFXVolum/SFXSlider" to="." method="_on_sfx_slider_value_changed"]

@@ -65,6 +65,7 @@ func _input(event: InputEvent):
 				print("you're full")
 
 func _ready():
+	Global.player = self
 	pickup_detection_area.connect("area_entered", on_pickup_area_entered)
 	pickup_detection_area.connect("area_exited", on_pickup_area_exited)
 
