@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://xxqbgrk5yq1j"]
 
 [ext_resource type="PackedScene" uid="uid://bfaiwfc2h6h8w" path="res://Levels/base.tscn" id="1_i4kf4"]
+[ext_resource type="PackedScene" uid="uid://bp8ws4xphufqj" path="res://Levels/level2.tscn" id="2_fy36t"]
 [ext_resource type="PackedScene" uid="uid://cjd8r32q75p58" path="res://pickup.tscn" id="5_mx85b"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_i4kf4"]
@@ -9,6 +10,8 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 agent_radius = 20.0
 
 [node name="Level1" unique_id=869268886 instance=ExtResource("1_i4kf4")]
+required_value = 8
+next_scene = ExtResource("2_fy36t")
 
 [node name="ExitPosition" parent="." index="5" unique_id=1985065076]
 position = Vector2(1472, -672)

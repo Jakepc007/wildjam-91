@@ -1,14 +1,14 @@
 extends Control
 
-var _level_1_path : String = "res://Levels/level1.tscn"
-var _options_menu_path : String = "res://menus/options_menu.tscn"
+@export var level_1 : PackedScene
+@export var options_menu : PackedScene
 
 func _on_new_game_pressed() -> void:
-	Global.scene_manager.switch_scene_with_fade(_level_1_path)
+	Global.scene_manager.switch_scene_with_fade(level_1)
 
 
 func _on_options_pressed() -> void:
-	Global.scene_manager.switch_scene(_options_menu_path)
+	Global.scene_manager.switch_scene(options_menu)
 
 
 func _on_exit_pressed() -> void:

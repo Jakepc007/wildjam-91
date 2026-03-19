@@ -1,4 +1,6 @@
-extends Node2D
+class_name Level extends Node2D
+
+const MIN_EXIT_DISTANCE = 50.0
 
 @onready var player_scene = preload("res://player.tscn")
 @onready var camera_scene = preload("res://camera.tscn")
@@ -7,6 +9,11 @@ extends Node2D
 @onready var exit_position = $ExitPosition
 
 @export var level_time_sec : float = 60
+@export var required_value : int = 10
+@export var next_scene : PackedScene = null
+
+var player: Player
+var in_transition : bool = false
 
 var _time_left : float :
 	set(val) :
@@ -18,7 +25,7 @@ var _time_left : float :
 var _time_over : bool
 
 func _ready():
-	var player = player_scene.instantiate()
+	player = player_scene.instantiate()
 	add_child(player)
 	player.position = spawn_position.position
 	player.connect("InventoryUpdated", on_inventory_updated)
@@ -42,6 +49,14 @@ func on_inventory_updated(inventory: Array):
 func _process(delta: float) -> void:
 	if not _time_over:
 		update_time_left(delta)
+
+	print(player.position.distance_to(exit_position.position))
+	if player.position.distance_to(exit_position.position) < MIN_EXIT_DISTANCE:
+		if next_scene && not in_transition:
+			print("transitioning to next scene")
+			in_transition = true
+			Global.scene_manager.switch_scene_with_fade(next_scene)
+			return
 
 func on_player_caught():
 	print("player caught")

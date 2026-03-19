@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dn1mfyeboah1k"]
 
 [ext_resource type="Script" uid="uid://bfilelu761m6a" path="res://menus/scene_manager.gd" id="1_aqwcm"]
+[ext_resource type="PackedScene" uid="uid://e7kan634h3mn" path="res://menus/main_menu.tscn" id="2_5s76d"]
 
 [sub_resource type="Animation" id="Animation_aqwcm"]
 length = 0.001
@@ -152,7 +153,7 @@ _data = {
 
 [node name="Node" type="Node" unique_id=82738315]
 script = ExtResource("1_aqwcm")
-default_scene_path = "res://menus/main_menu.tscn"
+default_scene = ExtResource("2_5s76d")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1487080255]
 

@@ -6,7 +6,7 @@
 [sub_resource type="GDScript" id="GDScript_wyyb7"]
 script/source = "extends Control
 
-var _main_menu_path := \"res://menus/main_menu.tscn\"
+var _main_menu_path := preload(\"res://menus/main_menu.tscn\")
 
 func _on_back_pressed() -> void:
 	Global.scene_manager.switch_scene(_main_menu_path)
