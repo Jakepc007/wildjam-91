@@ -7,7 +7,7 @@
 
 [node name="Level1" type="Node2D" unique_id=869268886]
 script = ExtResource("1_j32wv")
-level_time_sec = 5.0
+level_time_sec = 20.0
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1488500399]
 color = Color(0, 0, 0, 1)
@@ -35,29 +35,40 @@ position = Vector2(584, 1016)
 
 [node name="Pickup" parent="Pickups" unique_id=1711849754 instance=ExtResource("5_mx85b")]
 position = Vector2(-304, 208)
+value = 3.0
 weight = 2.0
 
 [node name="Pickup2" parent="Pickups" unique_id=44255078 instance=ExtResource("5_mx85b")]
 position = Vector2(-296, -272)
+value = 4.0
 weight = 9.0
 
 [node name="Pickup3" parent="Pickups" unique_id=1991380284 instance=ExtResource("5_mx85b")]
 position = Vector2(-288, -776)
+value = 2.0
 
 [node name="Pickup4" parent="Pickups" unique_id=646250323 instance=ExtResource("5_mx85b")]
 position = Vector2(576, -784)
+value = 10.0
 
 [node name="Pickup5" parent="Pickups" unique_id=1352170686 instance=ExtResource("5_mx85b")]
 position = Vector2(1456, -784)
+value = 6.0
+weight = 2.0
 
 [node name="Pickup6" parent="Pickups" unique_id=1695494354 instance=ExtResource("5_mx85b")]
 position = Vector2(1464, -272)
+value = 2.0
+weight = 3.0
 
 [node name="Pickup7" parent="Pickups" unique_id=1352376452 instance=ExtResource("5_mx85b")]
 position = Vector2(1456, 208)
+value = 4.0
+weight = 3.0
 
 [node name="Pickup8" parent="Pickups" unique_id=593925990 instance=ExtResource("5_mx85b")]
 position = Vector2(720, 208)
+value = 4.0
 
 [node name="Pickup9" parent="Pickups" unique_id=729398920 instance=ExtResource("5_mx85b")]
 position = Vector2(432, 208)

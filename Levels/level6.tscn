@@ -37,87 +37,177 @@ radius = 104.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_272bh"]
 
-[node name="Level4" type="Node2D" unique_id=869268886]
+[node name="Level6" type="Node2D" unique_id=869268886]
 
-[node name="Guard" parent="." unique_id=1677974699 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
+[node name="Guards" type="Node2D" parent="." unique_id=1835352514]
+
+[node name="Guard" parent="Guards" unique_id=1677974699 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
 position = Vector2(576, -300)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
-[node name="Marker2D" type="Marker2D" parent="Guard" unique_id=859330214]
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard" unique_id=859330214]
 top_level = true
 position = Vector2(-112, -300)
 
-[node name="Marker2D2" type="Marker2D" parent="Guard" unique_id=1689266876]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard" unique_id=1689266876]
 top_level = true
 position = Vector2(1368, -288)
 
-[node name="Guard2" parent="." unique_id=1000452756 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
+[node name="Guard2" parent="Guards" unique_id=1000452756 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
 position = Vector2(584, -3360)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
-[node name="Marker2D" type="Marker2D" parent="Guard2" unique_id=1790700802]
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard2" unique_id=1790700802]
 top_level = true
 position = Vector2(160, -3360)
 
-[node name="Marker2D2" type="Marker2D" parent="Guard2" unique_id=2100981527]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard2" unique_id=2100981527]
 top_level = true
 position = Vector2(980, -3360)
 
-[node name="Guard3" parent="." unique_id=1495845496 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
+[node name="Guard3" parent="Guards" unique_id=1495845496 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
 position = Vector2(344, -1512)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3")]
 
-[node name="Marker2D" type="Marker2D" parent="Guard3" unique_id=1027774071]
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard3" unique_id=1027774071]
 top_level = true
 position = Vector2(-200, -1512)
 
-[node name="Marker2D2" type="Marker2D" parent="Guard3" unique_id=68886720]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard3" unique_id=68886720]
 top_level = true
 position = Vector2(-200, -2344)
 
-[node name="Marker2D3" type="Marker2D" parent="Guard3" unique_id=1165493064]
+[node name="Marker2D3" type="Marker2D" parent="Guards/Guard3" unique_id=1165493064]
 top_level = true
 position = Vector2(350, -2344)
 
-[node name="Guard5" parent="." unique_id=284732044 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
+[node name="Guard5" parent="Guards" unique_id=284732044 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
 position = Vector2(-944, -1208)
 patrol_points = [NodePath("Marker2D2"), NodePath("Marker2D3")]
 
-[node name="Marker2D2" type="Marker2D" parent="Guard5" unique_id=1684394371]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard5" unique_id=1684394371]
 top_level = true
 position = Vector2(-720, -1208)
 
-[node name="Marker2D3" type="Marker2D" parent="Guard5" unique_id=1389916535]
+[node name="Marker2D3" type="Marker2D" parent="Guards/Guard5" unique_id=1389916535]
 top_level = true
 position = Vector2(-1168, -1208)
 
-[node name="Guard6" parent="." unique_id=1024778678 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
+[node name="Guard6" parent="Guards" unique_id=1024778678 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
 position = Vector2(2360, -2552)
-patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("")]
+patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), null]
 
-[node name="Marker2D" type="Marker2D" parent="Guard6" unique_id=812150077]
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard6" unique_id=812150077]
 top_level = true
-position = Vector2(-200, -1512)
+position = Vector2(2192, -2552)
 
-[node name="Marker2D2" type="Marker2D" parent="Guard6" unique_id=277406679]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard6" unique_id=277406679]
 top_level = true
-position = Vector2(-720, -1208)
+position = Vector2(2568, -2552)
 
-[node name="Guard4" parent="." unique_id=1251809237 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
+[node name="Guard4" parent="Guards" unique_id=1251809237 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_bc7qw")]
 position = Vector2(824, -2384)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3")]
 
-[node name="Marker2D" type="Marker2D" parent="Guard4" unique_id=1458166287]
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard4" unique_id=1458166287]
 top_level = true
 position = Vector2(1368, -2384)
 
-[node name="Marker2D2" type="Marker2D" parent="Guard4" unique_id=188843061]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard4" unique_id=188843061]
 top_level = true
 position = Vector2(1368, -1500)
 
-[node name="Marker2D3" type="Marker2D" parent="Guard4" unique_id=720858745]
+[node name="Marker2D3" type="Marker2D" parent="Guards/Guard4" unique_id=720858745]
 top_level = true
 position = Vector2(936, -1500)
+
+[node name="Pickups" type="Node2D" parent="." unique_id=1847749972]
+
+[node name="Pickup4" parent="Pickups" unique_id=1990690719 instance=ExtResource("6_y0hew")]
+position = Vector2(-304, 209)
+value = 7.0
+
+[node name="Pickup13" parent="Pickups" unique_id=716708061 instance=ExtResource("6_y0hew")]
+position = Vector2(-944, -1488)
+value = 10.0
+weight = 7.0
+
+[node name="Pickup20" parent="Pickups" unique_id=291368470 instance=ExtResource("6_y0hew")]
+position = Vector2(2360, -2864)
+value = 15.0
+weight = 2.0
+
+[node name="Pickup2" parent="Pickups" unique_id=44255078 instance=ExtResource("6_y0hew")]
+position = Vector2(-296, -272)
+value = 4.0
+weight = 3.0
+
+[node name="Pickup3" parent="Pickups" unique_id=1991380284 instance=ExtResource("6_y0hew")]
+position = Vector2(-288, -776)
+value = 7.0
+
+[node name="Pickup5" parent="Pickups" unique_id=1352170686 instance=ExtResource("6_y0hew")]
+position = Vector2(1456, -784)
+value = 4.0
+weight = 4.0
+
+[node name="Pickup6" parent="Pickups" unique_id=1695494354 instance=ExtResource("6_y0hew")]
+position = Vector2(1464, -272)
+value = 3.0
+weight = 3.0
+
+[node name="Pickup7" parent="Pickups" unique_id=1352376452 instance=ExtResource("6_y0hew")]
+position = Vector2(1456, 208)
+
+[node name="Pickup8" parent="Pickups" unique_id=593925990 instance=ExtResource("6_y0hew")]
+position = Vector2(720, 208)
+
+[node name="Pickup9" parent="Pickups" unique_id=729398920 instance=ExtResource("6_y0hew")]
+position = Vector2(432, 208)
+
+[node name="Pickup10" parent="Pickups" unique_id=698381817 instance=ExtResource("6_y0hew")]
+position = Vector2(-304, -1424)
+weight = 2.0
+
+[node name="Pickup11" parent="Pickups" unique_id=954530987 instance=ExtResource("6_y0hew")]
+position = Vector2(-296, -1904)
+weight = 9.0
+
+[node name="Pickup12" parent="Pickups" unique_id=1683142142 instance=ExtResource("6_y0hew")]
+position = Vector2(-288, -2408)
+
+[node name="Pickup19" parent="Pickups" unique_id=1872054630 instance=ExtResource("6_y0hew")]
+position = Vector2(584, -3630)
+value = 15.0
+
+[node name="Pickup14" parent="Pickups" unique_id=337612800 instance=ExtResource("6_y0hew")]
+position = Vector2(1456, -2416)
+
+[node name="Pickup15" parent="Pickups" unique_id=984211456 instance=ExtResource("6_y0hew")]
+position = Vector2(1464, -1904)
+
+[node name="Pickup16" parent="Pickups" unique_id=853236735 instance=ExtResource("6_y0hew")]
+position = Vector2(1456, -1424)
+
+[node name="Pickup17" parent="Pickups" unique_id=242843641 instance=ExtResource("6_y0hew")]
+position = Vector2(720, -1424)
+
+[node name="Pickup18" parent="Pickups" unique_id=1644767327 instance=ExtResource("6_y0hew")]
+position = Vector2(432, -1424)
+
+[node name="Cameras" type="Node2D" parent="." unique_id=947918773]
+
+[node name="Camera" parent="Cameras" unique_id=933279496 instance=ExtResource("9_ckxq1")]
+position = Vector2(432, -1112)
+rotation = -1.5707964
+
+[node name="Camera2" parent="Cameras" unique_id=917577909 instance=ExtResource("9_ckxq1")]
+position = Vector2(2024, -1664)
+rotation = 3.1415927
+
+[node name="Camera3" parent="Cameras" unique_id=1081211710 instance=ExtResource("9_ckxq1")]
+position = Vector2(-744, 24)
+rotation = 3.1415927
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1864077861]
 navigation_polygon = SubResource("NavigationPolygon_ijnin")
@@ -183,73 +273,6 @@ tile_set = ExtResource("5_6s3ov")
 z_index = -1
 tile_set = ExtResource("5_6s3ov")
 
-[node name="Pickup" parent="." unique_id=1711849754 instance=ExtResource("6_y0hew")]
-position = Vector2(-304, 208)
-weight = 2.0
-
-[node name="Pickup4" parent="." unique_id=1990690719 instance=ExtResource("6_y0hew")]
-position = Vector2(-304, 208)
-weight = 2.0
-
-[node name="Pickup13" parent="." unique_id=716708061 instance=ExtResource("6_y0hew")]
-position = Vector2(-944, -1488)
-weight = 2.0
-
-[node name="Pickup20" parent="." unique_id=291368470 instance=ExtResource("6_y0hew")]
-position = Vector2(2360, -2864)
-weight = 2.0
-
-[node name="Pickup2" parent="." unique_id=44255078 instance=ExtResource("6_y0hew")]
-position = Vector2(-296, -272)
-weight = 9.0
-
-[node name="Pickup3" parent="." unique_id=1991380284 instance=ExtResource("6_y0hew")]
-position = Vector2(-288, -776)
-
-[node name="Pickup5" parent="." unique_id=1352170686 instance=ExtResource("6_y0hew")]
-position = Vector2(1456, -784)
-
-[node name="Pickup6" parent="." unique_id=1695494354 instance=ExtResource("6_y0hew")]
-position = Vector2(1464, -272)
-
-[node name="Pickup7" parent="." unique_id=1352376452 instance=ExtResource("6_y0hew")]
-position = Vector2(1456, 208)
-
-[node name="Pickup8" parent="." unique_id=593925990 instance=ExtResource("6_y0hew")]
-position = Vector2(720, 208)
-
-[node name="Pickup9" parent="." unique_id=729398920 instance=ExtResource("6_y0hew")]
-position = Vector2(432, 208)
-
-[node name="Pickup10" parent="." unique_id=698381817 instance=ExtResource("6_y0hew")]
-position = Vector2(-304, -1424)
-weight = 2.0
-
-[node name="Pickup11" parent="." unique_id=954530987 instance=ExtResource("6_y0hew")]
-position = Vector2(-296, -1904)
-weight = 9.0
-
-[node name="Pickup12" parent="." unique_id=1683142142 instance=ExtResource("6_y0hew")]
-position = Vector2(-288, -2408)
-
-[node name="Pickup19" parent="." unique_id=1872054630 instance=ExtResource("6_y0hew")]
-position = Vector2(584, -3632)
-
-[node name="Pickup14" parent="." unique_id=337612800 instance=ExtResource("6_y0hew")]
-position = Vector2(1456, -2416)
-
-[node name="Pickup15" parent="." unique_id=984211456 instance=ExtResource("6_y0hew")]
-position = Vector2(1464, -1904)
-
-[node name="Pickup16" parent="." unique_id=853236735 instance=ExtResource("6_y0hew")]
-position = Vector2(1456, -1424)
-
-[node name="Pickup17" parent="." unique_id=242843641 instance=ExtResource("6_y0hew")]
-position = Vector2(720, -1424)
-
-[node name="Pickup18" parent="." unique_id=1644767327 instance=ExtResource("6_y0hew")]
-position = Vector2(432, -1424)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=324265818]
 
 [node name="Inventory" type="Control" parent="CanvasLayer" unique_id=896243378]
@@ -303,11 +326,3 @@ shape = SubResource("CircleShape2D_272bh")
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Inventory/InventoryRing/InventoryPickup4" unique_id=1705903688]
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("3_5sfgv")
-
-[node name="Camera" parent="." unique_id=933279496 instance=ExtResource("9_ckxq1")]
-position = Vector2(432, -1112)
-rotation = 4.712389
-
-[node name="Camera2" parent="." unique_id=917577909 instance=ExtResource("9_ckxq1")]
-position = Vector2(776, -2768)
-rotation = 1.5707964

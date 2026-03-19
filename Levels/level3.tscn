@@ -38,45 +38,91 @@ radius = 104.0
 
 [node name="Level3" type="Node2D" unique_id=869268886]
 
-[node name="Guard" parent="." unique_id=1677974699 node_paths=PackedStringArray("patrol_points") instance=ExtResource("8_6xp1k")]
+[node name="Guards" type="Node2D" parent="." unique_id=1902043600]
+
+[node name="Guard" parent="Guards" unique_id=1677974699 node_paths=PackedStringArray("patrol_points") instance=ExtResource("8_6xp1k")]
 position = Vector2(360, 105)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3"), NodePath("Marker2D4")]
 
-[node name="Marker2D" type="Marker2D" parent="Guard" unique_id=859330214]
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard" unique_id=859330214]
 top_level = true
 position = Vector2(-160, 104)
 
-[node name="Marker2D2" type="Marker2D" parent="Guard" unique_id=1689266876]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard" unique_id=1689266876]
 top_level = true
 position = Vector2(-160, -688)
 
-[node name="Marker2D3" type="Marker2D" parent="Guard" unique_id=609854356]
+[node name="Marker2D3" type="Marker2D" parent="Guards/Guard" unique_id=609854356]
 top_level = true
 position = Vector2(368, -688)
 
-[node name="Marker2D4" type="Marker2D" parent="Guard" unique_id=1189157235]
+[node name="Marker2D4" type="Marker2D" parent="Guards/Guard" unique_id=1189157235]
 top_level = true
 position = Vector2(368, 112)
 
-[node name="Guard2" parent="." unique_id=1957174628 node_paths=PackedStringArray("patrol_points") instance=ExtResource("8_6xp1k")]
+[node name="Guard2" parent="Guards" unique_id=1957174628 node_paths=PackedStringArray("patrol_points") instance=ExtResource("8_6xp1k")]
 position = Vector2(864, -700)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3"), NodePath("Marker2D4")]
 
-[node name="Marker2D" type="Marker2D" parent="Guard2" unique_id=548427899]
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard2" unique_id=548427899]
 top_level = true
 position = Vector2(1384, -700)
 
-[node name="Marker2D2" type="Marker2D" parent="Guard2" unique_id=232855226]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard2" unique_id=232855226]
 top_level = true
 position = Vector2(1376, 192)
 
-[node name="Marker2D3" type="Marker2D" parent="Guard2" unique_id=164950923]
+[node name="Marker2D3" type="Marker2D" parent="Guards/Guard2" unique_id=164950923]
 top_level = true
 position = Vector2(920, 192)
 
-[node name="Marker2D4" type="Marker2D" parent="Guard2" unique_id=719862883]
+[node name="Marker2D4" type="Marker2D" parent="Guards/Guard2" unique_id=719862883]
 top_level = true
 position = Vector2(920, -700)
+
+[node name="Pickups" type="Node2D" parent="." unique_id=925109295]
+
+[node name="Pickup" parent="Pickups" unique_id=1711849754 instance=ExtResource("5_ls4d1")]
+position = Vector2(-304, 211)
+value = 10.0
+weight = 2.0
+
+[node name="Pickup2" parent="Pickups" unique_id=44255078 instance=ExtResource("5_ls4d1")]
+position = Vector2(-296, -272)
+weight = 9.0
+
+[node name="Pickup3" parent="Pickups" unique_id=1991380284 instance=ExtResource("5_ls4d1")]
+position = Vector2(-288, -776)
+value = 7.0
+weight = 3.0
+
+[node name="Pickup4" parent="Pickups" unique_id=646250323 instance=ExtResource("5_ls4d1")]
+position = Vector2(576, -784)
+value = 4.0
+weight = 2.0
+
+[node name="Pickup5" parent="Pickups" unique_id=1352170686 instance=ExtResource("5_ls4d1")]
+position = Vector2(1456, -784)
+value = 2.0
+weight = 6.0
+
+[node name="Pickup6" parent="Pickups" unique_id=1695494354 instance=ExtResource("5_ls4d1")]
+position = Vector2(1464, -272)
+value = 4.0
+weight = 3.0
+
+[node name="Pickup7" parent="Pickups" unique_id=1352376452 instance=ExtResource("5_ls4d1")]
+position = Vector2(1456, 208)
+value = 15.0
+weight = 4.0
+
+[node name="Pickup8" parent="Pickups" unique_id=593925990 instance=ExtResource("5_ls4d1")]
+position = Vector2(720, 208)
+value = 4.0
+weight = 6.0
+
+[node name="Pickup9" parent="Pickups" unique_id=729398920 instance=ExtResource("5_ls4d1")]
+position = Vector2(432, 208)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1864077861]
 navigation_polygon = SubResource("NavigationPolygon_ijnin")
@@ -141,35 +187,6 @@ tile_set = ExtResource("4_k0lmg")
 [node name="PropsTileMapLayer" type="TileMapLayer" parent="." unique_id=277604133]
 z_index = -1
 tile_set = ExtResource("4_k0lmg")
-
-[node name="Pickup" parent="." unique_id=1711849754 instance=ExtResource("5_ls4d1")]
-position = Vector2(-304, 208)
-weight = 2.0
-
-[node name="Pickup2" parent="." unique_id=44255078 instance=ExtResource("5_ls4d1")]
-position = Vector2(-296, -272)
-weight = 9.0
-
-[node name="Pickup3" parent="." unique_id=1991380284 instance=ExtResource("5_ls4d1")]
-position = Vector2(-288, -776)
-
-[node name="Pickup4" parent="." unique_id=646250323 instance=ExtResource("5_ls4d1")]
-position = Vector2(576, -784)
-
-[node name="Pickup5" parent="." unique_id=1352170686 instance=ExtResource("5_ls4d1")]
-position = Vector2(1456, -784)
-
-[node name="Pickup6" parent="." unique_id=1695494354 instance=ExtResource("5_ls4d1")]
-position = Vector2(1464, -272)
-
-[node name="Pickup7" parent="." unique_id=1352376452 instance=ExtResource("5_ls4d1")]
-position = Vector2(1456, 208)
-
-[node name="Pickup8" parent="." unique_id=593925990 instance=ExtResource("5_ls4d1")]
-position = Vector2(720, 208)
-
-[node name="Pickup9" parent="." unique_id=729398920 instance=ExtResource("5_ls4d1")]
-position = Vector2(432, 208)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=324265818]
 

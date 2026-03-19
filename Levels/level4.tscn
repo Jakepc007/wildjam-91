@@ -38,59 +38,140 @@ radius = 104.0
 
 [node name="Level4" type="Node2D" unique_id=869268886]
 
-[node name="Guard" parent="." unique_id=1677974699 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_qep4h")]
+[node name="Pickups" type="Node2D" parent="." unique_id=1804576933]
+
+[node name="Pickup" parent="Pickups" unique_id=1711849754 instance=ExtResource("6_cipbp")]
+position = Vector2(-304, 208)
+weight = 2.0
+
+[node name="Pickup2" parent="Pickups" unique_id=44255078 instance=ExtResource("6_cipbp")]
+position = Vector2(-296, -273)
+value = 3.0
+weight = 2.0
+
+[node name="Pickup3" parent="Pickups" unique_id=1991380284 instance=ExtResource("6_cipbp")]
+position = Vector2(-288, -776)
+value = 20.0
+weight = 4.0
+
+[node name="Pickup5" parent="Pickups" unique_id=1352170686 instance=ExtResource("6_cipbp")]
+position = Vector2(1456, -784)
+value = 3.0
+weight = 5.0
+
+[node name="Pickup6" parent="Pickups" unique_id=1695494354 instance=ExtResource("6_cipbp")]
+position = Vector2(1464, -272)
+value = 4.0
+weight = 3.0
+
+[node name="Pickup7" parent="Pickups" unique_id=1352376452 instance=ExtResource("6_cipbp")]
+position = Vector2(1456, 210)
+value = 3.0
+weight = 2.0
+
+[node name="Pickup8" parent="Pickups" unique_id=593925990 instance=ExtResource("6_cipbp")]
+position = Vector2(720, 208)
+value = 4.0
+
+[node name="Pickup9" parent="Pickups" unique_id=729398920 instance=ExtResource("6_cipbp")]
+position = Vector2(432, 208)
+value = 8.0
+weight = 3.0
+
+[node name="Pickup10" parent="Pickups" unique_id=698381817 instance=ExtResource("6_cipbp")]
+position = Vector2(-304, -1424)
+weight = 5.0
+
+[node name="Pickup11" parent="Pickups" unique_id=954530987 instance=ExtResource("6_cipbp")]
+position = Vector2(-296, -1904)
+value = 3.0
+weight = 9.0
+
+[node name="Pickup12" parent="Pickups" unique_id=1683142142 instance=ExtResource("6_cipbp")]
+position = Vector2(-288, -2408)
+
+[node name="Pickup19" parent="Pickups" unique_id=1872054630 instance=ExtResource("6_cipbp")]
+position = Vector2(584, -3632)
+value = 30.0
+
+[node name="Pickup14" parent="Pickups" unique_id=337612800 instance=ExtResource("6_cipbp")]
+position = Vector2(1456, -2416)
+value = 7.0
+
+[node name="Pickup15" parent="Pickups" unique_id=984211456 instance=ExtResource("6_cipbp")]
+position = Vector2(1464, -1905)
+value = 20.0
+weight = 8.0
+
+[node name="Pickup16" parent="Pickups" unique_id=853236735 instance=ExtResource("6_cipbp")]
+position = Vector2(1456, -1424)
+value = 4.0
+weight = 5.0
+
+[node name="Pickup17" parent="Pickups" unique_id=242843641 instance=ExtResource("6_cipbp")]
+position = Vector2(720, -1424)
+value = 7.0
+weight = 4.0
+
+[node name="Pickup18" parent="Pickups" unique_id=1644767327 instance=ExtResource("6_cipbp")]
+position = Vector2(432, -1424)
+value = 3.0
+
+[node name="Guards" type="Node2D" parent="." unique_id=634710118]
+
+[node name="Guard" parent="Guards" unique_id=1677974699 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_qep4h")]
 position = Vector2(576, -300)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
-[node name="Marker2D" type="Marker2D" parent="Guard" unique_id=859330214]
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard" unique_id=859330214]
 top_level = true
 position = Vector2(-112, -300)
 
-[node name="Marker2D2" type="Marker2D" parent="Guard" unique_id=1689266876]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard" unique_id=1689266876]
 top_level = true
 position = Vector2(1368, -288)
 
-[node name="Guard2" parent="." unique_id=1000452756 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_qep4h")]
+[node name="Guard2" parent="Guards" unique_id=1000452756 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_qep4h")]
 position = Vector2(584, -3360)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
-[node name="Marker2D" type="Marker2D" parent="Guard2" unique_id=1790700802]
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard2" unique_id=1790700802]
 top_level = true
 position = Vector2(160, -3360)
 
-[node name="Marker2D2" type="Marker2D" parent="Guard2" unique_id=2100981527]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard2" unique_id=2100981527]
 top_level = true
 position = Vector2(980, -3360)
 
-[node name="Guard3" parent="." unique_id=1495845496 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_qep4h")]
+[node name="Guard3" parent="Guards" unique_id=1495845496 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_qep4h")]
 position = Vector2(344, -1512)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3")]
 
-[node name="Marker2D" type="Marker2D" parent="Guard3" unique_id=1027774071]
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard3" unique_id=1027774071]
 top_level = true
 position = Vector2(-200, -1512)
 
-[node name="Marker2D2" type="Marker2D" parent="Guard3" unique_id=68886720]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard3" unique_id=68886720]
 top_level = true
 position = Vector2(-200, -2344)
 
-[node name="Marker2D3" type="Marker2D" parent="Guard3" unique_id=1165493064]
+[node name="Marker2D3" type="Marker2D" parent="Guards/Guard3" unique_id=1165493064]
 top_level = true
 position = Vector2(350, -2344)
 
-[node name="Guard4" parent="." unique_id=1251809237 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_qep4h")]
+[node name="Guard4" parent="Guards" unique_id=1251809237 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_qep4h")]
 position = Vector2(824, -2384)
 patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3")]
 
-[node name="Marker2D" type="Marker2D" parent="Guard4" unique_id=1458166287]
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard4" unique_id=1458166287]
 top_level = true
 position = Vector2(1368, -2384)
 
-[node name="Marker2D2" type="Marker2D" parent="Guard4" unique_id=188843061]
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard4" unique_id=188843061]
 top_level = true
 position = Vector2(1368, -1500)
 
-[node name="Marker2D3" type="Marker2D" parent="Guard4" unique_id=720858745]
+[node name="Marker2D3" type="Marker2D" parent="Guards/Guard4" unique_id=720858745]
 top_level = true
 position = Vector2(936, -1500)
 
@@ -157,61 +238,6 @@ tile_set = ExtResource("5_k2rgy")
 [node name="PropsTileMapLayer" type="TileMapLayer" parent="." unique_id=277604133]
 z_index = -1
 tile_set = ExtResource("5_k2rgy")
-
-[node name="Pickup" parent="." unique_id=1711849754 instance=ExtResource("6_cipbp")]
-position = Vector2(-304, 208)
-weight = 2.0
-
-[node name="Pickup2" parent="." unique_id=44255078 instance=ExtResource("6_cipbp")]
-position = Vector2(-296, -272)
-weight = 9.0
-
-[node name="Pickup3" parent="." unique_id=1991380284 instance=ExtResource("6_cipbp")]
-position = Vector2(-288, -776)
-
-[node name="Pickup5" parent="." unique_id=1352170686 instance=ExtResource("6_cipbp")]
-position = Vector2(1456, -784)
-
-[node name="Pickup6" parent="." unique_id=1695494354 instance=ExtResource("6_cipbp")]
-position = Vector2(1464, -272)
-
-[node name="Pickup7" parent="." unique_id=1352376452 instance=ExtResource("6_cipbp")]
-position = Vector2(1456, 208)
-
-[node name="Pickup8" parent="." unique_id=593925990 instance=ExtResource("6_cipbp")]
-position = Vector2(720, 208)
-
-[node name="Pickup9" parent="." unique_id=729398920 instance=ExtResource("6_cipbp")]
-position = Vector2(432, 208)
-
-[node name="Pickup10" parent="." unique_id=698381817 instance=ExtResource("6_cipbp")]
-position = Vector2(-304, -1424)
-weight = 2.0
-
-[node name="Pickup11" parent="." unique_id=954530987 instance=ExtResource("6_cipbp")]
-position = Vector2(-296, -1904)
-weight = 9.0
-
-[node name="Pickup12" parent="." unique_id=1683142142 instance=ExtResource("6_cipbp")]
-position = Vector2(-288, -2408)
-
-[node name="Pickup19" parent="." unique_id=1872054630 instance=ExtResource("6_cipbp")]
-position = Vector2(584, -3632)
-
-[node name="Pickup14" parent="." unique_id=337612800 instance=ExtResource("6_cipbp")]
-position = Vector2(1456, -2416)
-
-[node name="Pickup15" parent="." unique_id=984211456 instance=ExtResource("6_cipbp")]
-position = Vector2(1464, -1904)
-
-[node name="Pickup16" parent="." unique_id=853236735 instance=ExtResource("6_cipbp")]
-position = Vector2(1456, -1424)
-
-[node name="Pickup17" parent="." unique_id=242843641 instance=ExtResource("6_cipbp")]
-position = Vector2(720, -1424)
-
-[node name="Pickup18" parent="." unique_id=1644767327 instance=ExtResource("6_cipbp")]
-position = Vector2(432, -1424)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=324265818]
 
