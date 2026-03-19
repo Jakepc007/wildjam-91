@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://37w4acife8rv"]
+[gd_scene format=3 uid="uid://cg6kiuqj3hww8"]
 
-[ext_resource type="Script" uid="uid://0nqtiqqtsu" path="res://menus/audio_manager.gd" id="1_edu86"]
+[ext_resource type="Script" path="res://menus/audio_manager.gd" id="1_edu86"]
 [ext_resource type="AudioStream" uid="uid://drrgsnxwfygcq" path="res://assets/Audio/menu_theme.ogg" id="2_sbtfb"]
 [ext_resource type="AudioStream" uid="uid://c3qa1yys3wf0a" path="res://assets/Audio/uh_oh_buddy_full_track.ogg" id="3_8xec1"]
 
