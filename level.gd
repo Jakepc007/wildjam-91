@@ -29,7 +29,7 @@ func _ready():
 	add_child(player)
 	player.position = spawn_position.position
 	player.connect("InventoryUpdated", on_inventory_updated)
-
+	
 	var camera = camera_scene.instantiate()
 	add_child(camera)
 	camera.target = player
@@ -64,6 +64,8 @@ func on_player_caught():
 func start():
 	_time_over = false
 	_time_left = level_time_sec
+	if Global.audio_manager:
+		Global.audio_manager.play_track(AudioManager.Track.LEVEL, 0.1)
 
 func update_time_left(delta):
 	_time_left -= delta

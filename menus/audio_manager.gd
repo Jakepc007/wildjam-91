@@ -20,7 +20,7 @@ func play_track(track, delay : float = 0.0):
 		return
 	if delay > 0:
 		await get_tree().create_timer(delay).timeout
-	if _current_track and _current_track >= 0:
+	if _current_track >= 0:
 		var old_player = track_audio_streams[_current_track]
 		old_player.stop()
 	var new_player = track_audio_streams[track]
