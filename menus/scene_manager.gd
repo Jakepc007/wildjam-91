@@ -35,7 +35,7 @@ func switch_scene(scene: PackedScene):
 	var new_scene = scene.instantiate()
 
 	if _current_scene:
-		remove_child(_current_scene)
+		remove_current_scene()
 	else:
 		animation_player.play("fade_in")
 
