@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bfaiwfc2h6h8w" path="res://Levels/base.tscn" id="1_e0up5"]
 [ext_resource type="PackedScene" uid="uid://chvpqpus2gh15" path="res://Guard/guard.tscn" id="1_ggu74"]
+[ext_resource type="PackedScene" uid="uid://mejps63qlhqf" path="res://Levels/level6.tscn" id="2_fh8n1"]
 [ext_resource type="PackedScene" uid="uid://cjd8r32q75p58" path="res://pickup.tscn" id="6_b38qx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_b4htq"]
@@ -10,6 +11,8 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 agent_radius = 20.0
 
 [node name="Level5" unique_id=869268886 instance=ExtResource("1_e0up5")]
+level_name = "5"
+next_scene = ExtResource("2_fh8n1")
 
 [node name="Pickup" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="0" unique_id=1711849754 instance=ExtResource("6_b38qx")]
 position = Vector2(-304, 217)

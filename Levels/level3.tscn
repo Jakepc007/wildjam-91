@@ -11,6 +11,7 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Arr
 agent_radius = 20.0
 
 [node name="Level3" unique_id=869268886 instance=ExtResource("1_2385j")]
+level_name = "3"
 next_scene = ExtResource("2_eh6o7")
 
 [node name="Pickup" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="0" unique_id=1711849754 instance=ExtResource("5_ls4d1")]

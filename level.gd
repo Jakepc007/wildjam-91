@@ -1,6 +1,7 @@
 class_name Level extends Node2D
 
 const MIN_EXIT_DISTANCE = 50.0
+const LEVEL_SUMMARY_SCENE = preload("res://Levels/level_summary.tscn")
 
 @onready var player_scene = preload("res://player.tscn")
 @onready var camera_scene = preload("res://camera.tscn")
@@ -8,6 +9,7 @@ const MIN_EXIT_DISTANCE = 50.0
 @onready var spawn_position = $SpawnPosition
 @onready var exit_position = $ExitPosition
 
+@export var level_name : String = ""
 @export var level_time_sec : float = 60
 @export var required_value : int = 10
 @export var next_scene : PackedScene = null
@@ -51,13 +53,25 @@ func _process(delta: float) -> void:
 	if not _time_over:
 		update_time_left(delta)
 
-	print(player.position.distance_to(exit_position.position))
 	if player.position.distance_to(exit_position.position) < MIN_EXIT_DISTANCE:
-		if next_scene && not in_transition:
-			print("transitioning to next scene")
+		if not in_transition:
 			in_transition = true
-			Global.scene_manager.switch_scene_with_fade(next_scene)
+			_go_to_level_summary()
 			return
+
+func _go_to_level_summary():
+	var total_value := 0
+	for pickup in player.inventory:
+		var stats = ItemStats.get_item(pickup.item)
+		total_value += int(stats.value)
+	Global.level_stats = {
+		"level_name": level_name,
+		"time_left": _time_left,
+		"value": total_value,
+		"items": player.inventory.duplicate(),
+		"next_scene": next_scene,
+	}
+	Global.scene_manager.switch_scene_with_fade(LEVEL_SUMMARY_SCENE)
 
 func on_player_caught():
 	print("player caught")
