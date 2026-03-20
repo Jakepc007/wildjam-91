@@ -339,6 +339,7 @@ func _process(delta: float) -> void:
 "
 
 [node name="SceneManager" type="Node" unique_id=82738315]
+process_mode = 3
 script = ExtResource("1_aqwcm")
 default_scene = ExtResource("2_5s76d")
 

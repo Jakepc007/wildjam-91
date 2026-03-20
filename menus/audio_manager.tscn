@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://d1wpodslblim0" path="res://assets/Audio/uh_oh_buddy_full_track.ogg" id="3_8xec1"]
 
 [node name="AudioManager" type="Node" unique_id=758442812]
+process_mode = 3
 script = ExtResource("1_edu86")
 
 [node name="UhOhBuddyFullTrack" type="AudioStreamPlayer" parent="." unique_id=2112808618]

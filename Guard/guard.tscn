@@ -124,7 +124,6 @@ position = Vector2(111.5, 14.999991)
 scale = Vector2(1.8710938, 2.1015623)
 color = Color(0.91368365, 0.9011933, 0.72899765, 1)
 energy = 0.85
-range_z_min = 0
 shadow_enabled = true
 texture = ExtResource("4_kitn5")
 

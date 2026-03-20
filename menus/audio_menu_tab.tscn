@@ -16,7 +16,11 @@ func _ready() -> void:
 	master_slider.value = AudioServer.get_bus_volume_linear(master_bus)
 	music_slider.value = AudioServer.get_bus_volume_linear(music_bus)
 	sfx_slider.value = AudioServer.get_bus_volume_linear(sfx_bus)
+	on_visibility_changed()
 
+func on_visibility_changed():
+	if visible and mute_button:
+		mute_button.grab_focus()
 
 func _on_mute_button_toggled(toggled_on: bool) -> void:
 	AudioServer.set_bus_mute(master_bus,toggled_on)
@@ -32,14 +36,15 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 "
 
 [node name="AudioMenuTab" type="MarginContainer" unique_id=679169600]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = -1
+anchor_right = 0.640625
+anchor_bottom = 0.6578125
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 225
-theme_override_constants/margin_right = 225
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
 script = SubResource("GDScript_hrpeh")
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=477901704]
 layout_mode = 2
@@ -103,6 +108,7 @@ max_value = 2.0
 step = 0.02
 tick_count = 11
 
+[connection signal="visibility_changed" from="." to="." method="on_visibility_changed"]
 [connection signal="toggled" from="VBoxContainer/MuteControl/MuteButton" to="." method="_on_mute_button_toggled"]
 [connection signal="value_changed" from="VBoxContainer/MasterVolume/MasterSlider" to="." method="_on_master_slider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/MusicVolume/MusicSlider" to="." method="_on_music_slider_value_changed"]

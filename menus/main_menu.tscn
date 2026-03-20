@@ -2,9 +2,16 @@
 
 [ext_resource type="Script" uid="uid://ck6wbxa1e6bya" path="res://menus/main_menu.gd" id="1_8gy84"]
 [ext_resource type="Theme" uid="uid://dfpiiy4xjcjry" path="res://menus/default_theme.tres" id="1_yjgyn"]
-[ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="2_ij7vn"]
 [ext_resource type="PackedScene" uid="uid://xxqbgrk5yq1j" path="res://Levels/level1.tscn" id="3_oblsv"]
 [ext_resource type="PackedScene" uid="uid://c2lgjmxe1a0o5" path="res://menus/options_menu.tscn" id="3_yjgyn"]
+[ext_resource type="Texture2D" uid="uid://lwcr6k0a5ky1" path="res://assets/item_icons.png" id="5_oblsv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a63lr"]
+atlas = ExtResource("5_oblsv")
+region = Rect2(99, 163, 90, 58)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pwbes"]
+font_size = 52
 
 [node name="Control" type="Control" unique_id=977942290]
 z_index = 1
@@ -27,7 +34,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_yjgyn")
-texture = ExtResource("2_ij7vn")
+texture = SubResource("AtlasTexture_a63lr")
 
 [node name="MenuContainer" type="MarginContainer" parent="." unique_id=134028411]
 layout_mode = 1
@@ -46,14 +53,15 @@ theme = ExtResource("1_yjgyn")
 layout_mode = 2
 theme = ExtResource("1_yjgyn")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MenuContainer/Title Container/Control" unique_id=1615635798]
+[node name="Label" type="Label" parent="MenuContainer/Title Container/Control" unique_id=1494648364]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
+offset_top = 79.0
+offset_bottom = 210.0
 grow_horizontal = 2
-theme = ExtResource("1_yjgyn")
-text = "Title
-"
+text = "Title"
+label_settings = SubResource("LabelSettings_pwbes")
 horizontal_alignment = 1
 vertical_alignment = 1
 
