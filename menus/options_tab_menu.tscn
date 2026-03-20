@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://d4ilac1iachym"]
+
+[ext_resource type="PackedScene" uid="uid://2rswiu2qkdou" path="res://menus/audio_menu_tab.tscn" id="1_aydou"]
+[ext_resource type="PackedScene" uid="uid://bwqlnwexuiu77" path="res://menus/controls.tscn" id="2_2xpen"]
+
+[node name="OptionsTabMenu" type="TabContainer" unique_id=938675182]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+current_tab = 0
+tab_0/title = "Audio"
+
+[node name="AudioMenuTab" parent="." unique_id=679169600 instance=ExtResource("1_aydou")]
+layout_mode = 2
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+metadata/_tab_index = 0
+metadata/_tab_name = "Audio"
+
+[node name="Controls" parent="." unique_id=811513535 instance=ExtResource("2_2xpen")]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 15
+metadata/_tab_index = 1

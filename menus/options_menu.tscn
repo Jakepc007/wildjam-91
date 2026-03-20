@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c2lgjmxe1a0o5"]
 
-[ext_resource type="PackedScene" uid="uid://2rswiu2qkdou" path="res://menus/audio_menu_tab.tscn" id="1_6r3ve"]
-[ext_resource type="PackedScene" uid="uid://bwqlnwexuiu77" path="res://menus/controls.tscn" id="2_wyyb7"]
+[ext_resource type="PackedScene" uid="uid://d4ilac1iachym" path="res://menus/options_tab_menu.tscn" id="1_6r3ve"]
 
 [sub_resource type="GDScript" id="GDScript_wyyb7"]
 script/source = "extends Control
@@ -10,6 +9,10 @@ var _main_menu_path := preload(\"res://menus/main_menu.tscn\")
 
 func _on_back_pressed() -> void:
 	Global.scene_manager.switch_scene(_main_menu_path)
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed(\"start\"):
+		_on_back_pressed()
 "
 
 [node name="Control" type="Control" unique_id=1254620038]
@@ -33,18 +36,10 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="TabBar" type="TabContainer" parent="VBoxContainer/MarginContainer" unique_id=1281913294]
+[node name="TabBar" parent="VBoxContainer/MarginContainer" unique_id=938675182 instance=ExtResource("1_6r3ve")]
 layout_mode = 2
-current_tab = 0
-
-[node name="AudioMenuTab" parent="VBoxContainer/MarginContainer/TabBar" unique_id=679169600 instance=ExtResource("1_6r3ve")]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="Controls" parent="VBoxContainer/MarginContainer/TabBar" unique_id=811513535 instance=ExtResource("2_wyyb7")]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
+focus_neighbor_top = NodePath("../../MarginContainer2/Back")
+focus_previous = NodePath("../../MarginContainer2/Back")
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer" unique_id=41801181]
 layout_mode = 2

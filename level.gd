@@ -25,6 +25,7 @@ var _time_left : float :
 var _time_over : bool
 
 func _ready():
+	process_mode = Node.PROCESS_MODE_PAUSABLE
 	player = player_scene.instantiate()
 	add_child(player)
 	player.position = spawn_position.position

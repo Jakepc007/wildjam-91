@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bwqlnwexuiu77"]
 
 [ext_resource type="Script" uid="uid://y4xfaejjilsc" path="res://input_changer.gd" id="1_1nrlj"]
+[ext_resource type="Script" uid="uid://cef57gf2xe1j7" path="res://menus/controls.gd" id="1_mxg8n"]
 
 [node name="Controls" type="MarginContainer" unique_id=811513535]
 anchors_preset = 15
@@ -10,6 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 225
 theme_override_constants/margin_right = 225
+script = ExtResource("1_mxg8n")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1563235589]
 layout_mode = 2
@@ -31,6 +33,8 @@ text = "Up"
 [node name="Button" type="Button" parent="VBoxContainer/Up/HBoxContainer" unique_id=612379381]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../Left/HBoxContainer/Button")
+focus_next = NodePath(".")
 script = ExtResource("1_1nrlj")
 action = "up"
 
@@ -50,6 +54,10 @@ text = "Left"
 [node name="Button" type="Button" parent="VBoxContainer/Left/HBoxContainer" unique_id=1614734629]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../Up/HBoxContainer/Button")
+focus_neighbor_bottom = NodePath("../../../Down/HBoxContainer/Button")
+focus_next = NodePath("../../../Down/HBoxContainer/Button")
+focus_previous = NodePath("../../../Up/HBoxContainer/Button")
 script = ExtResource("1_1nrlj")
 action = "left"
 
@@ -69,6 +77,10 @@ text = "Down"
 [node name="Button" type="Button" parent="VBoxContainer/Down/HBoxContainer" unique_id=974568056]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../Left/HBoxContainer/Button")
+focus_neighbor_bottom = NodePath("../../../Right/HBoxContainer/Button")
+focus_next = NodePath("../../../Right/HBoxContainer/Button")
+focus_previous = NodePath("../../../Left/HBoxContainer/Button")
 script = ExtResource("1_1nrlj")
 action = "down"
 
@@ -107,6 +119,10 @@ text = "Interact"
 [node name="Button" type="Button" parent="VBoxContainer/Interact/HBoxContainer" unique_id=375067003]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../Right/HBoxContainer/Button")
+focus_neighbor_bottom = NodePath("../../../Inventory/HBoxContainer/Button")
+focus_next = NodePath("../../../Inventory/HBoxContainer/Button")
+focus_previous = NodePath("../../../Right/HBoxContainer/Button")
 script = ExtResource("1_1nrlj")
 action = "interact"
 
@@ -126,6 +142,10 @@ text = "Inventory"
 [node name="Button" type="Button" parent="VBoxContainer/Inventory/HBoxContainer" unique_id=2047007074]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../Interact/HBoxContainer/Button")
+focus_neighbor_bottom = NodePath("../../../Back/HBoxContainer/Button")
+focus_next = NodePath("../../../Back/HBoxContainer/Button")
+focus_previous = NodePath("../../../Interact/HBoxContainer/Button")
 script = ExtResource("1_1nrlj")
 action = "inventory"
 
@@ -146,4 +166,6 @@ text = "Back"
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 script = ExtResource("1_1nrlj")
-action = "ui_cancel"
+action = "start"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
