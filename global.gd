@@ -8,3 +8,5 @@ var player : Player :
 
 signal player_ready()
 signal level_time_left_changed(time_left : float)
+var player : Player
+var audio_manager : AudioManager
