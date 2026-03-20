@@ -248,7 +248,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 0.837]
+"values": [0.0, 0.4]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -287,7 +287,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [2.0, 1.164]
+"values": [2.0, 1.5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6y8vg"]
@@ -364,7 +364,8 @@ script = SubResource("GDScript_6y8vg")
 
 [node name="DEBUG_SPRITE" type="Sprite2D" parent="." unique_id=1433018345]
 visible = false
-position = Vector2(531, 282)
+position = Vector2(479.5, 320)
+scale = Vector2(7.3359375, 4.890625)
 texture = ExtResource("3_6y8vg")
 
 [node name="AudioManager" parent="." unique_id=758442812 instance=ExtResource("5_4ya5e")]

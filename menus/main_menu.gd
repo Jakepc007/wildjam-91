@@ -6,8 +6,9 @@ extends Control
 
 func _on_new_game_pressed() -> void:
 	if Global.scene_manager:
-		Global.scene_manager.switch_scene_with_fade(level_1, SceneManager.InTransitionEffects.WIPE_IN,\
-	 	SceneManager.OutTransitionEffects.WIPE_OUT)
+		Global.scene_manager.switch_scene_with_fade(level_1)
+		#,\ SceneManager.InTransitionEffects.WIPE_IN,\
+	 	#SceneManager.OutTransitionEffects.WIPE_OUT)
 
 
 func _on_options_pressed() -> void:
