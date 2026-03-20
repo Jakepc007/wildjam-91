@@ -1,7 +1,7 @@
 extends Node
 class_name SceneManager
 
-@export var default_scene_path : String
+@export var default_scene : PackedScene
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -26,15 +26,14 @@ var _current_scene : Node
 
 func _ready() -> void:
 	Global.scene_manager = self
-	switch_scene(default_scene_path)
+	switch_scene(default_scene)
 
-func switch_scene(scene_path : String):
-	var new_scene = load(scene_path)
-	if not new_scene:
-		push_warning("scene not found: " + scene_path)
+func switch_scene(scene: PackedScene):
+	if not scene:
+		push_warning("SceneManager: null scene provided")
 		return
-	new_scene = new_scene.instantiate()
-	
+	var new_scene = scene.instantiate()
+
 	if _current_scene:
 		remove_child(_current_scene)
 	else:
@@ -42,10 +41,9 @@ func switch_scene(scene_path : String):
 
 	_current_scene = new_scene
 	add_child(_current_scene)
-	pass
 
 
-func switch_scene_with_fade(scene_path : String, \
+func switch_scene_with_fade(scene : String, \
 							in_effect : InTransitionEffects = InTransitionEffects.FADE_IN,\
 							out_effect : OutTransitionEffects = OutTransitionEffects.FADE_OUT):
 	var in_anim
@@ -58,18 +56,17 @@ func switch_scene_with_fade(scene_path : String, \
 		out_anim = _out_transition_anims[out_effect]
 	else:
 		out_anim = _out_transition_anims[OutTransitionEffects.FADE_OUT]
-	
-	
-	var new_scene = load(scene_path)
-	if not new_scene:
-		push_warning("scene not found: " + scene_path)
+
+  if not scene:
+    push_warning("scene not found: " + scene_path)
 		return
 	new_scene = new_scene.instantiate()
 	animation_player.play(out_anim)
 	var on_fade_out = func on_fade_out(_anim,player):
-		switch_scene(scene_path)
+		switch_scene(scene)
 		player.play(in_anim)
 	animation_player.animation_finished.connect(on_fade_out.bind(animation_player),Object.ConnectFlags.CONNECT_ONE_SHOT)
+
 
 func remove_current_scene():
 	if _current_scene:

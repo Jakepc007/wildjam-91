@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dn1mfyeboah1k"]
 
 [ext_resource type="Script" uid="uid://bfilelu761m6a" path="res://menus/scene_manager.gd" id="1_aqwcm"]
+[ext_resource type="PackedScene" uid="uid://e7kan634h3mn" path="res://menus/main_menu.tscn" id="2_5s76d"]
 [ext_resource type="Shader" uid="uid://dbol067yo3vs8" path="res://menus/universal_fade_in.gdshader" id="2_y7ays"]
 [ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="3_6y8vg"]
 [ext_resource type="Texture2D" uid="uid://cpc3c8gefsgak" path="res://SecurityCamera/cone_mask.png" id="3_y7ays"]
@@ -339,7 +340,7 @@ func _process(delta: float) -> void:
 
 [node name="SceneManager" type="Node" unique_id=82738315]
 script = ExtResource("1_aqwcm")
-default_scene_path = "res://menus/main_menu.tscn"
+default_scene = ExtResource("2_5s76d")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1487080255]
 visible = false

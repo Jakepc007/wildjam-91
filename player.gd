@@ -1,14 +1,18 @@
 class_name Player extends CharacterBody2D
 
+# TODO: JKM this needs to be an actual representation of inventory items through some class or something
+signal InventoryUpdated(inventory: Array)
+
 const VELOCITY_ACC := 50.
 const MAX_INVENTORY_CAPACITY := 10.
-
 
 @onready var pickup_notice: Label = $PickupNotice
 @onready var pickup_detection_area: Area2D = $PickupDetectionArea
 @onready var inventory_floater: Label = $InventoryFloater
 
 @export var inventory_ring: InventoryRing = null
+
+signal add_pickup(item) # sent out so the inventory ring can listen, wherever it is
 
 # TODO: move inventory into separate script
 var overlapping_pickups: Array = []
@@ -46,19 +50,22 @@ func _process(delta: float):
 	# TODO: DELETE when inventory is figured out
 	var output = ""
 	for pickup in inventory:
-		output += str(pickup.value) + "v " + str(pickup.weight) + "w\n"
+		var stats = ItemStats.get_item(pickup.item)
+		output += str(stats.value) + "v " + str(stats.weight) + "w\n"
 	inventory_floater.text = output
 
 func _input(event: InputEvent):
 	if event.is_action_pressed("interact"):
 		if closest_pickup:
-			if current_inventory_weight + closest_pickup.weight <= MAX_INVENTORY_CAPACITY:
+			var closest_stats = ItemStats.get_item(closest_pickup.item)
+			if current_inventory_weight + closest_stats.weight <= MAX_INVENTORY_CAPACITY:
 				inventory.append(closest_pickup.duplicate())
 				overlapping_pickups.erase(closest_pickup)
 				# TODO: handle pickup logic within pickup.gd
 				closest_pickup.queue_free()
-				current_inventory_weight += closest_pickup.weight
-				inventory_ring.add_pickup(closest_pickup)
+				current_inventory_weight += closest_stats.weight
+				#inventory_ring.add_pickup(closest_pickup)
+				add_pickup.emit(closest_pickup)
 			else:
 				print("you're full")
 

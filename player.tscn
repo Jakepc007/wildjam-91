@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c7hpyllw7numk"]
+
+[ext_resource type="Script" uid="uid://8yqcf3fcur1q" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="2_i3pqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7dm0k"]
+radius = 16.0
+
+[sub_resource type="Gradient" id="Gradient_ig7tw"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0xm2m"]
+gradient = SubResource("Gradient_ig7tw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.8, 0.8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1bvp3"]
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.21960784)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+radius = 104.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1620509194]
+collision_layer = 3
+script = ExtResource("1_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1515269652]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i3pqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1990255835]
+shape = SubResource("CircleShape2D_7dm0k")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=535507657]
+scale = Vector2(11.75, 11.750002)
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_0xm2m")
+
+[node name="PickupNotice" type="Label" parent="." unique_id=2073378292]
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 44.0
+offset_bottom = -41.0
+text = "pickup (e)"
+label_settings = SubResource("LabelSettings_1bvp3")
+
+[node name="InventoryFloater" type="Label" parent="." unique_id=620659723]
+offset_left = -32.0
+offset_top = 72.0
+offset_right = 44.0
+offset_bottom = 95.0
+text = "- 2w 4v
+- 2w 4v
+- 2w 4v"
+label_settings = SubResource("LabelSettings_1bvp3")
+
+[node name="PickupDetectionArea" type="Area2D" parent="." unique_id=1208054500]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupDetectionArea" unique_id=905788093]
+shape = SubResource("CircleShape2D_lquwl")
