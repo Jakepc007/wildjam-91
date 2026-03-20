@@ -43,7 +43,7 @@ func switch_scene(scene: PackedScene):
 	add_child(_current_scene)
 
 
-func switch_scene_with_fade(scene : String, \
+func switch_scene_with_fade(scene : PackedScene, \
 							in_effect : InTransitionEffects = InTransitionEffects.FADE_IN,\
 							out_effect : OutTransitionEffects = OutTransitionEffects.FADE_OUT):
 	var in_anim
@@ -57,10 +57,8 @@ func switch_scene_with_fade(scene : String, \
 	else:
 		out_anim = _out_transition_anims[OutTransitionEffects.FADE_OUT]
 
-  if not scene:
-    push_warning("scene not found: " + scene_path)
+	if not scene:
 		return
-	new_scene = new_scene.instantiate()
 	animation_player.play(out_anim)
 	var on_fade_out = func on_fade_out(_anim,player):
 		switch_scene(scene)
