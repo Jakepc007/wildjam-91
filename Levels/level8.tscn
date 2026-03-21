@@ -13,6 +13,9 @@ agent_radius = 20.0
 [node name="Level8" unique_id=869268886 instance=ExtResource("1_hnh7c")]
 level_name = "8"
 
+[node name="ExitPosition" parent="." index="5" unique_id=1985065076]
+position = Vector2(976, -5064)
+
 [node name="NavigationRegion2D" parent="." index="7" unique_id=1015479542]
 navigation_polygon = SubResource("NavigationPolygon_0fyan")
 

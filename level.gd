@@ -28,10 +28,13 @@ var _time_over : bool
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_PAUSABLE
+	Global.required_value = required_value
+	Global.exit_position = exit_position.position
 	player = player_scene.instantiate()
 	add_child(player)
 	player.position = spawn_position.position
-	player.exit_position = exit_position.position
+	if Global.inventory_ring:
+		Global.inventory_ring.connect_to_player()
 	player.connect("InventoryUpdated", on_inventory_updated)
 
 	var camera = camera_scene.instantiate()
@@ -55,7 +58,7 @@ func _process(delta: float) -> void:
 		update_time_left(delta)
 
 	if player.position.distance_to(exit_position.position) < MIN_EXIT_DISTANCE:
-		if not in_transition:
+		if not in_transition and Global.inventory_ring.condition_fulfilled:
 			in_transition = true
 			_go_to_level_summary()
 			return

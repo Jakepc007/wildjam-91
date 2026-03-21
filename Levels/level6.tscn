@@ -10,6 +10,9 @@
 level_name = "6"
 next_scene = ExtResource("2_nft2l")
 
+[node name="ExitPosition" parent="." index="5" unique_id=1985065076]
+position = Vector2(2360, -2856)
+
 [node name="Pickup4" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="0" unique_id=1711849754 instance=ExtResource("6_y0hew")]
 position = Vector2(-304, 209)
 

@@ -15,6 +15,9 @@ agent_radius = 20.0
 level_name = "7"
 next_scene = ExtResource("2_ev673")
 
+[node name="ExitPosition" parent="." index="5" unique_id=1985065076]
+position = Vector2(-1864, -3608)
+
 [node name="Pickup" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="0" unique_id=1711849754 instance=ExtResource("2_jy6j6")]
 position = Vector2(-304, 209)
 

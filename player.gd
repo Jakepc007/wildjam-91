@@ -16,7 +16,6 @@ const MAX_INVENTORY_CAPACITY := 10.
 var overlapping_pickups: Array = []
 var inventory: Array = []
 var current_inventory_weight := 0.0
-var exit_position: Vector2
 
 static var closest_pickup: Pickup = null
 

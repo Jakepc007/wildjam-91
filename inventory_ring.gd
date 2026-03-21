@@ -2,6 +2,7 @@ class_name InventoryRing extends Node2D
 
 @onready var inventory_pickup_scene := preload("res://inventory_pickup.tscn")
 @onready var pickup_scene := preload("res://pickup.tscn")
+@onready var exit_door_sprite := $ExitDoorSprite
 @export var player: Player = null
 
 const MIN_PICKUP_HOVER_DISTANCE = 32.
@@ -12,15 +13,29 @@ var pickup_item_types := {}  # instance_id -> ItemStats.Item
 var closest_pickup_to_mouse = null
 var grabbed_pickup = null
 
+var required_value: int = 0
+var condition_fulfilled: bool = false
+
+func _recalculate_condition() -> void:
+	var total_value := 0
+	for item_type in pickup_item_types.values():
+		total_value += int(ItemStats.get_item(item_type).value)
+	condition_fulfilled = total_value >= required_value
+
 func _ready():
-	if Global.player:
-		connect_to_player()
-	else:
-		Global.player_ready.connect(connect_to_player)
+	Global.inventory_ring = self
 
 func connect_to_player():
+	if is_instance_valid(player):
+		player.add_pickup.disconnect(add_pickup)
+	for pickup in pickups:
+		pickup.queue_free()
+	pickups.clear()
+	pickup_item_types.clear()
 	Global.player.add_pickup.connect(add_pickup)
 	player = Global.player
+	required_value = Global.required_value
+	_recalculate_condition()
 
 # TODO: JKM - tie the item properties to the inventory pickup
 func add_pickup(item):
@@ -33,8 +48,10 @@ func add_pickup(item):
 	add_child(inventory_pickup)
 	pickup_item_types[inventory_pickup.get_instance_id()] = item
 	pickups.append(inventory_pickup)
+	_recalculate_condition()
 
 func _process(delta: float):
+	print("condition_fulfilled? %s" % condition_fulfilled)
 	apply_pickup_forces(delta)
 	queue_redraw()
 	#var viewport_mouse_position = get_viewport().get_mouse_position() - (Vector2(480, 320))
@@ -70,6 +87,11 @@ func _process(delta: float):
 	else:
 		acc = max(acc - delta * 10., 0.)
 		modulate.a = max(modulate.a - delta * 5., 0.)
+
+	if Global.exit_position:
+		var to_exit := Global.exit_position - player.position
+		exit_door_sprite.position = to_exit.normalized() * min(to_exit.length(), 240.)
+		print("global.exit position =", Global.exit_position)
 
 func _draw():
 	draw_circle(Vector2.ZERO, 140. + acc * 10., Color(1., 1., 1., 0.2))
@@ -120,6 +142,7 @@ func _input(event: InputEvent):
 						break
 				pickups.erase(grabbed_pickup)
 				grabbed_pickup.queue_free()
+				_recalculate_condition()
 				var pickup = pickup_scene.instantiate()
 				pickup.item = item_type
 				pickup.position = player.position + Vector2(

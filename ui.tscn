@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cuftuundgmu5e"]
 
 [ext_resource type="Script" uid="uid://6g2houfyr2lr" path="res://inventory_ring.gd" id="1_27fn8"]
+[ext_resource type="Texture2D" uid="uid://21m18yyxd7gp" path="res://Guard/question_mark.png" id="2_27fn8"]
 [ext_resource type="Script" uid="uid://doqcxb440gqpk" path="res://Levels/level_timer.gd" id="4_nltto"]
 
 [node name="UI" type="CanvasLayer" unique_id=898739090]
@@ -15,6 +16,9 @@ offset_bottom = 40.0
 modulate = Color(1, 1, 1, 0)
 position = Vector2(480, 320)
 script = ExtResource("1_27fn8")
+
+[node name="ExitDoorSprite" type="Sprite2D" parent="Inventory/InventoryRing" unique_id=1867722750]
+texture = ExtResource("2_27fn8")
 
 [node name="Label" type="Label" parent="." unique_id=443659898]
 anchors_preset = 10
