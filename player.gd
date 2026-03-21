@@ -5,7 +5,7 @@ signal InventoryUpdated(inventory: Array)
 signal add_pickup(item) # sent out so the inventory ring can listen, wherever it is
 
 const VELOCITY_ACC := 50.
-const MAX_INVENTORY_CAPACITY := 10.
+const MAX_INVENTORY_CAPACITY := 100.
 
 @onready var pickup_notice: Label = $PickupNotice
 @onready var pickup_detection_area: Area2D = $PickupDetectionArea
