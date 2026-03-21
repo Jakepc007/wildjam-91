@@ -8,6 +8,7 @@ const MIN_PICKUP_HOVER_DISTANCE = 32.
 
 var acc := 0.
 var pickups := []
+var pickup_item_types := {}  # instance_id -> ItemStats.Item
 var closest_pickup_to_mouse = null
 var grabbed_pickup = null
 
@@ -16,8 +17,6 @@ func _ready():
 		connect_to_player()
 	else:
 		Global.player_ready.connect(connect_to_player)
-	for child in get_children():
-		pickups.append(child)
 
 func connect_to_player():
 	Global.player.add_pickup.connect(add_pickup)
@@ -32,6 +31,7 @@ func add_pickup(item):
 		randf_range(-50, 50)
 	)
 	add_child(inventory_pickup)
+	pickup_item_types[inventory_pickup.get_instance_id()] = item
 	pickups.append(inventory_pickup)
 
 func _process(delta: float):
@@ -110,11 +110,18 @@ func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and not event.is_pressed():
 		if grabbed_pickup:
 			if grabbed_pickup.position.length() > 200.:
-				# remove the pickup from the inventory of the player and the pickups array
-				player.inventory.erase(grabbed_pickup)
+				var item_type = pickup_item_types.get(grabbed_pickup.get_instance_id())
+				pickup_item_types.erase(grabbed_pickup.get_instance_id())
+				# remove the matching item from the player's inventory
+				for i in range(player.inventory.size()):
+					if player.inventory[i].get("item") == item_type:
+						player.current_inventory_weight -= ItemStats.get_item(item_type).weight
+						player.inventory.remove_at(i)
+						break
 				pickups.erase(grabbed_pickup)
 				grabbed_pickup.queue_free()
 				var pickup = pickup_scene.instantiate()
+				pickup.item = item_type
 				pickup.position = player.position + Vector2(
 					randf_range(-20, 20),
 					randf_range(-20, 20)

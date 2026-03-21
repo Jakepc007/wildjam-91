@@ -31,8 +31,9 @@ func _ready():
 	player = player_scene.instantiate()
 	add_child(player)
 	player.position = spawn_position.position
+	player.exit_position = exit_position.position
 	player.connect("InventoryUpdated", on_inventory_updated)
-	
+
 	var camera = camera_scene.instantiate()
 	add_child(camera)
 	camera.target = player

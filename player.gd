@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 # TODO: JKM this needs to be an actual representation of inventory items through some class or something
 signal InventoryUpdated(inventory: Array)
+signal add_pickup(item) # sent out so the inventory ring can listen, wherever it is
 
 const VELOCITY_ACC := 50.
 const MAX_INVENTORY_CAPACITY := 10.
@@ -12,12 +13,11 @@ const MAX_INVENTORY_CAPACITY := 10.
 
 @export var inventory_ring: InventoryRing = null
 
-signal add_pickup(item) # sent out so the inventory ring can listen, wherever it is
-
-# TODO: move inventory into separate script
 var overlapping_pickups: Array = []
 var inventory: Array = []
 var current_inventory_weight := 0.0
+var exit_position: Vector2
+
 static var closest_pickup: Pickup = null
 
 func _physics_process(delta: float):
@@ -59,13 +59,13 @@ func _input(event: InputEvent):
 		if closest_pickup:
 			var closest_stats = ItemStats.get_item(closest_pickup.item)
 			if current_inventory_weight + closest_stats.weight <= MAX_INVENTORY_CAPACITY:
+				var item_type = closest_pickup.item
 				inventory.append(closest_pickup.duplicate())
 				overlapping_pickups.erase(closest_pickup)
 				# TODO: handle pickup logic within pickup.gd
 				closest_pickup.queue_free()
 				current_inventory_weight += closest_stats.weight
-				#inventory_ring.add_pickup(closest_pickup)
-				add_pickup.emit(closest_pickup)
+				add_pickup.emit(item_type)
 			else:
 				print("you're full")
 
