@@ -12,37 +12,32 @@ agent_radius = 20.0
 
 [node name="Level3" unique_id=869268886 instance=ExtResource("1_2385j")]
 level_name = "3"
+level_time_sec = 50.0
+required_value = 600000
 next_scene = ExtResource("2_eh6o7")
 
 [node name="ExitPosition" parent="." index="5" unique_id=1985065076]
-position = Vector2(-80, -88)
+position = Vector2(600, 1008)
 
 [node name="Pickup" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="0" unique_id=1711849754 instance=ExtResource("5_ls4d1")]
 position = Vector2(-304, 211)
+item = 6
 
-[node name="Pickup2" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="1" unique_id=2073093148 instance=ExtResource("5_ls4d1")]
-position = Vector2(-296, -272)
-
-[node name="Pickup3" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="2" unique_id=1767688936 instance=ExtResource("5_ls4d1")]
+[node name="Pickup3" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="1" unique_id=1767688936 instance=ExtResource("5_ls4d1")]
 position = Vector2(-288, -776)
+item = 9
 
-[node name="Pickup4" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="3" unique_id=1946120947 instance=ExtResource("5_ls4d1")]
-position = Vector2(576, -784)
+[node name="Pickup4" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="2" unique_id=1946120947 instance=ExtResource("5_ls4d1")]
+position = Vector2(576, -782)
+item = 11
 
-[node name="Pickup5" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="4" unique_id=373360585 instance=ExtResource("5_ls4d1")]
+[node name="Pickup5" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="3" unique_id=373360585 instance=ExtResource("5_ls4d1")]
 position = Vector2(1456, -784)
+item = 5
 
-[node name="Pickup6" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="5" unique_id=552221135 instance=ExtResource("5_ls4d1")]
-position = Vector2(1464, -272)
-
-[node name="Pickup7" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="6" unique_id=2092646904 instance=ExtResource("5_ls4d1")]
+[node name="Pickup7" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="4" unique_id=2092646904 instance=ExtResource("5_ls4d1")]
 position = Vector2(1456, 208)
-
-[node name="Pickup8" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="7" unique_id=920592125 instance=ExtResource("5_ls4d1")]
-position = Vector2(720, 208)
-
-[node name="Pickup9" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="8" unique_id=358980330 instance=ExtResource("5_ls4d1")]
-position = Vector2(432, 208)
+item = 4
 
 [node name="NavigationRegion2D" parent="." index="7" unique_id=1015479542]
 navigation_polygon = SubResource("NavigationPolygon_c5oim")

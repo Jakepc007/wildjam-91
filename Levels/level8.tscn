@@ -12,9 +12,11 @@ agent_radius = 20.0
 
 [node name="Level8" unique_id=869268886 instance=ExtResource("1_hnh7c")]
 level_name = "8"
+level_time_sec = 80.0
+required_value = 10000000
 
 [node name="ExitPosition" parent="." index="5" unique_id=1985065076]
-position = Vector2(976, -5064)
+position = Vector2(592, 1008)
 
 [node name="NavigationRegion2D" parent="." index="7" unique_id=1015479542]
 navigation_polygon = SubResource("NavigationPolygon_0fyan")
@@ -94,11 +96,35 @@ position = Vector2(160, -5080)
 
 [node name="Marker2D2" type="Marker2D" parent="Guards/Guard9" index="10" unique_id=65270908]
 top_level = true
-position = Vector2(980, -3360)
+position = Vector2(980, -5080)
 
-[node name="Guard3" parent="Guards" index="6" unique_id=1661856992 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_nq3mb")]
+[node name="Guard10" parent="Guards" index="6" unique_id=1144531804 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_nq3mb")]
+position = Vector2(208, -4864)
+patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
+
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard10" index="9" unique_id=251311103]
+top_level = true
+position = Vector2(160, -4864)
+
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard10" index="10" unique_id=1359030639]
+top_level = true
+position = Vector2(980, -4864)
+
+[node name="Guard11" parent="Guards" index="7" unique_id=315996697 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_nq3mb")]
+position = Vector2(920, -5264)
+patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
+
+[node name="Marker2D" type="Marker2D" parent="Guards/Guard11" index="9" unique_id=893866598]
+top_level = true
+position = Vector2(160, -5264)
+
+[node name="Marker2D2" type="Marker2D" parent="Guards/Guard11" index="10" unique_id=2108716055]
+top_level = true
+position = Vector2(980, -5264)
+
+[node name="Guard3" parent="Guards" index="8" unique_id=1661856992 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_nq3mb")]
 position = Vector2(344, -1512)
-patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), null]
+patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
 [node name="Marker2D" type="Marker2D" parent="Guards/Guard3" index="9" unique_id=966536863]
 top_level = true
@@ -108,9 +134,9 @@ position = Vector2(72, -1512)
 top_level = true
 position = Vector2(1096, -1512)
 
-[node name="Guard6" parent="Guards" index="7" unique_id=1110845936 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_nq3mb")]
+[node name="Guard6" parent="Guards" index="9" unique_id=1110845936 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_nq3mb")]
 position = Vector2(568, -1976)
-patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), null]
+patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
 [node name="Marker2D" type="Marker2D" parent="Guards/Guard6" index="9" unique_id=938657572]
 top_level = true
@@ -120,9 +146,9 @@ position = Vector2(152, -1976)
 top_level = true
 position = Vector2(1120, -1976)
 
-[node name="Guard4" parent="Guards" index="8" unique_id=1082109238 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_nq3mb")]
+[node name="Guard4" parent="Guards" index="10" unique_id=1082109238 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_nq3mb")]
 position = Vector2(824, -2384)
-patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), null]
+patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2")]
 
 [node name="Marker2D" type="Marker2D" parent="Guards/Guard4" index="9" unique_id=920002761]
 top_level = true
@@ -136,6 +162,7 @@ position = Vector2(24, -2384)
 
 [node name="Pickup" parent="Pickups2" index="0" unique_id=1711849754 instance=ExtResource("6_fki3c")]
 position = Vector2(576, -5344)
+item = 7
 
 [node name="Cameras" type="Node2D" parent="." index="10" unique_id=1249251464]
 
