@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjd8r32q75p58"]
 
-[ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="1_iqk3k"]
 [ext_resource type="Script" uid="uid://bq4uc4dkjvr2k" path="res://pickup.gd" id="1_weqpt"]
+[ext_resource type="Texture2D" uid="uid://cp006cjhms7tu" path="res://assets/items/La_Lapin_De_Victoire.png" id="2_weqpt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1bvp3"]
 radius = 24.0
@@ -15,5 +15,4 @@ script = ExtResource("1_weqpt")
 shape = SubResource("CircleShape2D_1bvp3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=997082768]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_iqk3k")
+texture = ExtResource("2_weqpt")

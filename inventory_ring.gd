@@ -15,12 +15,13 @@ var grabbed_pickup = null
 
 var required_value: int = 0
 var condition_fulfilled: bool = false
+var total_inventory_value: int = 0
 
 func _recalculate_condition() -> void:
-	var total_value := 0
+	total_inventory_value = 0
 	for item_type in pickup_item_types.values():
-		total_value += int(ItemStats.get_item(item_type).value)
-	condition_fulfilled = total_value >= required_value
+		total_inventory_value += int(ItemStats.get_item(item_type).value)
+	condition_fulfilled = total_inventory_value >= required_value
 
 func _ready():
 	Global.inventory_ring = self
@@ -46,6 +47,7 @@ func add_pickup(item):
 		randf_range(-50, 50)
 	)
 	add_child(inventory_pickup)
+	inventory_pickup.set_image(ItemStats.get_item(item).image_path)
 	pickup_item_types[inventory_pickup.get_instance_id()] = item
 	pickups.append(inventory_pickup)
 	_recalculate_condition()
@@ -96,6 +98,12 @@ func _process(delta: float):
 func _draw():
 	draw_circle(Vector2.ZERO, 140. + acc * 10., Color(1., 1., 1., 0.2))
 	draw_arc(Vector2.ZERO, 142. + acc * 10., 0., TAU, 53, Color.WHITE, 8.)
+	# value requirement
+	draw_arc(Vector2.ZERO, 120. + acc * 10., PI + 0.6, TAU - 0.6, 53, Color(0.1, 0.1, 0.1), 16.)
+	var value_ratio = clamp(float(total_inventory_value) / float(required_value), 0.0, 1.0) if required_value > 0 else 0.0
+	var arc_offset = 1.9 * (1.0 - value_ratio)
+	draw_arc(Vector2.ZERO, 121. + acc * 10., PI + 0.62, TAU - 0.62 - arc_offset, 53, Color(1.0, 0.1, 0.1), 10.)
+	# draw_arc(Vector2.ZERO, 132. + acc * 10., PI + 0.3, TAU - 0.3, 53, Color.RED, 8.)
 
 func apply_pickup_forces(delta: float):
 	# apply gravity towards the center
