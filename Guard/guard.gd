@@ -19,6 +19,8 @@ class_name Guard
 @onready var point_light_2d: PointLight2D = $DetectionArea/PointLight2D
 @onready var off_screen_indicator: Node2D = $OffScreenIndicator
 @onready var alert: AudioStreamPlayer = $Alert
+@onready var guard_walk_normal: AudioStreamPlayer2D = $WalkNormal
+@onready var guard_walk_aggro: AudioStreamPlayer2D = $WalkAggro
 @export_category("DEBUG")
 @export var DEBUG_PRINT_TRANSITIONS : bool = false ## prints the guard's state transitions to the console
 @export var debug_player : Node2D ## temporary, the target which the guard follows/chases
@@ -68,12 +70,15 @@ func exit_actions(old_state : States, new_state : States):
 		States.CHASE:
 			_investigate_target_location = _last_global_position_detected
 			chase_collision_shape.disabled = true
+			guard_walk_aggro.stop()
 		States.INVESTIGATE_SPOT:
 			navigation_agent_2d.target_desired_distance = _default_navigation_target_radius
 			curious_sprite.visible = false
 			chase_collision_shape.disabled = true
 		States.STARTLE:
 			alert_sprite.visible = false
+		States.PATROL:
+			guard_walk_normal.stop()
 
 ## matches the new guard state and performs its entry logic
 func enter_actions(old_state : States, new_state : States):
@@ -89,6 +94,7 @@ func enter_actions(old_state : States, new_state : States):
 				patrol_points.append(temp_patrol_point)
 				push_warning("guard " + str(self.get_path()) + "has no patrol route")
 			set_navigation_target(patrol_points[0].global_position)
+			guard_walk_normal.play()
 		States.INVESTIGATE_SPOT:
 			curious_sprite.visible = true
 			_time_spent_investigating = 0
@@ -101,6 +107,7 @@ func enter_actions(old_state : States, new_state : States):
 		States.CHASE:
 			line_of_sight_lost_time = 0.0
 			chase_collision_shape.disabled = false
+			guard_walk_aggro.play()
 
 func player_in_catch_radius() -> bool:
 	return catch_area.get_overlapping_bodies().size() > 0

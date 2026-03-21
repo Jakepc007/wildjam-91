@@ -4,9 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="1_rpvx7"]
 [ext_resource type="Script" uid="uid://byikjj4yiuvwq" path="res://SecurityCamera/line_of_sight_detector.gd" id="2_dv7v6"]
 [ext_resource type="Texture2D" uid="uid://cpc3c8gefsgak" path="res://SecurityCamera/cone_mask.png" id="4_kitn5"]
+[ext_resource type="Texture2D" uid="uid://crf10sam6dxtr" path="res://assets/transparent_cong.png" id="4_t1ias"]
 [ext_resource type="Texture2D" uid="uid://b2g8g02nakxw" path="res://SecurityCamera/exclamation_point.png" id="5_l5q8q"]
 [ext_resource type="Texture2D" uid="uid://21m18yyxd7gp" path="res://Guard/question_mark.png" id="6_puoqm"]
+[ext_resource type="Texture2D" uid="uid://bf4h3ordxu0y1" path="res://assets/vector_blackIcons.svg" id="7_aka8x"]
 [ext_resource type="AudioStream" uid="uid://bu03jrnouwwgr" path="res://assets/Audio/alert.ogg" id="7_m4rwt"]
+[ext_resource type="Texture2D" uid="uid://bhctyqxwxpd47" path="res://assets/vector_whiteIcons.svg" id="8_0cuol"]
+[ext_resource type="AudioStream" uid="uid://bdn5bikb8sum" path="res://assets/Audio/Guard Walk Aggro.ogg" id="11_drwav"]
+[ext_resource type="AudioStream" uid="uid://d2vpa71mxjkrm" path="res://assets/Audio/Guard Walk Normal.ogg" id="12_jli06"]
 
 [sub_resource type="GDScript" id="GDScript_xdy8g"]
 script/source = "extends Area2D
@@ -93,6 +98,7 @@ func _place_icon():
 	x = x * view_rect.size.x/2.0
 	y = y * view_rect.size.y/2.0
 	icon.global_position = viewport_center - Vector2(x,y) * 0.95
+	icon.rotation = atan2(y,x) + PI/2
 	_should_be_displayed = not outside_display_threshold
 "
 
@@ -107,6 +113,7 @@ line_of_sight_detector = NodePath("LineOfSightDetector")
 navigation_agent_2d = NodePath("NavigationAgent2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122217298]
+z_index = 1
 position = Vector2(0, -29)
 texture = ExtResource("1_rpvx7")
 region_enabled = true
@@ -140,6 +147,13 @@ collision_mask = 3
 [node name="RayCast2D2" type="RayCast2D" parent="DetectionArea" unique_id=1288929782]
 position = Vector2(33, 24)
 collision_mask = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="DetectionArea" unique_id=1164755107]
+y_sort_enabled = true
+position = Vector2(16.300293, -3)
+scale = Vector2(0.88565093, 1)
+texture = ExtResource("4_t1ias")
+offset = Vector2(100, 0)
 
 [node name="WorldCollision" type="CollisionShape2D" parent="." unique_id=1237471458]
 position = Vector2(0, -12)
@@ -178,8 +192,18 @@ script = SubResource("GDScript_puoqm")
 visible = false
 z_index = 1
 material = SubResource("CanvasItemMaterial_puoqm")
-scale = Vector2(0.335, 0.335)
-texture = ExtResource("1_rpvx7")
+scale = Vector2(0.42105266, 0.44444442)
+texture = ExtResource("7_aka8x")
+region_enabled = true
+region_rect = Rect2(352, 3, 38, 27)
+
+[node name="Sprite2D" type="Sprite2D" parent="OffScreenIndicator/Icon" unique_id=1290088747]
+z_index = -1
+position = Vector2(0, 1.6875002)
+scale = Vector2(1.4114286, 1.534091)
+texture = ExtResource("8_0cuol")
+region_enabled = true
+region_rect = Rect2(353, 6, 35, 22)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="OffScreenIndicator" unique_id=361532483]
 z_index = 1
@@ -189,3 +213,11 @@ rect = Rect2(-10, -34, 21, 54)
 [node name="Alert" type="AudioStreamPlayer" parent="." unique_id=1005258633]
 stream = ExtResource("7_m4rwt")
 bus = &"Sfx"
+
+[node name="WalkNormal" type="AudioStreamPlayer2D" parent="." unique_id=1949663877]
+stream = ExtResource("12_jli06")
+attenuation = 1.2745609
+
+[node name="WalkAggro" type="AudioStreamPlayer2D" parent="." unique_id=26486796]
+stream = ExtResource("11_drwav")
+attenuation = 1.5691684
