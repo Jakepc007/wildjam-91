@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cpc3c8gefsgak" path="res://SecurityCamera/cone_mask.png" id="4_kitn5"]
 [ext_resource type="Texture2D" uid="uid://b2g8g02nakxw" path="res://SecurityCamera/exclamation_point.png" id="5_l5q8q"]
 [ext_resource type="Texture2D" uid="uid://21m18yyxd7gp" path="res://Guard/question_mark.png" id="6_puoqm"]
+[ext_resource type="AudioStream" uid="uid://bu03jrnouwwgr" path="res://assets/Audio/alert.ogg" id="7_m4rwt"]
 
 [sub_resource type="GDScript" id="GDScript_xdy8g"]
 script/source = "extends Area2D
@@ -183,3 +184,7 @@ texture = ExtResource("1_rpvx7")
 z_index = 1
 position = Vector2(0, -23)
 rect = Rect2(-10, -34, 21, 54)
+
+[node name="Alert" type="AudioStreamPlayer" parent="." unique_id=1005258633]
+stream = ExtResource("7_m4rwt")
+bus = &"Sfx"

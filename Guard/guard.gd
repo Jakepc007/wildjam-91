@@ -18,6 +18,7 @@ class_name Guard
 @onready var detection_area: Area2D = $DetectionArea
 @onready var point_light_2d: PointLight2D = $DetectionArea/PointLight2D
 @onready var off_screen_indicator: Node2D = $OffScreenIndicator
+@onready var alert: AudioStreamPlayer = $Alert
 @export_category("DEBUG")
 @export var DEBUG_PRINT_TRANSITIONS : bool = false ## prints the guard's state transitions to the console
 @export var debug_player : Node2D ## temporary, the target which the guard follows/chases
@@ -96,6 +97,7 @@ func enter_actions(old_state : States, new_state : States):
 			chase_collision_shape.disabled = false
 		States.STARTLE:
 			alert_sprite.visible = true
+			alert.play(0)
 		States.CHASE:
 			line_of_sight_lost_time = 0.0
 			chase_collision_shape.disabled = false
