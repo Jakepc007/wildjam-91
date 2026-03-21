@@ -37,6 +37,7 @@ position = Vector2(1464, -272)
 
 [node name="Pickup7" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="6" unique_id=1646902279 instance=ExtResource("5_mx85b")]
 position = Vector2(1456, 208)
+item = 1
 
 [node name="Pickup8" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="7" unique_id=2119888536 instance=ExtResource("5_mx85b")]
 position = Vector2(720, 208)
