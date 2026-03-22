@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b2g8g02nakxw" path="res://SecurityCamera/exclamation_point.png" id="3_6k7dd"]
 [ext_resource type="Script" uid="uid://byikjj4yiuvwq" path="res://SecurityCamera/line_of_sight_detector.gd" id="3_8xfrv"]
 [ext_resource type="Texture2D" uid="uid://cpc3c8gefsgak" path="res://SecurityCamera/cone_mask.png" id="5_6k7dd"]
+[ext_resource type="AudioStream" uid="uid://bu03jrnouwwgr" path="res://assets/Audio/alert.ogg" id="6_s8ink"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qqjab"]
 points = PackedVector2Array(0, 0, -60, 198, 58, 197)
@@ -98,3 +99,7 @@ rotation = 1.5707964
 scale = Vector2(1.7119406, 1.384722)
 range_z_min = -1
 texture = ExtResource("5_6k7dd")
+
+[node name="Alert" type="AudioStreamPlayer" parent="." unique_id=732602731]
+stream = ExtResource("6_s8ink")
+bus = &"Sfx"
