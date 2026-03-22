@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://chvpqpus2gh15"]
 
 [ext_resource type="Script" uid="uid://c02856oxm7ve8" path="res://Guard/guard.gd" id="1_aoykg"]
-[ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="1_rpvx7"]
+[ext_resource type="Texture2D" uid="uid://34k5f6l3bu62" path="res://assets/Guard.svg" id="2_drwav"]
 [ext_resource type="Script" uid="uid://byikjj4yiuvwq" path="res://SecurityCamera/line_of_sight_detector.gd" id="2_dv7v6"]
 [ext_resource type="Texture2D" uid="uid://cpc3c8gefsgak" path="res://SecurityCamera/cone_mask.png" id="4_kitn5"]
 [ext_resource type="Texture2D" uid="uid://crf10sam6dxtr" path="res://assets/transparent_cong.png" id="4_t1ias"]
@@ -114,9 +114,8 @@ navigation_agent_2d = NodePath("NavigationAgent2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1122217298]
 z_index = 1
-position = Vector2(0, -29)
-texture = ExtResource("1_rpvx7")
-region_enabled = true
+position = Vector2(0, -52)
+texture = ExtResource("2_drwav")
 region_rect = Rect2(29.011353, 48.138985, 26.12442, 57.380394)
 
 [node name="DetectionArea" type="Area2D" parent="." unique_id=538829086]
