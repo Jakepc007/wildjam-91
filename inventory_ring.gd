@@ -15,6 +15,7 @@ var pickups := []
 var pickup_item_types := {}  # instance_id -> ItemStats.Item
 var closest_pickup_to_mouse = null
 var grabbed_pickup = null
+var hovered_pickup = null
 
 var dropped_pickups := []
 
@@ -91,8 +92,11 @@ func _process(delta: float):
 		if closest_pickup_to_mouse == pickup:
 			if dist < MIN_PICKUP_HOVER_DISTANCE:
 				pickup.modulate.a = 0.8
+				hovered_pickup = pickup
 			else:
 				pickup.modulate.a = 1.
+				if hovered_pickup == pickup:
+					hovered_pickup = null
 		else:
 			pickup.modulate.a = 1.
 
@@ -139,6 +143,30 @@ func _draw():
 		var font_size := 32
 		var text_width := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
 		draw_string(font, Vector2(-text_width / 2.0, -240.), text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color(1., 1., 1., 1.))
+
+	if hovered_pickup and ring_alpha > 0.0:
+		var item_type = pickup_item_types.get(hovered_pickup.get_instance_id())
+		if item_type != null:
+			var stats = ItemStats.get_item(item_type)
+			if stats:
+				var font := ThemeDB.fallback_font
+				var fs := 18
+				var icon_s := Vector2(fs, fs)
+				var padding := Vector2(10., 8.)
+				var line_gap := 6.
+				var row_h := float(fs) + line_gap
+				var tooltip_h := padding.y * 2. + row_h * 2. - line_gap
+				var tooltip_w := 160.
+				var tip_pos: Vector2 = hovered_pickup.position + Vector2(-tooltip_w / 2., -80.)
+				draw_rect(Rect2(tip_pos, Vector2(tooltip_w, tooltip_h)), Color(0., 0., 0., 0.75 * ring_alpha), true, 0.)
+				# weight row
+				var row1 := tip_pos + Vector2(padding.x, padding.y + fs)
+				draw_texture_rect(ICON_WEIGHT, Rect2(row1 - Vector2(0., fs), icon_s), false, Color(1., 1., 1., ring_alpha))
+				draw_string(font, row1 + Vector2(icon_s.x + 4., 0.), "%s lbs" % stats.weight, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, Color(1., 1., 1., ring_alpha))
+				# value row
+				var row2 := row1 + Vector2(0., row_h)
+				draw_texture_rect(ICON_MONEY, Rect2(row2 - Vector2(0., fs), icon_s), false, Color(1., 1., 1., ring_alpha))
+				draw_string(font, row2 + Vector2(icon_s.x + 4., 0.), "$%s" % stats.value, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, Color(1., 1., 1., ring_alpha))
 
 func apply_pickup_forces(delta: float):
 	# apply gravity towards the center
