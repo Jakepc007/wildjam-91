@@ -75,14 +75,16 @@ func _process(delta: float) -> void:
 
 func _go_to_level_summary():
 	var total_value := 0
+	var item_list: Array[ItemStats.Item] = []
 	for pickup in player.inventory:
 		var stats = ItemStats.get_item(pickup.item)
 		total_value += int(stats.value)
+		item_list.append(pickup.item)
 	Global.level_stats = {
 		"level_name": level_name,
 		"time_left": _time_left,
 		"value": total_value,
-		"items": player.inventory.duplicate(),
+		"items": item_list,
 		"next_scene": next_scene,
 	}
 	Global.scene_manager.switch_scene_with_fade(LEVEL_SUMMARY_SCENE)

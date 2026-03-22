@@ -16,11 +16,14 @@ var grabbed_pickup = null
 var required_value: int = 0
 var condition_fulfilled: bool = false
 var total_inventory_value: int = 0
+var total_inventory_weight: float = 0.0
 
 func _recalculate_condition() -> void:
 	total_inventory_value = 0
+	total_inventory_weight = 0.0
 	for item_type in pickup_item_types.values():
 		total_inventory_value += int(ItemStats.get_item(item_type).value)
+		total_inventory_weight += ItemStats.get_item(item_type).weight
 	condition_fulfilled = total_inventory_value >= required_value
 
 func _ready():
@@ -98,11 +101,17 @@ func _process(delta: float):
 func _draw():
 	draw_circle(Vector2.ZERO, 140. + acc * 10., Color(1., 1., 1., 0.2))
 	draw_arc(Vector2.ZERO, 142. + acc * 10., 0., TAU, 53, Color.WHITE, 8.)
-	# value requirement
+	# value requirement (bottom)
 	draw_arc(Vector2.ZERO, 120. + acc * 10., PI + 0.6, TAU - 0.6, 53, Color(0.1, 0.1, 0.1), 16.)
 	var value_ratio = clamp(float(total_inventory_value) / float(required_value), 0.0, 1.0) if required_value > 0 else 0.0
 	var arc_offset = 1.9 * (1.0 - value_ratio)
 	draw_arc(Vector2.ZERO, 121. + acc * 10., PI + 0.62, TAU - 0.62 - arc_offset, 53, Color(1.0, 0.1, 0.1), 10.)
+	# weight capacity (top)
+	draw_arc(Vector2.ZERO, 120. + acc * 10., 0.6, PI - 0.6, 53, Color(0.1, 0.1, 0.1), 16.)
+	var max_weight := float(Player.MAX_INVENTORY_CAPACITY)
+	var weight_ratio = clamp(total_inventory_weight / max_weight, 0.0, 1.0)
+	var weight_offset = 1.9 * (1.0 - weight_ratio)
+	draw_arc(Vector2.ZERO, 121. + acc * 10., 0.62 + weight_offset, PI - 0.62, 53, Color(0.2, 0.6, 1.0), 10.)
 	# draw_arc(Vector2.ZERO, 132. + acc * 10., PI + 0.3, TAU - 0.3, 53, Color.RED, 8.)
 
 func apply_pickup_forces(delta: float):
