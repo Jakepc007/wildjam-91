@@ -6,5 +6,5 @@ func _ready() -> void:
 	_on_visibility_changed()
 
 func _on_visibility_changed() -> void:
-	if visible:
+	if visible and button:
 		button.grab_focus()
