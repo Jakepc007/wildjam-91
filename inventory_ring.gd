@@ -8,6 +8,7 @@ class_name InventoryRing extends Node2D
 const MIN_PICKUP_HOVER_DISTANCE = 32.
 
 var acc := 0.
+var ring_alpha := 0.0
 var pickups := []
 var pickup_item_types := {}  # instance_id -> ItemStats.Item
 var closest_pickup_to_mouse = null
@@ -28,6 +29,7 @@ func _recalculate_condition() -> void:
 
 func _ready():
 	Global.inventory_ring = self
+	modulate.a = 1.0
 
 func connect_to_player():
 	if is_instance_valid(player):
@@ -88,10 +90,12 @@ func _process(delta: float):
 
 	if Input.is_action_pressed("inventory"):
 		acc = min(acc + delta * 50., TAU)
-		modulate.a = min(modulate.a + delta * 10., 1.)
+		ring_alpha = min(ring_alpha + delta * 10., 1.)
 	else:
 		acc = max(acc - delta * 10., 0.)
-		modulate.a = max(modulate.a - delta * 5., 0.)
+		ring_alpha = max(ring_alpha - delta * 5., 0.)
+	for pickup in pickups:
+		pickup.modulate.a = ring_alpha
 
 	if Global.exit_position:
 		var to_exit := Global.exit_position - player.position
@@ -99,20 +103,27 @@ func _process(delta: float):
 		#print("global.exit position =", Global.exit_position)
 
 func _draw():
-	draw_circle(Vector2.ZERO, 140. + acc * 10., Color(1., 1., 1., 0.2))
-	draw_arc(Vector2.ZERO, 142. + acc * 10., 0., TAU, 53, Color.WHITE, 8.)
-	# value requirement (bottom)
-	draw_arc(Vector2.ZERO, 120. + acc * 10., PI + 0.6, TAU - 0.6, 53, Color(0.1, 0.1, 0.1), 16.)
+	draw_circle(Vector2.ZERO, 140. + acc * 10., Color(1., 1., 1., 0.2 * ring_alpha))
+	draw_arc(Vector2.ZERO, 142. + acc * 10., 0., TAU, 53, Color(1., 1., 1., ring_alpha), 8.)
+	var bar_alpha: float = lerp(0.35, 1.0, ring_alpha)
+	# value requirement (left)
+	draw_arc(Vector2.ZERO, 120. + acc * 10., PI/2 + 0.6, 3*PI/2 - 0.6, 53, Color(0.1, 0.1, 0.1, bar_alpha), 16.)
 	var value_ratio = clamp(float(total_inventory_value) / float(required_value), 0.0, 1.0) if required_value > 0 else 0.0
 	var arc_offset = 1.9 * (1.0 - value_ratio)
-	draw_arc(Vector2.ZERO, 121. + acc * 10., PI + 0.62, TAU - 0.62 - arc_offset, 53, Color(1.0, 0.1, 0.1), 10.)
-	# weight capacity (top)
-	draw_arc(Vector2.ZERO, 120. + acc * 10., 0.6, PI - 0.6, 53, Color(0.1, 0.1, 0.1), 16.)
+	draw_arc(Vector2.ZERO, 121. + acc * 10., PI/2 + 0.62, 3*PI/2 - 0.62 - arc_offset, 53, Color(1.0, 0.1, 0.1, bar_alpha), 10.)
+	# weight capacity (right)
+	draw_arc(Vector2.ZERO, 120. + acc * 10., -PI/2 + 0.6, PI/2 - 0.6, 53, Color(0.1, 0.1, 0.1, bar_alpha), 16.)
 	var max_weight := float(Player.MAX_INVENTORY_CAPACITY)
 	var weight_ratio = clamp(total_inventory_weight / max_weight, 0.0, 1.0)
 	var weight_offset = 1.9 * (1.0 - weight_ratio)
-	draw_arc(Vector2.ZERO, 121. + acc * 10., 0.62 + weight_offset, PI - 0.62, 53, Color(0.2, 0.6, 1.0), 10.)
-	# draw_arc(Vector2.ZERO, 132. + acc * 10., PI + 0.3, TAU - 0.3, 53, Color.RED, 8.)
+	draw_arc(Vector2.ZERO, 121. + acc * 10., -PI/2 + 0.62, PI/2 - 0.62 - weight_offset, 53, Color(0.2, 0.6, 1.0, bar_alpha), 10.)
+
+	if condition_fulfilled:
+		var font := ThemeDB.fallback_font
+		var text := "Head for the exit!"
+		var font_size := 32
+		var text_width := font.get_string_size(text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size).x
+		draw_string(font, Vector2(-text_width / 2.0, -240.), text, HORIZONTAL_ALIGNMENT_LEFT, -1, font_size, Color(1., 1., 1., 1.))
 
 func apply_pickup_forces(delta: float):
 	# apply gravity towards the center
