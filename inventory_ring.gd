@@ -3,6 +3,8 @@ class_name InventoryRing extends Node2D
 @onready var inventory_pickup_scene := preload("res://inventory_pickup.tscn")
 @onready var pickup_scene := preload("res://pickup.tscn")
 @onready var exit_door_sprite := $ExitDoorSprite
+const ICON_MONEY := preload("res://assets/icons/money.png")
+const ICON_WEIGHT := preload("res://assets/icons/weight.png")
 @export var player: Player = null
 
 const MIN_PICKUP_HOVER_DISTANCE = 32.
@@ -13,6 +15,8 @@ var pickups := []
 var pickup_item_types := {}  # instance_id -> ItemStats.Item
 var closest_pickup_to_mouse = null
 var grabbed_pickup = null
+
+var dropped_pickups := []
 
 var required_value: int = 0
 var condition_fulfilled: bool = false
@@ -38,6 +42,10 @@ func connect_to_player():
 		pickup.queue_free()
 	pickups.clear()
 	pickup_item_types.clear()
+	for pickup in dropped_pickups:
+		if is_instance_valid(pickup):
+			pickup.queue_free()
+	dropped_pickups.clear()
 	Global.player.add_pickup.connect(add_pickup)
 	player = Global.player
 	required_value = Global.required_value
@@ -98,8 +106,10 @@ func _process(delta: float):
 		pickup.modulate.a = ring_alpha
 
 	if Global.exit_position:
-		var to_exit := Global.exit_position - player.position
-		exit_door_sprite.position = to_exit.normalized() * min(to_exit.length(), 240.)
+		exit_door_sprite.visible = condition_fulfilled
+		if condition_fulfilled:
+			var to_exit := Global.exit_position - player.position
+			exit_door_sprite.position = to_exit.normalized() * min(to_exit.length(), 240.)
 		#print("global.exit position =", Global.exit_position)
 
 func _draw():
@@ -117,6 +127,11 @@ func _draw():
 	var weight_ratio = clamp(total_inventory_weight / max_weight, 0.0, 1.0)
 	var weight_offset = 1.9 * (1.0 - weight_ratio)
 	draw_arc(Vector2.ZERO, 121. + acc * 10., -PI/2 + 0.62, PI/2 - 0.62 - weight_offset, 53, Color(0.2, 0.6, 1.0, bar_alpha), 10.)
+
+	var icon_size := Vector2(90, 90)
+	var icon_color := Color(1., 1., 1., bar_alpha)
+	draw_texture_rect(ICON_MONEY, Rect2(Vector2(-120. - acc * 10., -40.), icon_size), false, icon_color)
+	draw_texture_rect(ICON_WEIGHT, Rect2(Vector2(26. + acc * 10., -40.), icon_size), false, icon_color)
 
 	if condition_fulfilled:
 		var font := ThemeDB.fallback_font
@@ -178,5 +193,6 @@ func _input(event: InputEvent):
 					randf_range(-20, 20)
 				)
 				get_tree().root.add_child(pickup)
+				dropped_pickups.append(pickup)
 
 		grabbed_pickup = null
