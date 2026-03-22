@@ -13,6 +13,15 @@ const MAX_INVENTORY_CAPACITY := 100.
 
 @export var inventory_ring: InventoryRing = null
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+var _desired_anim : StringName : # set this to control which anim plays. Handles spam
+	set(x) : 
+		if not animated_sprite_2d.sprite_frames.has_animation(x):
+			return
+		if x != _desired_anim:
+			animated_sprite_2d.play(x)
+		_desired_anim = x
+
 var overlapping_pickups: Array = []
 var inventory: Array = []
 var current_inventory_weight := 0.0
@@ -20,6 +29,7 @@ var current_inventory_weight := 0.0
 static var closest_pickup: Pickup = null
 
 func _physics_process(delta: float):
+	decide_animation()
 	if Input.is_action_pressed("left"):
 		velocity.x -= VELOCITY_ACC
 	if Input.is_action_pressed("right"):
@@ -78,3 +88,26 @@ func on_pickup_area_entered(area: Area2D):
 
 func on_pickup_area_exited(area: Area2D):
 	overlapping_pickups.erase(area)
+
+func decide_animation():
+	if velocity.length() < 15:
+		_desired_anim = "Front_Idle"
+		return
+	var angle_range := PI/4
+	var correct_dir = func(vec,vel,_range):
+		var angle = vel.angle_to(vec)
+		return -_range < angle and angle < _range
+		pass
+	
+	if correct_dir.call(velocity,Vector2.RIGHT,angle_range):
+		_desired_anim = "Side_Walk"
+		animated_sprite_2d.scale.x = 1
+	elif correct_dir.call(velocity,Vector2.LEFT,angle_range):
+		animated_sprite_2d.scale.x = -1
+		_desired_anim = "Side_Walk"
+	elif correct_dir.call(velocity,Vector2.UP,angle_range):
+		_desired_anim = "Back_Walk"
+		animated_sprite_2d.scale.x = 1
+	elif correct_dir.call(velocity,Vector2.DOWN,angle_range):
+		_desired_anim = "Front_Walk"
+		animated_sprite_2d.scale.x = 1
