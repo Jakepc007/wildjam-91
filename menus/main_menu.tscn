@@ -9,6 +9,8 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_pwbes"]
 font_size = 52
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control" unique_id=977942290]
 z_index = 1
@@ -62,7 +64,7 @@ offset_top = 30.0
 offset_bottom = 161.0
 grow_horizontal = 2
 theme = ExtResource("1_yjgyn")
-text = "Title"
+text = "Museum Heist"
 label_settings = SubResource("LabelSettings_pwbes")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -83,9 +85,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -52.0
-offset_top = -190.0
+offset_top = -150.0
 offset_right = 52.0
-offset_bottom = 8.0
+offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("1_yjgyn")
@@ -129,6 +131,7 @@ text = "Options"
 script = ExtResource("6_a63lr")
 
 [node name="MarginContainer4" type="MarginContainer" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=2019268818]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_yjgyn")
