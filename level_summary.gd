@@ -22,11 +22,20 @@ func _process(delta: float) -> void:
 	camera.position.x += delta * 100.
 
 func populate_stats(level_name: String, time_left: float, value: int, items: Array):
-	level_complete_label.text = level_name if level_name != "" else "Level Complete!"
+	level_complete_label.text = "Level %s Complete!" % level_name if level_name != "" else "Level Complete!"
 	var minutes = int(time_left) / 60
 	var seconds = int(time_left) % 60
 	time_left_label.text = "%02d:%02d" % [minutes, seconds]
-	value_label.text = str(value)
+	value_label.text = "$" + format_number(value)
+
+func format_number(n: int) -> String:
+	var s = str(n)
+	var result = ""
+	for i in s.length():
+		if i > 0 and (s.length() - i) % 3 == 0:
+			result += ","
+		result += s[i]
+	return result
 
 func _on_continue_pressed():
 	var next_scene = Global.level_stats.get("next_scene", null)
