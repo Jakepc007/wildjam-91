@@ -14,12 +14,17 @@ font_size = 48
 shadow_color = Color(0, 0, 0, 0.7490196)
 shadow_offset = Vector2(2, 2)
 
+<<<<<<< HEAD
 [sub_resource type="GDScript" id="GDScript_ng3q2"]
 script/source = "extends Button
 
 func _ready() -> void:
 	grab_focus()
 "
+=======
+[sub_resource type="Theme" id="Theme_ng3q2"]
+Button/font_sizes/font_size = 48
+>>>>>>> 1ec1b56870c228aecf5821ad46d3915798c1b85f
 
 [node name="LevelSummary" type="Node2D" unique_id=1531053828]
 script = ExtResource("1_ng3q2")
@@ -37,9 +42,9 @@ label_settings = SubResource("LabelSettings_ng3q2")
 horizontal_alignment = 1
 
 [node name="Stats" type="VBoxContainer" parent="CanvasLayer" unique_id=20387412]
-offset_left = 8.0
+offset_left = 56.0
 offset_top = 80.0
-offset_right = 584.0
+offset_right = 632.0
 offset_bottom = 380.0
 size_flags_horizontal = 6
 size_flags_vertical = 10
@@ -81,16 +86,17 @@ label_settings = SubResource("LabelSettings_ng3q2")
 
 [node name="ItemsContainer" type="HFlowContainer" parent="CanvasLayer" unique_id=668954986]
 unique_name_in_owner = true
-offset_left = 432.0
+offset_left = 480.0
 offset_top = 96.0
-offset_right = 976.0
+offset_right = 936.0
 offset_bottom = 544.0
 
 [node name="Button" type="Button" parent="CanvasLayer" unique_id=2042383805]
-offset_left = 440.0
-offset_top = 512.0
-offset_right = 519.0
-offset_bottom = 543.0
+offset_left = 64.0
+offset_top = 416.0
+offset_right = 384.0
+offset_bottom = 512.0
+theme = SubResource("Theme_ng3q2")
 text = "Continue"
 script = SubResource("GDScript_ng3q2")
 

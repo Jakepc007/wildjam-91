@@ -75,6 +75,10 @@ func _process(delta: float) -> void:
 			return
 
 func _go_to_level_summary():
+	for pickup in Global.inventory_ring.dropped_pickups:
+		if is_instance_valid(pickup):
+			pickup.queue_free()
+	Global.inventory_ring.dropped_pickups.clear()
 	var total_value := 0
 	var item_list: Array[ItemStats.Item] = []
 	for pickup in player.inventory:
