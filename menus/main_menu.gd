@@ -2,7 +2,7 @@ extends Control
 
 @export var level_1 : PackedScene
 @export var options_menu : PackedScene
-@onready var new_game: Button = $MenuContainer/MenuButtons/Control/VBoxContainer/NewGame
+@onready var new_game: Button = $MenuContainer/MenuButtons/Control/VBoxContainer/MarginContainer/NewGame
 
 func _on_new_game_pressed() -> void:
 	if Global.scene_manager:

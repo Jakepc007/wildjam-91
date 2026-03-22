@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://0nqtiqqtsu" path="res://menus/audio_manager.gd" id="1_edu86"]
 [ext_resource type="AudioStream" uid="uid://drrgsnxwfygcq" path="res://assets/Audio/menu_theme.ogg" id="2_sbtfb"]
 [ext_resource type="AudioStream" uid="uid://d1wpodslblim0" path="res://assets/Audio/uh_oh_buddy_full_track.ogg" id="3_8xec1"]
+[ext_resource type="AudioStream" uid="uid://bcv134c5t0hg4" path="res://assets/Audio/maybe_next_time.ogg" id="4_8xec1"]
 
 [node name="AudioManager" type="Node" unique_id=758442812]
 process_mode = 3
@@ -19,3 +20,7 @@ unique_name_in_owner = true
 stream = ExtResource("2_sbtfb")
 bus = &"Music"
 parameters/looping = true
+
+[node name="MaybeNextTime" type="AudioStreamPlayer" parent="." unique_id=1983103017]
+unique_name_in_owner = true
+stream = ExtResource("4_8xec1")
