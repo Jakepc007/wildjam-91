@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pivot_offset = size/2
-	if is_hovered():
+	if is_hovered() or has_focus():
 		target_scale = 1.05
 	else:
 		target_scale = 1
