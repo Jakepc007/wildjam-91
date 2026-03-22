@@ -75,33 +75,54 @@ theme = ExtResource("1_yjgyn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuContainer/MenuButtons/Control" unique_id=324082368]
 layout_mode = 0
-offset_left = 427.0
+offset_left = 433.0
 offset_top = 223.0
-offset_right = 520.0
+offset_right = 518.0
 offset_bottom = 405.0
 theme = ExtResource("1_yjgyn")
 alignment = 1
 
-[node name="NewGame" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=162601857]
+[node name="MarginContainer" type="MarginContainer" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=314625504]
 layout_mode = 2
-theme = ExtResource("1_yjgyn")
-text = "New Game"
+size_flags_vertical = 3
 
-[node name="Continue" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=751465374]
+[node name="NewGame" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer/MarginContainer" unique_id=162601857]
 layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_yjgyn")
+text = "Start"
+
+[node name="MarginContainer2" type="MarginContainer" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=1658796010]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Continue" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer/MarginContainer2" unique_id=751465374]
+layout_mode = 2
+size_flags_vertical = 4
 theme = ExtResource("1_yjgyn")
 text = "Continue"
 
-[node name="Options" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=490044059]
+[node name="MarginContainer3" type="MarginContainer" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=1867095855]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Options" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer/MarginContainer3" unique_id=490044059]
+layout_mode = 2
+size_flags_vertical = 4
 theme = ExtResource("1_yjgyn")
 text = "Options"
 
-[node name="Exit" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=467810622]
+[node name="MarginContainer4" type="MarginContainer" parent="MenuContainer/MenuButtons/Control/VBoxContainer" unique_id=2019268818]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Exit" type="Button" parent="MenuContainer/MenuButtons/Control/VBoxContainer/MarginContainer4" unique_id=467810622]
+layout_mode = 2
+size_flags_vertical = 4
 theme = ExtResource("1_yjgyn")
 text = "Exit"
 
-[connection signal="pressed" from="MenuContainer/MenuButtons/Control/VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="pressed" from="MenuContainer/MenuButtons/Control/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="MenuContainer/MenuButtons/Control/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuButtons/Control/VBoxContainer/MarginContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuButtons/Control/VBoxContainer/MarginContainer3/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MenuContainer/MenuButtons/Control/VBoxContainer/MarginContainer4/Exit" to="." method="_on_exit_pressed"]

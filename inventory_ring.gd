@@ -56,7 +56,7 @@ func add_pickup(item):
 	_recalculate_condition()
 
 func _process(delta: float):
-	print("condition_fulfilled? %s" % condition_fulfilled)
+	#print("condition_fulfilled? %s" % condition_fulfilled)
 	apply_pickup_forces(delta)
 	queue_redraw()
 	#var viewport_mouse_position = get_viewport().get_mouse_position() - (Vector2(480, 320))
@@ -96,7 +96,7 @@ func _process(delta: float):
 	if Global.exit_position:
 		var to_exit := Global.exit_position - player.position
 		exit_door_sprite.position = to_exit.normalized() * min(to_exit.length(), 240.)
-		print("global.exit position =", Global.exit_position)
+		#print("global.exit position =", Global.exit_position)
 
 func _draw():
 	draw_circle(Vector2.ZERO, 140. + acc * 10., Color(1., 1., 1., 0.2))

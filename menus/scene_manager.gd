@@ -23,6 +23,12 @@ const _out_transition_anims : Dictionary[OutTransitionEffects, String] = {
 	OutTransitionEffects.WIPE_OUT : "wipe_out"
 }
 var _current_scene : Node
+var _current_packed_scene : PackedScene : 
+	set(x) :
+		if x != _current_packed_scene:
+			_last_packed_scene = _current_packed_scene
+		_current_packed_scene = x
+var _last_packed_scene : PackedScene
 
 func _ready() -> void:
 	Global.scene_manager = self
@@ -40,6 +46,7 @@ func switch_scene(scene: PackedScene):
 		animation_player.play("fade_in")
 
 	_current_scene = new_scene
+	_current_packed_scene = scene
 	add_child(_current_scene)
 
 
@@ -69,3 +76,17 @@ func switch_scene_with_fade(scene : PackedScene, \
 func remove_current_scene():
 	if _current_scene:
 		remove_child(_current_scene)
+
+func reload_current_scene(with_fade : bool = false):
+	if with_fade:
+		switch_scene_with_fade(_current_packed_scene)
+	else:
+		switch_scene(_current_packed_scene)
+
+func reload_last_scene(with_fade : bool = false):
+	if not _last_packed_scene:
+		return
+	if with_fade:
+		switch_scene_with_fade(_last_packed_scene)
+	else:
+		switch_scene(_last_packed_scene)
