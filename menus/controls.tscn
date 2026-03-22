@@ -3,6 +3,15 @@
 [ext_resource type="Script" uid="uid://y4xfaejjilsc" path="res://input_changer.gd" id="1_1nrlj"]
 [ext_resource type="Script" uid="uid://cef57gf2xe1j7" path="res://menus/controls.gd" id="1_mxg8n"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxg8n"]
+bg_color = Color(0.31431612, 0.31431612, 0.31431603, 1)
+
+[sub_resource type="Theme" id="Theme_5o1hq"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_mxg8n")
+Button/styles/normal = SubResource("StyleBoxFlat_mxg8n")
+
 [node name="Controls" type="MarginContainer" unique_id=811513535]
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,6 +44,7 @@ custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../../../Left/HBoxContainer/Button")
 focus_next = NodePath(".")
+theme = SubResource("Theme_5o1hq")
 script = ExtResource("1_1nrlj")
 action = "up"
 
@@ -58,6 +68,7 @@ focus_neighbor_top = NodePath("../../../Up/HBoxContainer/Button")
 focus_neighbor_bottom = NodePath("../../../Down/HBoxContainer/Button")
 focus_next = NodePath("../../../Down/HBoxContainer/Button")
 focus_previous = NodePath("../../../Up/HBoxContainer/Button")
+theme = SubResource("Theme_5o1hq")
 script = ExtResource("1_1nrlj")
 action = "left"
 
@@ -81,6 +92,7 @@ focus_neighbor_top = NodePath("../../../Left/HBoxContainer/Button")
 focus_neighbor_bottom = NodePath("../../../Right/HBoxContainer/Button")
 focus_next = NodePath("../../../Right/HBoxContainer/Button")
 focus_previous = NodePath("../../../Left/HBoxContainer/Button")
+theme = SubResource("Theme_5o1hq")
 script = ExtResource("1_1nrlj")
 action = "down"
 
@@ -100,6 +112,7 @@ text = "Right"
 [node name="Button" type="Button" parent="VBoxContainer/Right/HBoxContainer" unique_id=784718229]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+theme = SubResource("Theme_5o1hq")
 script = ExtResource("1_1nrlj")
 action = "right"
 
@@ -123,6 +136,7 @@ focus_neighbor_top = NodePath("../../../Right/HBoxContainer/Button")
 focus_neighbor_bottom = NodePath("../../../Inventory/HBoxContainer/Button")
 focus_next = NodePath("../../../Inventory/HBoxContainer/Button")
 focus_previous = NodePath("../../../Right/HBoxContainer/Button")
+theme = SubResource("Theme_5o1hq")
 script = ExtResource("1_1nrlj")
 action = "interact"
 
@@ -146,6 +160,7 @@ focus_neighbor_top = NodePath("../../../Interact/HBoxContainer/Button")
 focus_neighbor_bottom = NodePath("../../../Back/HBoxContainer/Button")
 focus_next = NodePath("../../../Back/HBoxContainer/Button")
 focus_previous = NodePath("../../../Interact/HBoxContainer/Button")
+theme = SubResource("Theme_5o1hq")
 script = ExtResource("1_1nrlj")
 action = "inventory"
 
@@ -165,6 +180,7 @@ text = "Back"
 [node name="Button" type="Button" parent="VBoxContainer/Back/HBoxContainer" unique_id=1987663079]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+theme = SubResource("Theme_5o1hq")
 script = ExtResource("1_1nrlj")
 action = "start"
 

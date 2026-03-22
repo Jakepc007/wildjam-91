@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://dcx7jbdh3bbo6"]
 
 [ext_resource type="Script" uid="uid://bb1qt8c2g44jl" path="res://menus/pause_menu.gd" id="1_p1qj3"]
-[ext_resource type="Shader" uid="uid://cy35c7q3uf1mb" path="res://menus/pause_menu_blur.gdshader" id="1_s0u37"]
+[ext_resource type="Shader" path="res://menus/pause_menu_blur.gdshader" id="1_s0u37"]
 [ext_resource type="PackedScene" uid="uid://d4ilac1iachym" path="res://menus/options_tab_menu.tscn" id="3_0wv6w"]
+[ext_resource type="Script" uid="uid://kioun37jgfe3" path="res://menus/hover_expand.gd" id="3_qlf07"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p1qj3"]
 shader = ExtResource("1_s0u37")
@@ -133,6 +134,7 @@ _data = {
 
 [node name="PauseMenu" type="Control" unique_id=603388050]
 process_mode = 3
+z_index = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,17 +171,35 @@ grow_vertical = 2
 layout_mode = 2
 alignment = 1
 
-[node name="Resume" type="Button" parent="Buttons/VBoxContainer" unique_id=425790260]
+[node name="MarginContainer" type="MarginContainer" parent="Buttons/VBoxContainer" unique_id=1411649934]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Resume" type="Button" parent="Buttons/VBoxContainer/MarginContainer" unique_id=425790260]
+layout_mode = 2
+size_flags_vertical = 4
 text = "Resume"
+script = ExtResource("3_qlf07")
 
-[node name="Options" type="Button" parent="Buttons/VBoxContainer" unique_id=427728316]
+[node name="MarginContainer2" type="MarginContainer" parent="Buttons/VBoxContainer" unique_id=1613039094]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Options" type="Button" parent="Buttons/VBoxContainer/MarginContainer2" unique_id=427728316]
+layout_mode = 2
+size_flags_vertical = 4
 text = "Options"
+script = ExtResource("3_qlf07")
 
-[node name="MainMenu" type="Button" parent="Buttons/VBoxContainer" unique_id=487841538]
+[node name="MarginContainer3" type="MarginContainer" parent="Buttons/VBoxContainer" unique_id=276420187]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MainMenu" type="Button" parent="Buttons/VBoxContainer/MarginContainer3" unique_id=487841538]
+layout_mode = 2
+size_flags_vertical = 4
 text = "Main Menu"
+script = ExtResource("3_qlf07")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1388814841]
 libraries/ = SubResource("AnimationLibrary_ybqm1")
@@ -211,9 +231,10 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Back"
+script = ExtResource("3_qlf07")
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/Options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/MarginContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/MarginContainer2/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/MarginContainer3/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="pressed" from="Options/MarginContainer/HideOptions" to="." method="_on_hide_options_pressed"]

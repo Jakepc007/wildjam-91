@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://clm3dne6cj5od"]
+
+[ext_resource type="Script" uid="uid://bhohnt4vy45eo" path="res://menus/victory_screen.gd" id="1_t83qc"]
+[ext_resource type="Texture2D" uid="uid://c3jeo45a4qta1" path="res://assets/victory_screen.png" id="2_75pxh"]
+[ext_resource type="PackedScene" uid="uid://e7kan634h3mn" path="res://menus/main_menu.tscn" id="2_dvas8"]
+
+[sub_resource type="GDScript" id="GDScript_t83qc"]
+script/source = "extends Button
+
+var big_scale := .05
+var time : float
+
+func _ready() -> void:
+	time = 0
+	grab_focus()
+
+func _process(delta: float) -> void:
+	time+=delta
+	scale = ((big_scale) * (sin(time) + 1)/2 + 1) * Vector2(1,1)
+	pivot_offset = size/2
+"
+
+[node name="VictoryScreen" type="Control" unique_id=1595582760]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t83qc")
+main_menu = ExtResource("2_dvas8")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1096959600]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.011458334
+anchor_top = 0.0015625
+anchor_right = 1.0020833
+anchor_bottom = 1.0679352
+offset_top = -2.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_75pxh")
+expand_mode = 5
+stretch_mode = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="MainMenu" type="Button" parent="." unique_id=874359150]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.015625
+anchor_top = 0.171875
+anchor_right = 1.015625
+anchor_bottom = 0.234375
+offset_left = -961.0
+offset_top = 23.0
+offset_right = -853.0
+offset_bottom = 56.0
+grow_horizontal = 0
+text = "Main Menu
+"
+autowrap_mode = 2
+script = SubResource("GDScript_t83qc")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]

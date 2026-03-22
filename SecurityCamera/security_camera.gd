@@ -14,7 +14,7 @@ var _player_spotted : bool
 var _player_found : bool
 var _player_spotted_time : float # the time at which the player was spotted
 
-signal player_found(camera : SecurityCamera, location_found : Vector2)
+signal player_found()
 
 
 func _ready() -> void:
@@ -24,15 +24,19 @@ func _ready() -> void:
 	else: # just turn it on otherwise
 		point_light_2d.visible = true
 	animation_player.play("sweep")
+	if Global.player:
+		_DEBUG_PLAYER = Global.player
 
 func _physics_process(delta: float) -> void:
+	if Global.player:
+		_DEBUG_PLAYER = Global.player
 	var player_spotted_this_frame : bool = line_of_sight_detector.player_detected(_DEBUG_PLAYER.global_position)
 	if not _player_spotted and player_spotted_this_frame:
 		_player_spotted_time = Time.get_unix_time_from_system()
 	_player_spotted = player_spotted_this_frame
 	if _player_spotted and Time.get_unix_time_from_system() - _player_spotted_time > time_to_alert:
 		if not _player_found:
-			player_found.emit(self, line_of_sight_detector.last_player_location)
+			player_found.emit()
 			alert.play(0)
 			alerted_sprite.visible = true
 			_player_found = true
