@@ -1,6 +1,6 @@
 extends Control
 
-var _last_level : PackedScene
+
 @export var main_menu : PackedScene
 
 func _ready() -> void:
@@ -13,4 +13,4 @@ func _on_main_menu_pressed() -> void:
 
 func _on_restart_pressed() -> void:
 	if Global.scene_manager:
-		Global.scene_manager.switch_scene_with_fade(_last_level)
+		Global.scene_manager.reload_last_scene(true)
