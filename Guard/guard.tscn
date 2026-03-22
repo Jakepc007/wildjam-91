@@ -130,8 +130,8 @@ shape = SubResource("ConvexPolygonShape2D_kitn5")
 [node name="PointLight2D" type="PointLight2D" parent="DetectionArea" unique_id=84083961]
 position = Vector2(111.5, 14.999991)
 scale = Vector2(1.8710938, 2.1015623)
-color = Color(0.91368365, 0.9011933, 0.72899765, 1)
-energy = 0.85
+color = Color(0.91, 0.9051467, 0.83720005, 1)
+energy = 0.44
 shadow_enabled = true
 texture = ExtResource("4_kitn5")
 
@@ -198,6 +198,7 @@ region_rect = Rect2(352, 3, 38, 27)
 
 [node name="Sprite2D" type="Sprite2D" parent="OffScreenIndicator/Icon" unique_id=1290088747]
 z_index = -1
+material = SubResource("CanvasItemMaterial_puoqm")
 position = Vector2(0, 1.6875002)
 scale = Vector2(1.4114286, 1.534091)
 texture = ExtResource("8_0cuol")

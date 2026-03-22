@@ -44,7 +44,7 @@ func _on_main_menu_pressed() -> void:
 	if Global.scene_manager:
 		Global.scene_manager.animation_player.animation_finished.connect(\
 		func(anim): get_tree().paused = false, Object.ConnectFlags.CONNECT_ONE_SHOT)
-		Global.scene_manager.switch_scene_with_fade(load(main_menu_path))
+		Global.scene_manager.switch_scene_with_fade(load(main_menu_path), SceneManager.InTransitionEffects.FADE_IN, SceneManager.OutTransitionEffects.STRAIGHT_TO_BLACK)
 
 
 func _on_hide_options_pressed() -> void:

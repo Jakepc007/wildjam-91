@@ -7,20 +7,24 @@ class_name SceneManager
 
 enum InTransitionEffects {
 	FADE_IN,
-	WIPE_IN
+	WIPE_IN,
+	STRAIGHT_TO_BLACK
 }
 
 enum OutTransitionEffects {
 	FADE_OUT,
 	WIPE_OUT,
+	STRAIGHT_TO_BLACK
 }
 const _in_transition_anims : Dictionary[InTransitionEffects, String] = {
 	InTransitionEffects.FADE_IN : "fade_in",
-	InTransitionEffects.WIPE_IN : "wipe_in"
+	InTransitionEffects.WIPE_IN : "wipe_in",
+	InTransitionEffects.STRAIGHT_TO_BLACK : "black"
 }
 const _out_transition_anims : Dictionary[OutTransitionEffects, String] = {
 	OutTransitionEffects.FADE_OUT : "fade_out",
-	OutTransitionEffects.WIPE_OUT : "wipe_out"
+	OutTransitionEffects.WIPE_OUT : "wipe_out",
+	OutTransitionEffects.STRAIGHT_TO_BLACK : "black"
 }
 var _current_scene : Node
 var _current_packed_scene : PackedScene : 

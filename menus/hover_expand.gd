@@ -9,9 +9,9 @@ func _ready() -> void:
 		target = self
 
 func _process(delta: float) -> void:
-	pivot_offset = size/2
-	if is_hovered() or has_focus():
+	target.pivot_offset = size/2
+	if target.is_hovered() or target.has_focus():
 		target_scale = 1.05
 	else:
 		target_scale = 1
-	scale = scale.lerp(Vector2(1,1)*target_scale, delta * 5)
+	target.scale = target.scale.lerp(Vector2(1,1)*target_scale, delta * 5)

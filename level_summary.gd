@@ -49,4 +49,4 @@ func format_number(n: int) -> String:
 func _on_continue_pressed():
 	var next_scene = Global.level_stats.get("next_scene", null)
 	if next_scene:
-		Global.scene_manager.switch_scene_with_fade(next_scene)
+		Global.scene_manager.switch_scene_with_fade(next_scene, SceneManager.InTransitionEffects.STRAIGHT_TO_BLACK, SceneManager.OutTransitionEffects.FADE_OUT)
