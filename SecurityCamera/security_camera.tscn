@@ -62,13 +62,8 @@ texture = ExtResource("2_k6mq6")
 region_enabled = true
 region_rect = Rect2(37, 39, 13, 21)
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Rotation" unique_id=1521652010]
-remote_path = NodePath("../RayCast2D")
-update_rotation = false
-update_scale = false
-
 [node name="RayCast2D" type="RayCast2D" parent="Rotation" unique_id=1389640122]
-top_level = true
+position = Vector2(0, 40)
 collision_mask = 3
 
 [node name="alerted_sprite" type="Sprite2D" parent="Rotation/RayCast2D" unique_id=2096588824]

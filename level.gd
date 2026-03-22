@@ -42,6 +42,7 @@ func _ready():
 	add_child(camera)
 	camera.target = player
 	connect_guards_caught_signal(self)
+	connect_cameras_caught_signal(self)
 	start()
 
 func connect_guards_caught_signal(node : Node):
