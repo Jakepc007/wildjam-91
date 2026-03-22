@@ -65,11 +65,10 @@ func _process(delta: float) -> void:
 
 func _go_to_level_summary():
 	var total_value := 0
+	var item_list: Array[ItemStats.Item] = []
 	for pickup in player.inventory:
 		var stats = ItemStats.get_item(pickup.item)
 		total_value += int(stats.value)
-	var item_list: Array[ItemStats.Item] = []
-	for pickup in player.inventory:
 		item_list.append(pickup.item)
 	Global.level_stats = {
 		"level_name": level_name,
