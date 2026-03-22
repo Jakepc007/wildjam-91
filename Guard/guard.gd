@@ -54,6 +54,13 @@ var _time_spent_investigating : float ## time spent at the investigation target
 var _time_in_state : float ## a timer that keeps track of how long you've been in a state
 
 func _ready() -> void:
+	var non_empty_patrol_points :Array[Node2D] = []
+	for c in patrol_points:
+		if c != null:
+			non_empty_patrol_points.append(c)
+		else:
+			pass
+	patrol_points = non_empty_patrol_points
 	if Global.scene_manager and Global.scene_manager.animation_player: ## if in full game, wait for any screen transition effects to end to turn on light
 		point_light_2d.visible = false
 		Global.scene_manager.animation_player.animation_finished.connect((func(_y,x):x.visible = true).bind(point_light_2d),Object.ConnectFlags.CONNECT_ONE_SHOT)
@@ -174,7 +181,8 @@ func get_player_global_position() -> Vector2:
 func patrol_update():
 	if navigation_agent_2d.is_navigation_finished():
 		_current_patrol_point_idx = (_current_patrol_point_idx + 1) % patrol_points.size()
-		set_navigation_target(patrol_points[_current_patrol_point_idx].global_position)
+		if patrol_points[_current_patrol_point_idx]:
+			set_navigation_target(patrol_points[_current_patrol_point_idx].global_position)
 
 	move_with_navigation_agent(patrol_speed)
 
