@@ -1,11 +1,8 @@
 [gd_scene format=3 uid="uid://cuftuundgmu5e"]
 
 [ext_resource type="Script" uid="uid://6g2houfyr2lr" path="res://inventory_ring.gd" id="1_27fn8"]
-[ext_resource type="Script" uid="uid://yte2vbq8136b" path="res://inventory_pickup.gd" id="2_nltto"]
-[ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="3_ibotj"]
+[ext_resource type="Texture2D" uid="uid://21m18yyxd7gp" path="res://Guard/question_mark.png" id="2_27fn8"]
 [ext_resource type="Script" uid="uid://doqcxb440gqpk" path="res://Levels/level_timer.gd" id="4_nltto"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_272bh"]
 
 [node name="UI" type="CanvasLayer" unique_id=898739090]
 
@@ -17,49 +14,11 @@ offset_bottom = 40.0
 
 [node name="InventoryRing" type="Node2D" parent="Inventory" unique_id=1137949563]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(320, 320)
+position = Vector2(480, 320)
 script = ExtResource("1_27fn8")
 
-[node name="InventoryPickup" type="Area2D" parent="Inventory/InventoryRing" unique_id=619133826]
-position = Vector2(-48, -32)
-script = ExtResource("2_nltto")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/InventoryRing/InventoryPickup" unique_id=1483358572]
-shape = SubResource("CircleShape2D_272bh")
-
-[node name="Sprite2D" type="Sprite2D" parent="Inventory/InventoryRing/InventoryPickup" unique_id=156664174]
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("3_ibotj")
-
-[node name="InventoryPickup2" type="Area2D" parent="Inventory/InventoryRing" unique_id=1830470619]
-position = Vector2(120, -48)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/InventoryRing/InventoryPickup2" unique_id=1516753634]
-shape = SubResource("CircleShape2D_272bh")
-
-[node name="Sprite2D" type="Sprite2D" parent="Inventory/InventoryRing/InventoryPickup2" unique_id=2068244549]
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("3_ibotj")
-
-[node name="InventoryPickup3" type="Area2D" parent="Inventory/InventoryRing" unique_id=982351571]
-position = Vector2(-80, 120)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/InventoryRing/InventoryPickup3" unique_id=801206484]
-shape = SubResource("CircleShape2D_272bh")
-
-[node name="Sprite2D" type="Sprite2D" parent="Inventory/InventoryRing/InventoryPickup3" unique_id=1052233526]
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("3_ibotj")
-
-[node name="InventoryPickup4" type="Area2D" parent="Inventory/InventoryRing" unique_id=2095619966]
-position = Vector2(144, 80)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Inventory/InventoryRing/InventoryPickup4" unique_id=28119311]
-shape = SubResource("CircleShape2D_272bh")
-
-[node name="Sprite2D" type="Sprite2D" parent="Inventory/InventoryRing/InventoryPickup4" unique_id=893742501]
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("3_ibotj")
+[node name="ExitDoorSprite" type="Sprite2D" parent="Inventory/InventoryRing" unique_id=1867722750]
+texture = ExtResource("2_27fn8")
 
 [node name="Label" type="Label" parent="." unique_id=443659898]
 anchors_preset = 10

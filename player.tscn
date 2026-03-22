@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://8yqcf3fcur1q" path="res://player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="2_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://dcx7jbdh3bbo6" path="res://menus/pause_menu.tscn" id="3_i3pqv"]
+[ext_resource type="SpriteFrames" path="res://assets/SpriteFrames/character_anims.tres" id="4_hqtel"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dm0k"]
 radius = 16.0
@@ -29,6 +30,7 @@ collision_layer = 3
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1515269652]
+visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_i3pqv")
 
@@ -41,12 +43,13 @@ shadow_enabled = true
 texture = SubResource("GradientTexture2D_0xm2m")
 
 [node name="PickupNotice" type="Label" parent="." unique_id=2073378292]
-offset_left = -32.0
-offset_top = -64.0
-offset_right = 44.0
-offset_bottom = -41.0
+offset_left = -38.0
+offset_top = -169.0
+offset_right = 38.0
+offset_bottom = -146.0
 text = "pickup (e)"
 label_settings = SubResource("LabelSettings_1bvp3")
+horizontal_alignment = 1
 
 [node name="InventoryFloater" type="Label" parent="." unique_id=620659723]
 offset_left = -32.0
@@ -66,3 +69,9 @@ collision_mask = 16
 shape = SubResource("CircleShape2D_lquwl")
 
 [node name="PauseMenu" parent="." unique_id=603388050 instance=ExtResource("3_i3pqv")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1450152165]
+texture_filter = 1
+position = Vector2(1, -67)
+sprite_frames = ExtResource("4_hqtel")
+animation = &"Back_Walk"

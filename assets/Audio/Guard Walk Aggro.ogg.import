@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bdn5bikb8sum"
+path="res://.godot/imported/Guard Walk Aggro.ogg-b75f4a2bec2e6fee434cf06f1eeb9578.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/Audio/Guard Walk Aggro.ogg"
+dest_files=["res://.godot/imported/Guard Walk Aggro.ogg-b75f4a2bec2e6fee434cf06f1eeb9578.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

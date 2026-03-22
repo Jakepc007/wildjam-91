@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://d2oly3tembpt8"]
+
+[ext_resource type="Script" uid="uid://clhaeq1wwytlg" path="res://level_summary.gd" id="1_ng3q2"]
+[ext_resource type="Texture2D" uid="uid://m0n6fbd2d6ry" path="res://icon.svg" id="2_0oxrk"]
+[ext_resource type="Texture2D" uid="uid://cccj7al6ihahq" path="res://assets/backgrounds/-6.png" id="2_6on4b"]
+[ext_resource type="Texture2D" uid="uid://bevht8lln0l6w" path="res://assets/backgrounds/-5.png" id="3_0oxrk"]
+[ext_resource type="Texture2D" uid="uid://ba4nl0k8icuxk" path="res://assets/backgrounds/-4.png" id="4_mhll2"]
+[ext_resource type="Texture2D" uid="uid://bgbqgr7032uaf" path="res://assets/backgrounds/-3.png" id="5_mls7t"]
+[ext_resource type="Texture2D" uid="uid://dsdyxsrq7df78" path="res://assets/backgrounds/-2.png" id="6_32mb6"]
+[ext_resource type="Texture2D" uid="uid://b0x7wcrl8de02" path="res://assets/backgrounds/-1.png" id="7_orfxh"]
+[ext_resource type="Texture2D" uid="uid://decau8gxrr0ws" path="res://assets/backgrounds/0.png" id="8_ehs37"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ng3q2"]
+font_size = 48
+shadow_color = Color(0, 0, 0, 0.7490196)
+shadow_offset = Vector2(2, 2)
+
+[node name="LevelSummary" type="Node2D" unique_id=1531053828]
+script = ExtResource("1_ng3q2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1738666352]
+
+[node name="LevelCompleteLabel" type="Label" parent="CanvasLayer" unique_id=1467414345]
+unique_name_in_owner = true
+offset_right = 960.0
+offset_bottom = 72.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "LEVEL X COMPLETE"
+label_settings = SubResource("LabelSettings_ng3q2")
+horizontal_alignment = 1
+
+[node name="Stats" type="VBoxContainer" parent="CanvasLayer" unique_id=20387412]
+offset_left = 8.0
+offset_top = 56.0
+offset_right = 584.0
+offset_bottom = 214.0
+size_flags_horizontal = 6
+size_flags_vertical = 10
+theme_override_constants/separation = 24
+
+[node name="Time" type="VBoxContainer" parent="CanvasLayer/Stats" unique_id=2000372927]
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Stats/Time" unique_id=19667928]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Time Remaining"
+label_settings = SubResource("LabelSettings_ng3q2")
+
+[node name="TimeLeftLabel" type="Label" parent="CanvasLayer/Stats/Time" unique_id=1604137316]
+unique_name_in_owner = true
+layout_mode = 2
+text = "30:00"
+label_settings = SubResource("LabelSettings_ng3q2")
+
+[node name="Value" type="VBoxContainer" parent="CanvasLayer/Stats" unique_id=1760059638]
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/Stats/Value" unique_id=155857490]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Stolen Value"
+label_settings = SubResource("LabelSettings_ng3q2")
+
+[node name="ValueLabel" type="Label" parent="CanvasLayer/Stats/Value" unique_id=123155943]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1300$"
+label_settings = SubResource("LabelSettings_ng3q2")
+
+[node name="ItemsContainer" type="HFlowContainer" parent="CanvasLayer" unique_id=668954986]
+unique_name_in_owner = true
+offset_left = 432.0
+offset_top = 72.0
+offset_right = 976.0
+offset_bottom = 520.0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ItemsContainer" unique_id=1753175335]
+layout_mode = 2
+texture = ExtResource("2_0oxrk")
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ItemsContainer" unique_id=1405942934]
+layout_mode = 2
+texture = ExtResource("2_0oxrk")
+
+[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/ItemsContainer" unique_id=2063701972]
+layout_mode = 2
+texture = ExtResource("2_0oxrk")
+
+[node name="TextureRect4" type="TextureRect" parent="CanvasLayer/ItemsContainer" unique_id=932324430]
+layout_mode = 2
+texture = ExtResource("2_0oxrk")
+
+[node name="TextureRect5" type="TextureRect" parent="CanvasLayer/ItemsContainer" unique_id=425384236]
+layout_mode = 2
+texture = ExtResource("2_0oxrk")
+
+[node name="TextureRect6" type="TextureRect" parent="CanvasLayer/ItemsContainer" unique_id=1875449798]
+layout_mode = 2
+texture = ExtResource("2_0oxrk")
+
+[node name="TextureRect7" type="TextureRect" parent="CanvasLayer/ItemsContainer" unique_id=2095767933]
+layout_mode = 2
+texture = ExtResource("2_0oxrk")
+
+[node name="TextureRect8" type="TextureRect" parent="CanvasLayer/ItemsContainer" unique_id=537904030]
+layout_mode = 2
+texture = ExtResource("2_0oxrk")
+
+[node name="TextureRect9" type="TextureRect" parent="CanvasLayer/ItemsContainer" unique_id=171011245]
+layout_mode = 2
+texture = ExtResource("2_0oxrk")
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=2042383805]
+offset_left = 440.0
+offset_top = 512.0
+offset_right = 519.0
+offset_bottom = 543.0
+text = "Continue"
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1159022014]
+scroll_scale = Vector2(0, 1)
+repeat_size = Vector2(600, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D" unique_id=618075230]
+texture = ExtResource("2_6on4b")
+
+[node name="Parallax2D2" type="Parallax2D" parent="." unique_id=1266734392]
+visible = false
+scroll_scale = Vector2(0.25, 1)
+scroll_offset = Vector2(0, -24)
+repeat_size = Vector2(600, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2" unique_id=284628532]
+texture = ExtResource("3_0oxrk")
+
+[node name="Parallax2D3" type="Parallax2D" parent="." unique_id=646372248]
+visible = false
+scroll_scale = Vector2(0.25, 1)
+scroll_offset = Vector2(0, -8)
+repeat_size = Vector2(600, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3" unique_id=2065876876]
+texture = ExtResource("4_mhll2")
+
+[node name="Parallax2D4" type="Parallax2D" parent="." unique_id=1487652213]
+scroll_scale = Vector2(0.4, 1)
+repeat_size = Vector2(600, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D4" unique_id=2086321241]
+texture = ExtResource("5_mls7t")
+
+[node name="Parallax2D5" type="Parallax2D" parent="." unique_id=364364942]
+scroll_scale = Vector2(0.5, 1)
+repeat_size = Vector2(600, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D5" unique_id=1000361583]
+texture = ExtResource("6_32mb6")
+
+[node name="Parallax2D6" type="Parallax2D" parent="." unique_id=628507101]
+scroll_scale = Vector2(0.6, 1)
+repeat_size = Vector2(600, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D6" unique_id=1406017952]
+texture = ExtResource("7_orfxh")
+
+[node name="Parallax2D7" type="Parallax2D" parent="." unique_id=811210556]
+scroll_scale = Vector2(5, 1)
+repeat_size = Vector2(600, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D7" unique_id=628614993]
+texture = ExtResource("8_ehs37")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1588993689]
+scale = Vector2(0.161123, -0.07079295)
+zoom = Vector2(2, 2)

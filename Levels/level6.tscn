@@ -2,10 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://chvpqpus2gh15" path="res://Guard/guard.tscn" id="1_bc7qw"]
 [ext_resource type="PackedScene" uid="uid://bfaiwfc2h6h8w" path="res://Levels/base.tscn" id="1_cscou"]
+[ext_resource type="PackedScene" uid="uid://5tvv18ikb680" path="res://Levels/level7.tscn" id="2_nft2l"]
 [ext_resource type="PackedScene" uid="uid://cjd8r32q75p58" path="res://pickup.tscn" id="6_y0hew"]
 [ext_resource type="PackedScene" uid="uid://bfikiari2s4xw" path="res://SecurityCamera/security_camera.tscn" id="9_ckxq1"]
 
 [node name="Level6" unique_id=869268886 instance=ExtResource("1_cscou")]
+level_name = "6"
+next_scene = ExtResource("2_nft2l")
+
+[node name="ExitPosition" parent="." index="5" unique_id=1985065076]
+position = Vector2(2360, -2856)
 
 [node name="Pickup4" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="0" unique_id=1711849754 instance=ExtResource("6_y0hew")]
 position = Vector2(-304, 209)
