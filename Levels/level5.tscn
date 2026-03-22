@@ -12,7 +12,6 @@ agent_radius = 20.0
 
 [node name="Level5" unique_id=869268886 instance=ExtResource("1_e0up5")]
 level_name = "5"
-level_time_sec = 50.0
 required_value = 1000000
 next_scene = ExtResource("2_fh8n1")
 

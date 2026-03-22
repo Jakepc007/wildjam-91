@@ -12,7 +12,7 @@ agent_radius = 20.0
 
 [node name="Level8" unique_id=869268886 instance=ExtResource("1_hnh7c")]
 level_name = "8"
-level_time_sec = 40.0
+level_time_sec = 50.0
 required_value = 10000000
 
 [node name="ExitPosition" parent="." index="5" unique_id=1985065076]
