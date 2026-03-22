@@ -4,8 +4,8 @@ extends Control
 @onready var main_menu_path : String = "res://menus/main_menu.tscn"
 @onready var options: VBoxContainer = $Options
 @onready var buttons: PanelContainer = $Buttons
-@onready var resume_button: Button = $Buttons/VBoxContainer/Resume
-@onready var options_button: Button = $Buttons/VBoxContainer/Options
+@onready var resume_button: Button = $Buttons/VBoxContainer/MarginContainer/Resume
+@onready var options_button: Button = $Buttons/VBoxContainer/MarginContainer2/Options
 
 
 

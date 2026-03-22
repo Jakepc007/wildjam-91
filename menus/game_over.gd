@@ -4,7 +4,8 @@ extends Control
 @export var main_menu : PackedScene
 
 func _ready() -> void:
-	Global.audio_manager.play_track(AudioManager.Track.GAME_OVER)
+	if Global.audio_manager:
+		Global.audio_manager.play_track(AudioManager.Track.GAME_OVER)
 
 func _on_main_menu_pressed() -> void:
 	if Global.scene_manager:

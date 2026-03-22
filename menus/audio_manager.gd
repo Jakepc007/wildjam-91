@@ -1,14 +1,15 @@
 extends Node
 class_name AudioManager
 
-enum Track {MAIN_MENU,LEVEL,GAME_OVER}
+enum Track {MAIN_MENU,LEVEL,GAME_OVER,VICTORY}
 
 var _current_track : Track
 
 @onready var track_audio_streams : Dictionary[Track,AudioStreamPlayer] = {
 	Track.MAIN_MENU : %MenuTheme,
 	Track.LEVEL : %UhOhBuddyFullTrack,
-	Track.GAME_OVER : %MaybeNextTime
+	Track.GAME_OVER : %MaybeNextTime,
+	Track.VICTORY : %TheHighLife
 }
 
 
