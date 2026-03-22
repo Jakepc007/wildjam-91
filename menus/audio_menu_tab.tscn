@@ -35,6 +35,15 @@ func _on_sfx_slider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_linear(sfx_bus,value)
 "
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hrpeh"]
+
+[sub_resource type="Theme" id="Theme_hrpeh"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_hrpeh")
+Button/styles/focus = SubResource("StyleBoxEmpty_hrpeh")
+Button/styles/hover = SubResource("StyleBoxEmpty_hrpeh")
+Button/styles/normal = SubResource("StyleBoxEmpty_hrpeh")
+Button/styles/pressed = SubResource("StyleBoxEmpty_hrpeh")
+
 [node name="AudioMenuTab" type="MarginContainer" unique_id=679169600]
 anchors_preset = -1
 anchor_right = 0.640625
@@ -62,6 +71,7 @@ text = "Mute"
 
 [node name="MuteButton" type="CheckButton" parent="VBoxContainer/MuteControl" unique_id=724876505]
 layout_mode = 2
+theme = SubResource("Theme_hrpeh")
 
 [node name="MasterVolume" type="HBoxContainer" parent="VBoxContainer" unique_id=1338063684]
 layout_mode = 2
