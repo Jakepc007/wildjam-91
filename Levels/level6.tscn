@@ -8,7 +8,7 @@
 
 [node name="Level6" unique_id=869268886 instance=ExtResource("1_cscou")]
 level_name = "6"
-level_time_sec = 120.0
+level_time_sec = 100.0
 required_value = 1200000
 next_scene = ExtResource("2_nft2l")
 
@@ -51,10 +51,7 @@ item = 5
 position = Vector2(584, -3630)
 item = 14
 
-[node name="Pickup15" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="9" unique_id=1235233506 instance=ExtResource("6_y0hew")]
-position = Vector2(1440, -1776)
-
-[node name="Pickup17" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="10" unique_id=1932882114 instance=ExtResource("6_y0hew")]
+[node name="Pickup17" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="9" unique_id=1932882114 instance=ExtResource("6_y0hew")]
 position = Vector2(720, -1424)
 
 [node name="TileMapLayer" parent="NavigationRegion2D" parent_id_path=PackedInt32Array(1015479542) index="0" unique_id=68965521]

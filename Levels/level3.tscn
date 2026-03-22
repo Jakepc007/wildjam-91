@@ -12,7 +12,7 @@ agent_radius = 20.0
 
 [node name="Level3" unique_id=869268886 instance=ExtResource("1_2385j")]
 level_name = "3"
-level_time_sec = 30.0
+level_time_sec = 25.0
 required_value = 600000
 next_scene = ExtResource("2_eh6o7")
 
@@ -25,7 +25,7 @@ item = 6
 
 [node name="Pickup3" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="1" unique_id=1767688936 instance=ExtResource("5_ls4d1")]
 position = Vector2(-288, -776)
-item = 9
+item = 8
 
 [node name="Pickup4" parent="Pickups" parent_id_path=PackedInt32Array(586806663) index="2" unique_id=1946120947 instance=ExtResource("5_ls4d1")]
 position = Vector2(576, -782)
