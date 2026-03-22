@@ -5,6 +5,7 @@ const LEVEL_SUMMARY_SCENE = preload("res://Levels/level_summary.tscn")
 
 @onready var player_scene = preload("res://player.tscn")
 @onready var camera_scene = preload("res://camera.tscn")
+@onready var game_over_scene = preload("res://menus/game_over.tscn")
 
 @onready var spawn_position = $SpawnPosition
 @onready var exit_position = $ExitPosition
@@ -40,15 +41,24 @@ func _ready():
 	var camera = camera_scene.instantiate()
 	add_child(camera)
 	camera.target = player
-	connect_guards_caught_signal()
+	connect_guards_caught_signal(self)
 	start()
 
-func connect_guards_caught_signal():
-	for c in get_children():
+func connect_guards_caught_signal(node : Node):
+	for c in node.get_children():
 		if not c is Guard:
+			connect_guards_caught_signal(c)
 			continue
 		c = c as Guard
 		c.player_caught.connect(on_player_caught)
+
+func connect_cameras_caught_signal(node : Node):
+	for c in node.get_children():
+		if not c is SecurityCamera:
+			connect_cameras_caught_signal(c)
+			continue
+		c = c as SecurityCamera
+		c.player_found.connect(on_player_caught)
 
 func on_inventory_updated(inventory: Array):
 	print(inventory)
@@ -78,7 +88,10 @@ func _go_to_level_summary():
 	Global.scene_manager.switch_scene_with_fade(LEVEL_SUMMARY_SCENE)
 
 func on_player_caught():
-	print("player caught")
+	if Global.audio_manager:
+		Global.audio_manager.pause_current_track()
+	if Global.scene_manager:
+		Global.scene_manager.switch_scene_with_fade(game_over_scene)
 
 func start():
 	_time_over = false
