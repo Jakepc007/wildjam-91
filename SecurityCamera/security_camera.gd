@@ -14,7 +14,7 @@ var _player_spotted : bool
 var _player_found : bool
 var _player_spotted_time : float # the time at which the player was spotted
 
-signal player_found(camera : SecurityCamera, location_found : Vector2)
+signal player_found()
 
 
 func _ready() -> void:
@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	_player_spotted = player_spotted_this_frame
 	if _player_spotted and Time.get_unix_time_from_system() - _player_spotted_time > time_to_alert:
 		if not _player_found:
-			player_found.emit(self, line_of_sight_detector.last_player_location)
+			player_found.emit()
 			alert.play(0)
 			alerted_sprite.visible = true
 			_player_found = true
