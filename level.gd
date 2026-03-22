@@ -92,13 +92,13 @@ func _go_to_level_summary():
 		"items": item_list,
 		"next_scene": next_scene,
 	}
-	Global.scene_manager.switch_scene_with_fade(LEVEL_SUMMARY_SCENE)
+	Global.scene_manager.switch_scene_with_fade(LEVEL_SUMMARY_SCENE,SceneManager.InTransitionEffects.FADE_IN, SceneManager.OutTransitionEffects.STRAIGHT_TO_BLACK)
 
 func on_player_caught():
 	if Global.audio_manager:
 		Global.audio_manager.pause_current_track()
 	if Global.scene_manager:
-		Global.scene_manager.switch_scene_with_fade(game_over_scene)
+		Global.scene_manager.switch_scene_with_fade(game_over_scene,SceneManager.InTransitionEffects.FADE_IN, SceneManager.OutTransitionEffects.STRAIGHT_TO_BLACK)
 
 func start():
 	_time_over = false

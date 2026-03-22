@@ -14,8 +14,17 @@ font_size = 48
 shadow_color = Color(0, 0, 0, 0.7490196)
 shadow_offset = Vector2(2, 2)
 
+<<<<<<< HEAD
+[sub_resource type="GDScript" id="GDScript_ng3q2"]
+script/source = "extends Button
+
+func _ready() -> void:
+	grab_focus()
+"
+=======
 [sub_resource type="Theme" id="Theme_ng3q2"]
 Button/font_sizes/font_size = 48
+>>>>>>> 1ec1b56870c228aecf5821ad46d3915798c1b85f
 
 [node name="LevelSummary" type="Node2D" unique_id=1531053828]
 script = ExtResource("1_ng3q2")
@@ -89,6 +98,7 @@ offset_right = 384.0
 offset_bottom = 512.0
 theme = SubResource("Theme_ng3q2")
 text = "Continue"
+script = SubResource("GDScript_ng3q2")
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1159022014]
 scroll_scale = Vector2(0, 1)
