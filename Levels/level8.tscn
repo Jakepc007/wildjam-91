@@ -167,23 +167,23 @@ item = 7
 [node name="Cameras" type="Node2D" parent="." index="10" unique_id=1249251464]
 
 [node name="Camera" parent="Cameras" index="0" unique_id=933279496 instance=ExtResource("2_j81mp")]
-position = Vector2(792, -1080)
+position = Vector2(720, -1072)
 rotation = 1.5707964
 
 [node name="Camera2" parent="Cameras" index="1" unique_id=1894259344 instance=ExtResource("2_j81mp")]
-position = Vector2(360, -2792)
+position = Vector2(440, -2800)
 rotation = -1.5707964
 
 [node name="Camera3" parent="Cameras" index="2" unique_id=231292967 instance=ExtResource("2_j81mp")]
-position = Vector2(328, -4224)
+position = Vector2(328, -4112)
 
 [node name="Camera5" parent="Cameras" index="3" unique_id=284324821 instance=ExtResource("2_j81mp")]
-position = Vector2(336, -4344)
+position = Vector2(432, -4336)
 rotation = -1.5707964
 
 [node name="Camera6" parent="Cameras" index="4" unique_id=1443573470 instance=ExtResource("2_j81mp")]
-position = Vector2(800, -4728)
+position = Vector2(712, -4720)
 rotation = 1.5707964
 
 [node name="Camera4" parent="Cameras" index="5" unique_id=1034457953 instance=ExtResource("2_j81mp")]
-position = Vector2(808, -4232)
+position = Vector2(808, -4112)

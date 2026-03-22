@@ -8,7 +8,7 @@
 
 [node name="Level6" unique_id=869268886 instance=ExtResource("1_cscou")]
 level_name = "6"
-level_time_sec = 100.0
+level_time_sec = 80.0
 required_value = 1200000
 next_scene = ExtResource("2_nft2l")
 
@@ -64,11 +64,11 @@ position = Vector2(432, -1112)
 rotation = -1.5707964
 
 [node name="Camera2" parent="Cameras" index="1" unique_id=1286438123 instance=ExtResource("9_ckxq1")]
-position = Vector2(2024, -1664)
+position = Vector2(1984, -1776)
 rotation = 3.1415927
 
 [node name="Camera3" parent="Cameras" index="2" unique_id=1477278507 instance=ExtResource("9_ckxq1")]
-position = Vector2(-744, 24)
+position = Vector2(-744, -144)
 rotation = 3.1415927
 
 [node name="Guards" type="Node2D" parent="." index="9" unique_id=352026374]

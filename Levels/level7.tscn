@@ -13,7 +13,7 @@ agent_radius = 20.0
 
 [node name="Level7" unique_id=869268886 instance=ExtResource("1_f3ldr")]
 level_name = "7"
-level_time_sec = 100.0
+level_time_sec = 80.0
 required_value = 1700000
 next_scene = ExtResource("2_ev673")
 
@@ -61,40 +61,40 @@ tile_map_data = PackedByteArray("AAANAAkAAgARAAIAAAANAAoAAgARAAIAAAANAAsAAgARAAI
 [node name="Cameras" type="Node2D" parent="." index="8" unique_id=1129180509]
 
 [node name="Camera3" parent="Cameras" index="0" unique_id=933279496 instance=ExtResource("2_ug2rx")]
-position = Vector2(-984, -40)
+position = Vector2(-992, -144)
 rotation = -3.1415925
 
 [node name="Camera4" parent="Cameras" index="1" unique_id=29321348 instance=ExtResource("2_ug2rx")]
-position = Vector2(-1776, -1160)
+position = Vector2(-1616, -1168)
 rotation = -1.5707964
 
 [node name="Camera5" parent="Cameras" index="2" unique_id=1506465639 instance=ExtResource("2_ug2rx")]
-position = Vector2(-2496, -2184)
+position = Vector2(-2352, -2184)
 rotation = -1.5707964
 
 [node name="Camera6" parent="Cameras" index="3" unique_id=358738073 instance=ExtResource("2_ug2rx")]
-position = Vector2(-472, -2200)
+position = Vector2(-528, -2200)
 rotation = 1.5707964
 
 [node name="Camera7" parent="Cameras" index="4" unique_id=1891099572 instance=ExtResource("2_ug2rx")]
-position = Vector2(-792, -1568)
+position = Vector2(-912, -1680)
 rotation = -3.1415925
 
 [node name="Camera10" parent="Cameras" index="5" unique_id=54423033 instance=ExtResource("2_ug2rx")]
-position = Vector2(-1976, -1592)
+position = Vector2(-1976, -1680)
 rotation = -3.1415925
 
 [node name="Camera8" parent="Cameras" index="6" unique_id=1950924176 instance=ExtResource("2_ug2rx")]
-position = Vector2(-864, -2840)
+position = Vector2(-872, -2736)
 
 [node name="Camera11" parent="Cameras" index="7" unique_id=1340797570 instance=ExtResource("2_ug2rx")]
-position = Vector2(-1264, -3960)
+position = Vector2(-1264, -3920)
 
 [node name="Camera12" parent="Cameras" index="8" unique_id=353200712 instance=ExtResource("2_ug2rx")]
-position = Vector2(-1624, -3960)
+position = Vector2(-1624, -3920)
 
 [node name="Camera9" parent="Cameras" index="9" unique_id=1157345258 instance=ExtResource("2_ug2rx")]
-position = Vector2(-1976, -2856)
+position = Vector2(-1976, -2736)
 
 [node name="Guards" type="Node2D" parent="." index="9" unique_id=1064595741]
 
