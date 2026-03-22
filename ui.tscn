@@ -22,6 +22,7 @@ region_enabled = true
 region_rect = Rect2(543.8, 148.09999, 52.799988, 44.799988)
 
 [node name="Label" type="Label" parent="." unique_id=443659898]
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 23.0

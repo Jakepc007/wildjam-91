@@ -132,6 +132,15 @@ func _draw():
 	var weight_offset = 1.9 * (1.0 - weight_ratio)
 	draw_arc(Vector2.ZERO, 121. + acc * 10., -PI/2 + 0.62, PI/2 - 0.62 - weight_offset, 53, Color(0.2, 0.6, 1.0, bar_alpha), 10.)
 
+	var tab_font := ThemeDB.fallback_font
+	var tab_text := "[Tab]"
+	var tab_fs := 24
+	var tab_alpha := 1.0 - ring_alpha
+	var tab_w: float = tab_font.get_string_size(tab_text, HORIZONTAL_ALIGNMENT_LEFT, -1, tab_fs).x
+	var tab_origin := Vector2(-tab_w / 2.0, 175.)
+	draw_string(tab_font, tab_origin + Vector2(2., 2.), tab_text, HORIZONTAL_ALIGNMENT_LEFT, -1, tab_fs, Color(0., 0., 0., tab_alpha * 0.6))
+	draw_string(tab_font, tab_origin, tab_text, HORIZONTAL_ALIGNMENT_LEFT, -1, tab_fs, Color(1., 1., 1., tab_alpha))
+
 	var icon_size := Vector2(90, 90)
 	var icon_color := Color(1., 1., 1., bar_alpha)
 	draw_texture_rect(ICON_MONEY, Rect2(Vector2(-120. - acc * 10., -40.), icon_size), false, icon_color)
