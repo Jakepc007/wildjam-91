@@ -32,7 +32,7 @@ func _init(_name: String, _weight: float, _value: float, _image_path: String = "
 
 static var items : Dictionary[Item, ItemStats] = {
 	Item.LA_LAPIN_DE_VICTORIE:    ItemStats.new("La Lapin de Victorie",            30.0,       300000.0, "res://assets/items/La_Lapin_De_Victoire.png"),
-	Item.ESTAQUE:                 ItemStats.new("Estaque - André DeRain",          2.0,        500000.0, "res://assets/items/Estaque_AndreDerain.png"),
+	Item.ESTAQUE:                 ItemStats.new("Estaque - André DeRain",          2.0,        700000.0, "res://assets/items/Estaque_AndreDerain.png"),
 	Item.SERPENT_WOOD_CARVING:    ItemStats.new("Serpent from Wood Carving",       2.0,         12000.0, "res://assets/items/Serpent_From_Wood_Carving.png"),
 	Item.PIERCED_FORM_AMULET:     ItemStats.new("Pierced Form Amulet",            15.0,        111000.0, "res://assets/items/Pierced_Form_Amulet_BarbaraHepworth.png"),
 	Item.PURPLE_CAT:              ItemStats.new("Purple Cat - Bill Traylor",       1.0,         10000.0, "res://assets/items/Purple_Cat_BillTraylor.png"),

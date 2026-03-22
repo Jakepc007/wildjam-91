@@ -12,7 +12,7 @@ agent_radius = 20.0
 
 [node name="Level4" unique_id=869268886 instance=ExtResource("1_w136y")]
 level_name = "4"
-required_value = 700000
+required_value = 600000
 next_scene = ExtResource("2_h14kk")
 
 [node name="ExitPosition" parent="." index="5" unique_id=1985065076]
@@ -56,7 +56,7 @@ position = Vector2(-112, -300)
 
 [node name="Marker2D2" type="Marker2D" parent="Guards/Guard" index="10" unique_id=1078808227]
 top_level = true
-position = Vector2(1368, -288)
+position = Vector2(1368, -300)
 
 [node name="Guard2" parent="Guards" index="1" unique_id=1440716240 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_qep4h")]
 position = Vector2(584, -3360)
@@ -72,7 +72,7 @@ position = Vector2(980, -3360)
 
 [node name="Guard3" parent="Guards" index="2" unique_id=411350032 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_qep4h")]
 position = Vector2(344, -1512)
-patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3")]
+patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3"), NodePath("Marker2D4")]
 
 [node name="Marker2D" type="Marker2D" parent="Guards/Guard3" index="9" unique_id=84231142]
 top_level = true
@@ -86,9 +86,13 @@ position = Vector2(-200, -2344)
 top_level = true
 position = Vector2(350, -2344)
 
+[node name="Marker2D4" type="Marker2D" parent="Guards/Guard3" index="12" unique_id=719139541]
+top_level = true
+position = Vector2(350, -1512)
+
 [node name="Guard4" parent="Guards" index="3" unique_id=1978794978 node_paths=PackedStringArray("patrol_points") instance=ExtResource("1_qep4h")]
 position = Vector2(824, -2384)
-patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3")]
+patrol_points = [NodePath("Marker2D"), NodePath("Marker2D2"), NodePath("Marker2D3"), NodePath("Marker2D4")]
 
 [node name="Marker2D" type="Marker2D" parent="Guards/Guard4" index="9" unique_id=1524829689]
 top_level = true
@@ -101,3 +105,7 @@ position = Vector2(1368, -1500)
 [node name="Marker2D3" type="Marker2D" parent="Guards/Guard4" index="11" unique_id=561917511]
 top_level = true
 position = Vector2(936, -1500)
+
+[node name="Marker2D4" type="Marker2D" parent="Guards/Guard4" index="12" unique_id=1377736164]
+top_level = true
+position = Vector2(936, -2384)

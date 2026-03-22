@@ -12,8 +12,8 @@ agent_radius = 20.0
 
 [node name="Level2" unique_id=869268886 instance=ExtResource("1_24phs")]
 level_name = "2"
-level_time_sec = 30.0
-required_value = 150000
+level_time_sec = 25.0
+required_value = 70000
 next_scene = ExtResource("2_pcft3")
 
 [node name="Guards" type="Node2D" parent="." index="0" unique_id=151333262]
